@@ -1,0 +1,9 @@
+export {default as Navbar} from '../components/Navbar/Navbar';
+export {default as Hero} from '../components/Hero/Hero';
+export {default as Process} from '../components/Process/Process';
+export {default as Why} from '../components/Why/WhyChoose';
+export {default as Offers} from '../components/Offers/Offers';
+export {default as CTA} from '../components/CTA/CTA';
+export {default as Community} from '../components/Community/Community';
+export {default as NewsLetter} from '../components/NewsLetter/NewsLetter';
+export {default as Footer} from '../components/Footer/Footer';
