@@ -59,6 +59,18 @@ const CTAContainerWrapper = styled.article`
       opacity: 0.6;
     }
   }
+   @media screen and (max-width: 430px) {
+    width: 100%;
+    padding: 5px;
+    .cta-wrapper{
+      width: 100%;
+      margin-left: 0;
+      padding: 10px;
+      h1{
+        max-width: 700px;
+      }
+    }
+  }
 `;
 
 export default CTA;

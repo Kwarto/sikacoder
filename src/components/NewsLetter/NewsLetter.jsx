@@ -94,6 +94,26 @@ const NewsLetterContainerWrapper = styled.section`
         }
     }
   }
+  @media screen and (max-width: 430px) {
+    .sub-wrap{
+      width: 100%;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 5px;
+      h1{
+        text-align: center;
+      }
+      .input-area{
+        width: 98%;
+       .input-field{
+         width: 65%;
+       }
+       button{
+        width: calc(100% - 65%);
+       }
+      }
+    }
+  }
 `;
 
 export default NewsLetter;

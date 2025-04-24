@@ -70,6 +70,10 @@ const OffersContainerWrapper = styled.section`
  grid-template-columns: 40% 60%;
  place-items: center;
  gap: 1rem;
+  @media screen and (max-width: 430px) {
+    grid-template-columns: 100%;
+    height: max-content;
+  }
 `
 const LeftContainerWrapper = styled.article`
  width: 100%;

@@ -1,5 +1,7 @@
 export {default as Navbar} from '../components/Navbar/Navbar';
 export {default as Hero} from '../components/Hero/Hero';
+export {default as AboutHero} from '../components/AboutHero/AboutHero';
+export {default as CoreInfo} from '../components/CoreInfo/CoreInfo';
 export {default as Process} from '../components/Process/Process';
 export {default as Why} from '../components/Why/WhyChoose';
 export {default as Offers} from '../components/Offers/Offers';

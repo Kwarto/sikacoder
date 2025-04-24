@@ -1,15 +1,21 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import logoImg from '../../assets/images/sc-logo.png'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { HiMiniBars3BottomRight } from "react-icons/hi2";
+import { IoMdClose } from "react-icons/io";
+import { motion } from 'framer-motion';
+
 const Navbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [mobile, setMobile] = useState(false);
   return (
     <NavbarContainerWrapper>
         <LogoWrapper onClick={() => {navigate('/')}}>
           <img src={logoImg} alt="sikacoder-logo" />
         </LogoWrapper>
-        <MenuListContainerWrapper>
+        {!mobile && <MenuListContainerWrapper>
           <NavLink className='nav_link' to={'/'}>
             Home
           </NavLink>
@@ -28,8 +34,35 @@ const Navbar = () => {
           <NavLink className='nav_link' to={'/blog'}>
             Blog
           </NavLink>
-        </MenuListContainerWrapper>
         <div className="btn">Get Started</div>
+        </MenuListContainerWrapper>}
+        {mobile && <motion.div className="mobile" initial={{opacity: 0, scale: 0}} animate={{opacity: 1, scale: 1}} transition={{duration: 1}}>
+        <div className="hamburger" onClick={() => {setMobile(!mobile)}}>
+          <IoMdClose />
+        </div>
+          <NavLink className='nav_link' to={'/'}>
+            Home
+          </NavLink>
+          <NavLink className='nav_link' to={'/about'}>
+            About
+          </NavLink>
+            <NavLink className='nav_link' to={'/services'}>
+            Services
+          </NavLink>
+            <NavLink className='nav_link' to={'/internship'}>
+            Courses
+          </NavLink>
+            <NavLink className='nav_link' to={'/network'}>
+            Network
+          </NavLink>
+          <NavLink className='nav_link' to={'/blog'}>
+            Blog
+          </NavLink>
+        <div className="btn">Get Started</div>
+        </motion.div>}
+        <div className="hamburger" onClick={() => {setMobile(!mobile)}}>
+          <HiMiniBars3BottomRight />
+        </div>
     </NavbarContainerWrapper>
   )
 }
@@ -42,6 +75,60 @@ const NavbarContainerWrapper = styled.nav`
  display: flex;
  align-items: center;
  justify-content: space-between;
+ .hamburger{
+   margin-right: 1.5rem;
+   font-size: 1.5rem;
+   display: none;
+ }
+ @media screen and (max-width: 430px) {
+   padding: 10px;
+  .hamburger{
+    display: flex;
+  }
+  .mobile{
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.932);
+    position: fixed;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    overflow: hidden;
+    .nav_link{
+      width: 100%;
+      height: 70px;
+      border-radius: 10px;
+      color: #000;
+      font-size: 1.8rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .btn{
+      width: 80%;
+      height: 70px;
+      font-size: 1.5rem;
+      margin: 3rem 0;
+      border-radius: 50px;
+    }
+    .hamburger{
+      position: absolute;
+      top: 1.5rem;
+      right: .8rem;
+    }
+  }
+ }
 `
 const LogoWrapper = styled.div`
  width: 14%;
@@ -53,6 +140,9 @@ const LogoWrapper = styled.div`
  img{
     width: 160px;
     transform: translateX(-1rem);
+ }
+ @media screen and (max-width: 430px) {
+  width: 40%;
  }
 `
 const MenuListContainerWrapper = styled.ul`
@@ -69,6 +159,9 @@ const MenuListContainerWrapper = styled.ul`
     &:hover{
       color: rgb(3, 185, 185);
     }
+  }
+  @media screen and (max-width: 430px) {
+    display: none;
   }
 `
 

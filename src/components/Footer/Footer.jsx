@@ -85,6 +85,11 @@ const FooterContainerWrapper = styled.footer`
   place-items: center;
   gap: 1rem;
   padding: 10px;
+   @media screen and (max-width: 430px) {
+    grid-template-columns: 100%;
+    height: max-content;
+    width: 100%;
+  }
 `
 const LeftContainer = styled.article`
   width: 100%;
@@ -182,6 +187,9 @@ const RightContainer = styled.article`
     }
   }
  }
+  @media screen and (max-width: 430px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 export default Footer

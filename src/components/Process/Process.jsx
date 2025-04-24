@@ -55,7 +55,12 @@ const ProcessContainerWrapper = styled.section`
         box-shadow: 0 20px 10px rgba(0, 0, 0, 0.027);
     }
  }
- 
+ @media screen and (max-width: 430px) {
+  height: max-content;
+  .card{
+    height: max-content;
+  }
+ } 
 `
 
 export default Process

@@ -114,6 +114,18 @@ p{
   padding: 10px;
 }
 
+@media screen and (max-width: 430px) {
+  h1{
+    font-size: 2.8rem;
+  }
+  .grid-col-4{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .grid-col-2{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 @keyframes animateFor {
   0%,
   20%,

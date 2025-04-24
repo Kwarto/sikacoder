@@ -12,7 +12,7 @@ const Hero = () => {
         <motion.div
           className="content"
           initial={{ opacity: 0, scale: 0}}
-          whileInView={{ opacity: 1, scale: 1}}
+           whileInView={{ opacity: 1, scale: 1}}
           transition={{ duration: 1 }}
         >
           <h1>Igniting Tech Dreams, One Intern at a Time</h1>
@@ -52,6 +52,10 @@ const HeroContainerWrapper = styled.header`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  @media screen and (max-width: 430px) {
+    flex-direction: column;
+    height: 100vh;
+  }
 `;
 const LeftContentWrapper = styled.article`
   width: 50%;
@@ -65,6 +69,17 @@ const LeftContentWrapper = styled.article`
     width: 70%;
     font-weight: 400;
     padding: 10px 0;
+  }
+   @media screen and (max-width: 430px) {
+    width: 100%;
+    height: 100%;
+    h1{
+      max-width: 800px;
+      font-size: 2.8rem;
+    }
+    p{
+      width: 98%;
+    }
   }
 `;
 const RightContentWrapper = styled.article`
@@ -86,6 +101,9 @@ const RightContentWrapper = styled.article`
   .cover {
     position: relative;
     top: 0;
+  }
+  @media screen and (max-width: 430px) {
+    width: 100%;
   }
 `;
 

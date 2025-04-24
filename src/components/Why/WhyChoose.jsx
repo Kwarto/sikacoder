@@ -38,6 +38,9 @@ const WhyChooseContainerWrapper = styled.section`
   width: 100%;
   height: 98vh;
   padding: 20px;
+   @media screen and (max-width: 430px) {
+    height: 100%;
+  }
 `
 const LeftBannerContainerWrapper = styled.article`
    position: relative;
@@ -63,6 +66,17 @@ const LeftBannerContainerWrapper = styled.article`
     animation: animateFor linear infinite 2s;
    }
  }
+  @media screen and (max-width: 430px) {
+    height: max-content;
+    .avatarWrap{
+      img{
+        width: 90%;
+      }
+    }
+    .s-b{
+      transform: translate(9rem, -15rem)
+    }
+  }
 `
 const ContentContainerWrapper = styled.article`
  width: 100%;
@@ -91,6 +105,9 @@ const ContentContainerWrapper = styled.article`
     max-width: 560px;
   }
  }
+  @media screen and (max-width: 430px) {
+    height: max-content;
+  }
 `
 
 export default WhyChoose

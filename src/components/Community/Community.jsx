@@ -27,7 +27,7 @@ const Community = () => {
         >
           <img src={bannerCover} alt="banner-cover" />
           <motion.div className="overlay" initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}>
             <img src={bannerAvatar} alt="sc-community-profile" />
           </motion.div>
@@ -41,6 +41,9 @@ const CommunityContainerWrapper = styled.section`
   width: 100%;
   height: 100vh;
   padding: 20px;
+  @media screen and (max-width: 430px) {
+    height: max-content;
+  }
 `;
 const LeftContentWrapper = styled.article`
   width: 100%;
@@ -90,6 +93,18 @@ const RightBannerWrapper = styled(LeftContentWrapper)`
       img{
         width: 100%;
         border-radius: inherit;
+      }
+    }
+  }
+  @media screen and (max-width: 430px) {
+    .container{
+      .overlay{
+        width: 310px;
+        top: 2rem;
+        right: 0;
+        img{
+          width: 100%;
+        }
       }
     }
   }
