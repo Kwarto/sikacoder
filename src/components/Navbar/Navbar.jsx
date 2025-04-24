@@ -103,7 +103,7 @@ const NavbarContainerWrapper = styled.nav`
     overflow: hidden;
     .nav_link{
       width: 100%;
-      height: 70px;
+      height: 65px;
       border-radius: 10px;
       color: #000;
       font-size: 1.8rem;
@@ -111,13 +111,13 @@ const NavbarContainerWrapper = styled.nav`
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 15px 0;
+      margin: 8px 0;
       font-weight: 600;
       text-transform: uppercase;
     }
     .btn{
       width: 80%;
-      height: 70px;
+      height: 65px;
       font-size: 1.5rem;
       margin: 3rem 0;
       border-radius: 50px;
