@@ -40,6 +40,7 @@ const WhyChooseContainerWrapper = styled.section`
   padding: 20px;
    @media screen and (max-width: 430px) {
     height: 100%;
+    padding: 20px 5px;
   }
 `
 const LeftBannerContainerWrapper = styled.article`

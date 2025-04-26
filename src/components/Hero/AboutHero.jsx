@@ -45,6 +45,7 @@ const AboutHeroContainerWrapper = styled.header`
  padding: 20px;
   @media screen and (max-width: 430px){
   height: max-content;
+  padding: 0 5px;
  }
 `
 
@@ -65,6 +66,11 @@ const AboutContentWrapper = styled.article`
     p{
         max-width: 500px;
     }
+ }
+ @media screen and (max-width: 430px) {
+  .txt{
+    width: 100%;
+  }
  }
 `
 const AboutHeroBannerWrapper = styled.article`

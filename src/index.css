@@ -127,7 +127,7 @@ p{
 @media screen and (max-width: 430px) {
   h1{
     font-size: 2.3rem;
-    max-width: 700px;
+    max-width: 750px;
   }
   .grid-col-4, .grid-col-3, .grid-col-2{
     grid-template-columns: repeat(1, 1fr);

@@ -73,6 +73,7 @@ const OffersContainerWrapper = styled.section`
   @media screen and (max-width: 430px) {
     grid-template-columns: 100%;
     height: max-content;
+    padding: 20px 5px;
   }
 `
 const LeftContainerWrapper = styled.article`
@@ -123,6 +124,9 @@ border-radius: 10px;
     box-shadow: 0 20px 10px rgba(0, 0, 0, 0.027);
     transform: translateY(.3rem);
   }
+ }
+ @media screen and (max-width: 430px){
+  padding: 0;
  }
 `
 

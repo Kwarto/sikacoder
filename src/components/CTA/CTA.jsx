@@ -56,14 +56,16 @@ const CTAContainerWrapper = styled.article`
       right: 2rem;
       bottom: 2rem;
       width: 20%;
-      opacity: 0.6;
+      opacity: 0.4;
     }
   }
    @media screen and (max-width: 430px) {
     width: 100%;
+    height: 50vh;
     padding: 5px;
     .cta-wrapper{
       width: 100%;
+      height: 98%;
       margin-left: 0;
       padding: 10px;
       h1{

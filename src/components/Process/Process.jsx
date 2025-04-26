@@ -57,6 +57,7 @@ const ProcessContainerWrapper = styled.section`
  }
  @media screen and (max-width: 430px) {
   height: max-content;
+  padding: 20px 5px;
   .card{
     height: max-content;
   }

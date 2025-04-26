@@ -95,13 +95,19 @@ const NewsLetterContainerWrapper = styled.section`
     }
   }
   @media screen and (max-width: 430px) {
+    height: 60vh;
     .sub-wrap{
       width: 100%;
+      height: 98%;
       text-align: center;
       gap: 1.5rem;
       padding: 5px;
+      margin: 0;
       h1{
         text-align: center;
+      }
+      p{
+        padding: 6px 0;
       }
       .input-area{
         width: 98%;
@@ -110,7 +116,7 @@ const NewsLetterContainerWrapper = styled.section`
        }
        button{
         width: calc(100% - 65%);
-        font-size: 1.2rem;
+        font-size: 1rem;
        }
       }
     }
