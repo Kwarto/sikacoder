@@ -30,7 +30,7 @@ const Hero = () => {
           className="cover"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1}}
-          transition={{ duration: 1.3 }}
+          transition={{ duration: 1 }}
         >
           <img src={coverImg} alt="" />
           <div>

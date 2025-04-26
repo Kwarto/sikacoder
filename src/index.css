@@ -76,10 +76,12 @@ h1{
 }
 h3{
   color: rgb(3, 65, 68);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
-
+h4{
+  font-size: 1.08rem;
+}
 p{
   font-size: 20px;
   font-weight: 400;
@@ -93,12 +95,20 @@ p{
   gap: 1rem;
 }
 
+.grid-col-3{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  gap: .8rem;
+}
+
 .grid-col-2{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 1rem;
 }
+
 
 .card{
   width: 100%;
@@ -116,12 +126,10 @@ p{
 
 @media screen and (max-width: 430px) {
   h1{
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+    max-width: 700px;
   }
-  .grid-col-4{
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .grid-col-2{
+  .grid-col-4, .grid-col-3, .grid-col-2{
     grid-template-columns: repeat(1, 1fr);
   }
 }
