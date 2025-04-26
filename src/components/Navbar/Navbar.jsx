@@ -101,10 +101,10 @@ const NavbarContainerWrapper = styled.nav`
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    overflow: hidden;
+    overflow-y: hidden;
     .nav_link{
       width: 100%;
-      height: 65px;
+      height: 60px;
       border-radius: 10px;
       color: #000;
       font-size: 1.8rem;
