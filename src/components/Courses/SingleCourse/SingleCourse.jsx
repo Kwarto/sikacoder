@@ -104,6 +104,9 @@ const SingleCourseContainerWrapper = styled.div`
 }
 @media screen and (max-width: 430px) {
  height: max-content;
+ .thumb-box{
+  height: 250px;
+ }
 }
 `
 export default SingleCourse

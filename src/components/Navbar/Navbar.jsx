@@ -81,6 +81,7 @@ const NavbarContainerWrapper = styled.nav`
    display: none;
  }
  @media screen and (max-width: 430px) {
+   overflow-y: hidden;
    padding: 10px;
   .hamburger{
     display: flex;
@@ -119,8 +120,8 @@ const NavbarContainerWrapper = styled.nav`
       width: 80%;
       height: 65px;
       font-size: 1.5rem;
-      margin: 3rem 0;
       border-radius: 50px;
+      transform: translateY(6rem);
     }
     .hamburger{
       position: absolute;

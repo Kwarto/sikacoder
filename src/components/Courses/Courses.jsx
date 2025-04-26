@@ -98,8 +98,12 @@ const CoursesContainerWrapper = styled.section`
  }
  @media screen and (max-width: 430px) {
   grid-template-columns: 100%;
-  .right{
-    padding: 0;
+  border-radius: 0 0 10px 10px;
+  .left-panel{
+    display: none;
+  }
+  .right-panel{
+    padding: 5px;
   }
  }
 `

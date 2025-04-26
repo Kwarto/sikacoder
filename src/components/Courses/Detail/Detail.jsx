@@ -140,6 +140,7 @@ const DetailContainerWrapper = styled.section`
  }
  @media screen and (max-width: 430px) {
   grid-template-columns: 100%;
+  border-radius: 0 0 30px 30px;
   .short-meta-info-wrapper{
     .st-abt{
       .sm-info{

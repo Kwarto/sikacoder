@@ -4,17 +4,18 @@ import styled from 'styled-components'
 import inHeroImg from '../../assets/images/footer-bg.png'
 import endImg from '../../assets/images/end_shape02.svg'
 import starImg from '../../assets/images/star.svg'
-
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const InternHero = () => {
+  const navigate = useNavigate()
   return (
     <InternHeroContainerWrapper>
      <div className="star">
         <img src={starImg} alt="" />
      </div>
      <h1>Available Courses</h1>
-     <h4>Home - <span>Courses</span></h4>
+     <h4 onClick={() => {navigate('/')}}>Home - <span>Courses</span></h4>
      <motion.div className="end-shape" 
       initial={{opacity: 0, y: -30}}
       animate={{opacity: 1, y: 0}}
