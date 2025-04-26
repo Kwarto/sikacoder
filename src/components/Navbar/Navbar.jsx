@@ -121,7 +121,7 @@ const NavbarContainerWrapper = styled.nav`
       height: 65px;
       font-size: 1.5rem;
       border-radius: 50px;
-      transform: translateY(6rem);
+      transform: translateY(3rem);
     }
     .hamburger{
       position: absolute;
