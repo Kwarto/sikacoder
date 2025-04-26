@@ -110,6 +110,7 @@ const NewsLetterContainerWrapper = styled.section`
        }
        button{
         width: calc(100% - 65%);
+        font-size: 1.2rem;
        }
       }
     }
