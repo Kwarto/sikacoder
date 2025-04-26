@@ -75,7 +75,6 @@ const LeftContentWrapper = styled.article`
     height: 100%;
     h1{
       max-width: 800px;
-      font-size: 2.8rem;
     }
     p{
       width: 98%;
