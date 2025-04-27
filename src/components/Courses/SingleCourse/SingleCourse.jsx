@@ -22,7 +22,7 @@ const SingleCourse = (props) => {
         <p>{desc.substring(0, 90)}..</p>
         <small>By <span>{instructors}</span></small>
         <div className="btn" onClick={() => {setShowDetail(true)}}>
-            Apply Now
+            Interested
         </div>
      </div>
     </SingleCourseContainerWrapper>

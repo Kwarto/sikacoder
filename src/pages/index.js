@@ -5,3 +5,5 @@ export {default as Contact}  from '../pages/contact/Contact';
 export {default as Intern} from '../pages/internship/Internship';
 export {default as Services} from '../pages/services/Services';
 export {default as Blog} from '../pages/Blog/Blog';
+export {default as Auth} from '../pages/auth/Auth';
+export {default as Dashboard} from '../pages/overview/Overview';

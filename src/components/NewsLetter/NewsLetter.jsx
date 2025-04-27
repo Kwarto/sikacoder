@@ -46,16 +46,16 @@ const NewsLetterContainerWrapper = styled.section`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: start;
+    text-align: center;
     h1{
         color: rgb(243, 242, 242);
         max-width: 650px;
-        text-align: start;
+        text-align: center;
     }
     p{
         color: rgb(255, 255, 255);
-        max-width: 650px;
-        padding: 10px 0;
+        max-width: 550px;
+        padding: 5px 0;
     }
     .input-area{
         width: 48%;

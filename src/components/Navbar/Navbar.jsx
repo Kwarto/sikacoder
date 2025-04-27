@@ -34,7 +34,7 @@ const Navbar = () => {
           <NavLink className='nav_link' to={'/blog'}>
             Blog
           </NavLink>
-        <div className="btn">Get Started</div>
+        <div className="btn" onClick={() => {navigate('/auth')}}>Get Started</div>
         </MenuListContainerWrapper>}
         {mobile && <motion.div className="mobile" initial={{opacity: 0, scale: 0}} animate={{opacity: 1, scale: 1}} transition={{duration: 1}}>
         <div className="hamburger" onClick={() => {setMobile(!mobile)}}>
@@ -58,7 +58,7 @@ const Navbar = () => {
           <NavLink className='nav_link' to={'/blog'}>
             Blog
           </NavLink>
-        <div className="btn">Get Started</div>
+        <div className="btn" onClick={() => {navigate('/auth')}}>Get Started</div>
         </motion.div>}
         <div className="hamburger" onClick={() => {setMobile(!mobile)}}>
           <HiMiniBars3BottomRight />

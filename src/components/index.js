@@ -14,4 +14,11 @@ export {default as Offers} from '../components/Offers/Offers';
 export {default as CTA} from '../components/CTA/CTA';
 export {default as Community} from '../components/Community/Community';
 export {default as NewsLetter} from '../components/NewsLetter/NewsLetter';
+export {default as Login} from '../components/Login/Login';
+export {default as SignInWith} from '../components/Login/SignInWith';
+export {default as Register} from '../components/Register/Register';
 export {default as Footer} from '../components/Footer/Footer';
+//over imports
+export {default as Over} from '../components/Overview/Overview';
+export {default as SideBar} from '../components/SideBar/SideBar';
+export {default as TopNav} from '../components/TopNav/TopNav';
