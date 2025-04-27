@@ -2,13 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 import TopNav from '../TopNav/TopNav'
 import Dash from './dash/Dash'
+import MyCourses from './mycourses/MyCourses'
+import Messages from './messages/Messages'
+import Tasks from './tasks/Tasks'
+import Settings from './settings/Settings'
 
-const Overview = () => {
+const Overview = ({showDash, showCourse, showNotice, showTasks, showSettings}) => {
   return (
     <MainOverviewContainer>
      <TopNav />
      <OverviewAreaContainer>
-      <Dash/>
+      {showDash && <Dash/>}
+      {showCourse && <MyCourses />}
+      {showNotice && <Messages />}
+      {showTasks && <Tasks />}
+      {showSettings && <Settings />}
      </OverviewAreaContainer>
     </MainOverviewContainer>
   )
@@ -24,7 +32,7 @@ const MainOverviewContainer = styled.section`
 const OverviewAreaContainer = styled.article`
  width: 100%;
  height: calc(100vh - 70px);
- overflow-y: scroll;
+ overflow-y: hidden;
 `
 
 export default Overview

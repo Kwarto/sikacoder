@@ -1,54 +1,116 @@
-import React from 'react'
-import styled from 'styled-components'
-import logoImg from '../../assets/images/sc-logo.png';
-import layerImg from '../../assets/images/bg_dots.svg'
-import corImg from '../../assets/images/end_shape02.svg'
-import { MdDashboard } from 'react-icons/md';
-const SideBar = () => {
+import React from "react";
+import styled from "styled-components";
+import logoImg from "../../assets/images/sc-logo.png";
+import layerImg from "../../assets/images/bg_dots.svg";
+import corImg from "../../assets/images/end_shape02.svg";
+import {
+  MdDashboard,
+  MdNote,
+  MdNotifications,
+  MdSettings,
+  MdTask,
+} from "react-icons/md";
+const SideBar = ({
+  setShowDash,
+  setShowCourse,
+  setShowNotice,
+  setShowTasks,
+  setShowSettings,
+}) => {
   return (
     <SideBarContainer>
       <LogoWrap>
         <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrap>
       <SideMenuWrapper>
-        <div className="link">
-            <MdDashboard />
-            <span>Dashboard</span>
+        <div
+          className="link"
+          onClick={() => {
+            setShowDash(true);
+            setShowCourse(false);
+            setShowNotice(false);
+            setShowTasks(false);
+            setShowSettings(false);
+          }}
+        >
+          <MdDashboard />
+          <span>Dashboard</span>
         </div>
-        <div className="link">
-            <MdDashboard />
-            <span>My Courses</span>
+        <div
+          className="link"
+          onClick={() => {
+            setShowDash(false);
+            setShowCourse(true);
+            setShowNotice(false);
+            setShowTasks(false);
+            setShowSettings(false);
+          }}
+        >
+          <MdNote />
+          <span>My Courses</span>
         </div>
-        <div className="link">
-            <MdDashboard />
-            <span>Messages</span>
+        <div
+          className="link"
+          onClick={() => {
+            setShowDash(false);
+            setShowCourse(false);
+            setShowNotice(true);
+            setShowTasks(false);
+            setShowSettings(false);
+          }}
+        >
+          <MdNotifications />
+          <span>Messages</span>
         </div>
-        <div className="link">
-            <MdDashboard />
-            <span>Tasks</span>
+        <div
+          className="link"
+          onClick={() => {
+            setShowDash(false);
+            setShowCourse(false);
+            setShowNotice(false);
+            setShowTasks(true);
+            setShowSettings(false);
+          }}
+        >
+          <MdTask />
+          <span>Tasks</span>
         </div>
-        <div className="link">
-            <MdDashboard />
-            <span>Settings</span>
+        <div
+          className="link"
+          onClick={() => {
+            setShowDash(false);
+            setShowCourse(false);
+            setShowNotice(false);
+            setShowTasks(false);
+            setShowSettings(true);
+          }}
+        >
+          <MdSettings />
+          <span>Settings</span>
         </div>
       </SideMenuWrapper>
       <AdsContainer>
-          <div className="cor">
-            <img src={corImg} alt="" />
-          </div>
+        <div className="cor">
+          <img src={corImg} alt="" />
+        </div>
       </AdsContainer>
     </SideBarContainer>
-  )
-}
+  );
+};
 
 const SideBarContainer = styled.aside`
- width: 18rem;
- height: 100vh;
- background: linear-gradient(135deg,rgba(0, 75, 80, 0.945), rgba(0, 25, 34, 0.966)),url(${layerImg});
- background-position: center;
- background-size: cover;
- overflow: hidden;
-`
+  width: 18rem;
+  height: 100vh;
+  background: linear-gradient(
+      135deg,
+      rgba(0, 75, 80, 0.945),
+      rgba(0, 25, 34, 0.966)
+    ),
+    url(${layerImg});
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+`;
 const LogoWrap = styled.div`
   width: 100%;
   height: 70px;
@@ -57,22 +119,22 @@ const LogoWrap = styled.div`
   justify-content: flex-start;
   backdrop-filter: blur(5px);
   cursor: pointer;
-   img{
+  img {
     width: 50%;
-   }
-`
+  }
+`;
 const SideMenuWrapper = styled.div`
- width: 98%;
- height: 60vh;
- backdrop-filter: blur(10px);
- margin: 0 auto;
- padding: 10px;
- display: flex;
- align-items: center;
- justify-content: center;
- flex-direction: column;
- gap: 1rem;
- .link{
+  width: 98%;
+  height: 60vh;
+  backdrop-filter: blur(10px);
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  .link {
     width: 100%;
     height: 50px;
     background: rgba(0, 128, 128, 0.144);
@@ -87,39 +149,39 @@ const SideMenuWrapper = styled.div`
     color: rgb(250, 90, 90);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    span{
-        color: #fff;
-        font-size: 20px;
-        font-weight: 600;
-        margin-top: 3px;
+    span {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 3px;
     }
-    &:hover{
-        background: rgba(1, 27, 27, 0.144);
-        box-shadow: none;
+    &:hover {
+      background: rgba(1, 27, 27, 0.144);
+      box-shadow: none;
     }
- }
-`
+  }
+`;
 const AdsContainer = styled.div`
- width: 95%;
- height: 30vh;
- background: rgba(0, 128, 128, 0.144);
- backdrop-filter: blur(10px);
- border-radius: 10px;
- box-shadow: 0 10px 10px rgba(58, 126, 126, 0.116);
- margin: 0 auto;
- transform: translateY(-.5rem);
- position: relative;
- overflow: hidden;
- .cor{
+  width: 95%;
+  height: 30vh;
+  background: rgba(0, 128, 128, 0.144);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(58, 126, 126, 0.116);
+  margin: 0 auto;
+  transform: translateY(-0.5rem);
+  position: relative;
+  overflow: hidden;
+  .cor {
     position: absolute;
     right: 0;
     bottom: 0;
     width: 60%;
-    img{
-        transform: translateY(.5rem);
-        opacity: 0.4;
+    img {
+      transform: translateY(0.5rem);
+      opacity: 0.4;
     }
- }
-`
+  }
+`;
 
-export default SideBar
+export default SideBar;

@@ -12,7 +12,7 @@ const Dash = () => {
 const DashWrapper = styled.article`
  width: 100%;
  height: 100%;
- background-color: red;
+ background-color: rgb(73, 42, 109);
 `
 
 export default Dash

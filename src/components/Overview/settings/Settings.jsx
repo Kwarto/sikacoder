@@ -1,9 +1,18 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <SettingsContainerWrapper>
+
+    </SettingsContainerWrapper>
   )
 }
+
+const SettingsContainerWrapper = styled.article`
+ width: 100%;
+ height: 100%;
+ background: palevioletred;
+`
 
 export default Settings
