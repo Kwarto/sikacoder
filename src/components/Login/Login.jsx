@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import SignInWith from './SignInWith';
 import { IoMdEye } from 'react-icons/io';
 import { FaEyeSlash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({login, setLogin}) => {
   const [showPass, setShowPass] = useState();
+  const navigate = useNavigate()
   return (
     <LoginContainerWrapper>
      <form className='form-container'>
@@ -24,7 +26,7 @@ const Login = ({login, setLogin}) => {
       <div className="forget">
         <span>Forgot Password?</span>
       </div>
-      <div className="btn">
+      <div className="btn" onClick={() => {navigate('/overview')}}>
         <span>Login</span>
       </div>
       <SignInWith setLogin={setLogin} login={login} />

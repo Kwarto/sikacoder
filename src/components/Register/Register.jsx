@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import SignInWith from '../Login/SignInWith';
 import { FaEyeSlash } from 'react-icons/fa';
 import { IoMdEye } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 
 const Register = ({login, setLogin}) => {
   const [showPass, setShowPass] = useState();
+  const navigate = useNavigate();
   return (
     <RegisterContainerWrapper>
      <form className='form-container'>
@@ -25,7 +27,7 @@ const Register = ({login, setLogin}) => {
         {showPass ? <FaEyeSlash /> : <IoMdEye />}
         </div>
       </div>
-      <div className="btn">
+      <div className="btn" onClick={() => {navigate('/overview')}}>
         <span>Sign Up</span>
       </div>
       <SignInWith login={login} setLogin={setLogin}/>
