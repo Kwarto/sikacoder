@@ -99,7 +99,7 @@ const SideBar = ({
 };
 
 const SideBarContainer = styled.aside`
-  width: 18rem;
+  width: 15rem;
   height: 100vh;
   background: linear-gradient(
       135deg,

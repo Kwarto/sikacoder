@@ -23,11 +23,12 @@ const Overview = ({showDash, showCourse, showNotice, showTasks, showSettings}) =
 }
 
 const MainOverviewContainer = styled.section`
- width: calc(100% - 18rem);
+ width: calc(100% - 15rem);
  height: 100vh;
  position: absolute;
  top: 0;
- left: 18rem;
+ left: 15rem;
+padding: 0 15px;
 `
 const OverviewAreaContainer = styled.article`
  width: 100%;
