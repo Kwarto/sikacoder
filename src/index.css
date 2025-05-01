@@ -10,6 +10,7 @@
   -webkit-user-select: none;
   line-height: 1.5;
   overflow-x: hidden;
+  
 }
 
 @font-face {
@@ -122,6 +123,8 @@ p{
   justify-content: center;
   flex-direction: column;
   padding: 10px;
+  max-width: 100%;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 430px) {

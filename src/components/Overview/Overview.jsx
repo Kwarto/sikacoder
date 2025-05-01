@@ -28,7 +28,7 @@ const MainOverviewContainer = styled.section`
  position: absolute;
  top: 0;
  left: 15rem;
-padding: 0 15px;
+/* padding: 0 15px; */
 `
 const OverviewAreaContainer = styled.article`
  width: 100%;
