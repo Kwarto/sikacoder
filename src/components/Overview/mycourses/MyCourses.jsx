@@ -6,6 +6,8 @@ import { IoMdGitNetwork } from 'react-icons/io'
 import logoImg from '../../../assets/icons/favicon.png';
 import courseImg from '../../../assets/images/thumb/course_thumb02.jpg'
 import { FaPlay } from 'react-icons/fa'
+import { FcSerialTasks } from "react-icons/fc";
+import { FaRegFolderOpen } from "react-icons/fa6";
 import Video from '../dash/Video/Video'
 const MyCourses = () => {
   const [isModal, setIsModal] = useState(false)
@@ -86,7 +88,65 @@ const MyCourses = () => {
       </div>
      </div>
      <div className="task-wrapper">
-
+        <h3>Your Tasks</h3>
+        <div className="task-card-wrapper">
+         <div className="task-card">
+          <div className="left-item">
+            <div className="task-ico">
+             <FcSerialTasks />
+            </div>
+            <div className="task-info">
+             <h4>Create new Next.js app from scratch</h4>
+             <span>05 May 2025</span>
+            </div>
+          </div>
+          <div className="right-item">
+            <FaRegFolderOpen />
+          </div>
+         </div>
+         <div className="task-card">
+          <div className="left-item">
+            <div className="task-ico">
+             <FcSerialTasks />
+            </div>
+            <div className="task-info">
+             <h4>Create new Next.js app from scratch</h4>
+             <span>05 May 2025</span>
+            </div>
+          </div>
+          <div className="right-item">
+            <FaRegFolderOpen />
+          </div>
+         </div>
+         <div className="task-card">
+          <div className="left-item">
+            <div className="task-ico">
+             <FcSerialTasks />
+            </div>
+            <div className="task-info">
+             <h4>Create new Next.js app from scratch</h4>
+             <span>05 May 2025</span>
+            </div>
+          </div>
+          <div className="right-item">
+            <FaRegFolderOpen />
+          </div>
+         </div>
+         <div className="task-card">
+          <div className="left-item">
+            <div className="task-ico">
+             <FcSerialTasks />
+            </div>
+            <div className="task-info">
+             <h4>Create new Next.js app from scratch</h4>
+             <span>05 May 2025</span>
+            </div>
+          </div>
+          <div className="right-item">
+            <FaRegFolderOpen />
+          </div>
+         </div>
+        </div>
      </div>
      {isModal && <Video setIsModal={setIsModal} />}
     </MyCourseContainerWrapper>
@@ -277,6 +337,79 @@ const MyCourseContainerWrapper = styled.article`
           right: 2rem;
           top: 5.5rem;
         }
+      }
+    }
+  }
+  .task-wrapper {
+    background: rgba(247, 245, 245, 0.116);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    .task-card-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      width: 100%;
+      height: 90%;
+      .task-card{
+       width: 98%;
+       height: 80px;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       background:  linear-gradient(
+      135deg,
+      rgba(0, 75, 80, 0.945),
+      rgba(0, 25, 34, 0.966)
+    );
+       box-shadow: 0 1rem 30px rgba(0, 12, 9, 0.055);
+       backdrop-filter: blur(10px);
+       border-radius: 8px;
+       cursor: pointer;
+       padding: 10px;
+       margin: 8px;
+       position: relative;
+       .left-item{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+         .task-ico{
+           width: 40px;
+           aspect-ratio: 1/1;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           border-radius: 50px;
+           background: rgba(0, 27, 36, 0.623);
+           font-size: 1.5rem;
+         }
+         .task-info{
+           h4{
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+           }
+           span{
+            font-weight: 600;
+            color: rgb(242, 247, 245);
+           }
+         }
+       }
+       .right-item{
+         position: absolute;
+         bottom: .5rem;
+         right: 1rem;
+         width: 30px;
+         aspect-ratio: 1/1;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background: rgb(255, 255, 255);
+         color: rgb(12, 114, 109);
+         border-radius: 50px;
+       }
       }
     }
   }

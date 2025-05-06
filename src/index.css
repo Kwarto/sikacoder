@@ -123,8 +123,6 @@ p{
   justify-content: center;
   flex-direction: column;
   padding: 10px;
-  max-width: 100%;
-  min-height: 100vh;
 }
 
 @media screen and (max-width: 430px) {

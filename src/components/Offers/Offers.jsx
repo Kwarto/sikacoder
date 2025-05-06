@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import offerBg from '../../assets/images/offers_bg.jpg'
 import { MdCode, MdOutlineShieldMoon } from 'react-icons/md';
 import { FaGears, FaTeamspeak } from 'react-icons/fa6';
+
 import { motion } from 'framer-motion';
 
 const offerData = [
