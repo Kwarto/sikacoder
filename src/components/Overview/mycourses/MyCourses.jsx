@@ -346,6 +346,7 @@ const MyCourseContainerWrapper = styled.article`
     width: 100%;
     height: 100%;
     padding: 10px;
+   
     .task-card-wrapper{
       display: flex;
       align-items: center;
@@ -413,6 +414,50 @@ const MyCourseContainerWrapper = styled.article`
       }
     }
   }
+   @media screen and (max-width: 430px) {
+     grid-template-columns: 100%;
+     height: 100%;
+     overflow-y: scroll;
+      .main-course{
+        height: max-content;
+      .course-sm-info{
+        .btn-primary{
+          width: 30%;
+        }
+      }
+    }
+     .topic-content-wrap{
+      height: 100%;
+      .topic-card{
+        flex-direction: column;
+        height: max-content;
+        .course-thumb{
+          width: 100%;
+          height: 40%;
+        }
+        .topic-abt{
+          width: 100%;
+          .play{
+            bottom: 0;
+            right: 0;
+          }
+        }
+        .right-item{
+          right: 0;
+        }
+      }
+      .task-wrapper{
+        display: none;
+        height: max-content;
+        .task-card-wrapper{
+          height: max-content;
+          .task-card{
+            height: 120px;
+          }
+        }
+      }
+     }
+   }
 `
 
 export default MyCourses;

@@ -68,7 +68,7 @@ const Dash = () => {
             </div>
           </motion.div>
           <motion.div
-            className="an-box"
+            className="an-box chat"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 1 }}
             transition={{ duration: 1 }}
@@ -181,6 +181,10 @@ const DashWrapper = styled.article`
   grid-template-columns: 70% 30%;
   place-items: center;
   gap: 5px;
+  @media screen and (max-width: 430px) {
+    grid-template-columns: 100%;
+    padding: 20px 0;
+  }
 `;
 const LeftContentContainer = styled.div`
   width: 100%;
@@ -343,6 +347,42 @@ const LeftContentContainer = styled.div`
       }
     }
   }
+  @media screen and (max-width: 430px) {
+    height: 100vh;
+    overflow-y: hidden;
+    .meta-analytics{
+      padding: 20px 0;
+      height: max-content;
+      .an-box{
+        height: 100%;
+        overflow: hidden;
+        .circle{
+          height: max-content;
+          transform: translate(2%, 3%);
+        }
+        .stat{
+          position: absolute;
+          top: 1rem;
+        }
+        .lesson-card{
+          height: 100px;
+          .lesson-abt{
+            h4{
+              font-size: 20px;
+            }
+            p{
+              font-size: 20px;
+              font-weight: 400;
+              max-width: 750px;
+            }
+          }
+        }
+      }
+      .chat{
+        height: 380px;
+      }
+    }
+  }
 `;
 const RightContentContainer = styled.div`
   width: 100%;
@@ -475,6 +515,56 @@ const RightContentContainer = styled.div`
           span{
             font-weight: 300;
             color: #fff;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 430px) {
+    height: 75vh;
+    .pro-stat-box{
+      height: max-content;
+      .done-stat{
+        height: 120px;
+        justify-content: space-between;
+        padding: 8px;
+        .thumb{
+          width: 120px;
+        }
+        .abt{
+          width: 80%;
+          span{
+            font-size: 20px;
+          }
+          h4{
+            font-size: 20px;
+          }
+          p{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .related{
+      .meta-info{
+        overflow: hidden;
+        visibility: visible;
+        opacity: 1;
+        h3{
+          font-size: 1.5rem;
+        }
+        p{
+          font-size: 22px;
+        }
+        .cat-level{
+          .detail{
+            height: 50px;
+            padding: 10px 0;
+            span{
+              font-size: 20px;
+              font-weight: 600;
+              color: teal;
+            }
           }
         }
       }

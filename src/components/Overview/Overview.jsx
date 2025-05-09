@@ -7,10 +7,11 @@ import Messages from './messages/Messages'
 import Tasks from './tasks/Tasks'
 import Settings from './settings/Settings'
 
-const Overview = ({showDash, showCourse, showNotice, showTasks, showSettings}) => {
+const Overview = ({showDash, showCourse, showNotice, showTasks, showSettings, setShowSideBar}) => {
+  
   return (
     <MainOverviewContainer>
-     <TopNav />
+     <TopNav setShowSideBar={setShowSideBar}/>
      <OverviewAreaContainer>
       {showDash && <Dash/>}
       {showCourse && <MyCourses />}
@@ -28,7 +29,10 @@ const MainOverviewContainer = styled.section`
  position: absolute;
  top: 0;
  left: 15rem;
-/* padding: 0 15px; */
+ @media screen and (max-width: 430px) {
+left: 0;
+width: 100%;
+ }
 `
 const OverviewAreaContainer = styled.article`
  width: 100%;

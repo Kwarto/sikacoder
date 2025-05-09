@@ -2,17 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Messages = () => {
-  return (
-    <MessageContainerWrapper>
-
-    </MessageContainerWrapper>
+  return(
+    <MessagesContainerWrapper>
+    </MessagesContainerWrapper>
   )
 }
 
-const MessageContainerWrapper = styled.article`
+const MessagesContainerWrapper = styled.article`
  width: 100%;
  height: 100%;
- background: cyan;
+ background: rgb(241, 241, 241);
 `
 
 export default Messages

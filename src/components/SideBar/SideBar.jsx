@@ -16,9 +16,10 @@ const SideBar = ({
   setShowNotice,
   setShowTasks,
   setShowSettings,
+  showSideBar
 }) => {
   return (
-    <SideBarContainer>
+    <SideBarContainer className={showSideBar ? 'show' : 'hide'}>
       <LogoWrap>
         <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrap>
@@ -110,6 +111,12 @@ const SideBarContainer = styled.aside`
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  @media screen and (max-width: 430px) {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    left: -35rem;
+  }
 `;
 const LogoWrap = styled.div`
   width: 100%;
@@ -158,6 +165,12 @@ const SideMenuWrapper = styled.div`
     &:hover {
       background: rgba(1, 27, 27, 0.144);
       box-shadow: none;
+    }
+  }
+  @media screen and (max-width: 430px) {
+    .link{
+      height: 70px;
+      padding-left: 20px;
     }
   }
 `;

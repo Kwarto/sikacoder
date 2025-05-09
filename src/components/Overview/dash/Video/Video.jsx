@@ -46,6 +46,14 @@ const VideoModalContainer = styled.section`
         font-weight: 600;
     }
   }
+  @media screen and (max-width: 430px) {
+    .tutorial-wrapper{
+      top: 40%;
+      left: .5rem;
+      width: 96%;
+      height: 35vh;
+    }
+  }
 `;
 
 export default Video;

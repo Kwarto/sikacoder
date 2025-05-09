@@ -1,56 +1,102 @@
-import React, {useState} from 'react'
-import styled from 'styled-components'
-import SignInWith from '../Login/SignInWith';
-import { FaEyeSlash } from 'react-icons/fa';
-import { IoMdEye } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import styled from "styled-components";
+import SignInWith from "../Login/SignInWith";
+import { FaEyeSlash } from "react-icons/fa";
+import { IoMdEye } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
-const Register = ({login, setLogin}) => {
+const initialState = {
+  username: "",
+  email: "",
+  password: "",
+};
+const Register = ({ login, setLogin }) => {
   const [showPass, setShowPass] = useState();
+  const [form, setForm] = useState(initialState);
   const navigate = useNavigate();
+  const { username, email, password } = form;
+
+  const handleOnChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(form);
+  };
   return (
     <RegisterContainerWrapper>
-     <form className='form-container'>
-     <h3>Sign Up Sikacoder</h3>
-      <div className="input-area">
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username" id="username" placeholder='Username' />
-      </div>
-      <div className="input-area">
-        <label htmlFor="email">Email Id</label>
-        <input type="email" name="email" id="email" placeholder='example@gmail.com' />
-      </div>
-      <div className="input-area">
-        <label htmlFor="password">Password</label>
-        <input type={showPass ? 'text' :'password'} name="password" id="password" placeholder='$_sc****' />
-        <div className="eye" onClick={() => {setShowPass(!showPass)}}>
-        {showPass ? <FaEyeSlash /> : <IoMdEye />}
+      <form className="form-container" onSubmit={handleSubmitForm}>
+        <h3>Sign Up Sikacoder</h3>
+        <div className="input-area">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            value={username}
+            onChange={handleOnChange}
+          />
         </div>
-      </div>
-      <div className="btn" onClick={() => {navigate('/overview')}}>
-        <span>Sign Up</span>
-      </div>
-      <SignInWith login={login} setLogin={setLogin}/>
-     </form>
+        <div className="input-area">
+          <label htmlFor="email">Email Id</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@gmail.com"
+            value={email}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div className="input-area">
+          <label htmlFor="password">Password</label>
+          <input
+            type={showPass ? "text" : "password"}
+            name="password"
+            id="password"
+            placeholder="$_sc****"
+            value={password}
+            onChange={handleOnChange}
+          />
+          <div
+            className="eye"
+            onClick={() => {
+              setShowPass(!showPass);
+            }}
+          >
+            {showPass ? <FaEyeSlash /> : <IoMdEye />}
+          </div>
+        </div>
+        <div
+          className="btn"
+          onClick={() => {
+            navigate("/overview");
+          }}
+        >
+          <span>Sign Up</span>
+        </div>
+        <SignInWith login={login} setLogin={setLogin} />
+      </form>
     </RegisterContainerWrapper>
-  )
-}
+  );
+};
 const RegisterContainerWrapper = styled.section`
   width: 100%;
   height: 100%;
   overflow-y: hidden;
-  .form-container{
+  .form-container {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    h3{
+    h3 {
       align-self: flex-start;
       padding: 15px 5px;
     }
-    .input-area{
+    .input-area {
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -60,10 +106,10 @@ const RegisterContainerWrapper = styled.section`
       padding: 6px;
       margin: 6px 0;
       position: relative;
-      label{
+      label {
         font-size: 20px;
       }
-      input{
+      input {
         height: 95%;
         width: 70%;
         padding: 0 15px;
@@ -73,7 +119,7 @@ const RegisterContainerWrapper = styled.section`
         box-shadow: 0 1rem 5px rgba(0, 0, 0, 0.034);
         font-size: 18px;
       }
-       .eye{
+      .eye {
         position: absolute;
         top: 2.8rem;
         right: 33%;
@@ -86,30 +132,30 @@ const RegisterContainerWrapper = styled.section`
         cursor: pointer;
       }
     }
- 
-    .btn{
+
+    .btn {
       align-self: flex-start;
       margin-left: 8px;
-    
-      &:hover{
+
+      &:hover {
         background: teal;
       }
     }
-    .login-with{
+    .login-with {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-        .hr{
+      .hr {
         width: 50px;
         height: 2px;
         background: red;
       }
-      h4{
+      h4 {
         transform: translateX(-5rem);
       }
-      .ico-wrap{
+      .ico-wrap {
         width: 60%;
         height: 80px;
         transform: translateX(-4.5rem);
@@ -118,7 +164,7 @@ const RegisterContainerWrapper = styled.section`
         justify-content: center;
         gap: 1rem;
         margin: 10px 0;
-        .ico-b{
+        .ico-b {
           width: 60px;
           aspect-ratio: 1/1;
           display: flex;
@@ -128,19 +174,19 @@ const RegisterContainerWrapper = styled.section`
           border-radius: 50px;
           border: 1px solid rgba(0, 0, 0, 0.034);
           box-shadow: 0 1rem 20px rgba(0, 0, 0, 0.034);
-          transition: box-shadow cubic-bezier(0.23, 1, 0.320, 1) 0.3s;
+          transition: box-shadow cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
           cursor: pointer;
-          &:hover{
+          &:hover {
             box-shadow: none;
           }
         }
       }
     }
-    .do{
+    .do {
       width: 100%;
       transform: translate(11rem, 20px);
-      p{
-        span{
+      p {
+        span {
           color: teal;
           cursor: pointer;
         }
@@ -148,28 +194,29 @@ const RegisterContainerWrapper = styled.section`
     }
   }
   @media screen and (max-width: 430px) {
-    .form-container{
-      .input-area{
+    .form-container {
+      .input-area {
         height: 110px;
-        input{
+        input {
           width: 98%;
         }
-        .eye{
+        .eye {
           top: 3.5rem;
           right: 2rem;
         }
       }
-      .login-with{
+      .login-with {
         padding: 30px 0;
-        h4, .ico-wrap{
+        h4,
+        .ico-wrap {
           transform: translate(0);
         }
       }
-      .do{
+      .do {
         transform: translate(0);
         text-align: center;
       }
     }
   }
-`
-export default Register
+`;
+export default Register;

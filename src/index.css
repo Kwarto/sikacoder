@@ -132,8 +132,17 @@ p{
   }
   .grid-col-4, .grid-col-3, .grid-col-2{
     grid-template-columns: repeat(1, 1fr);
+    
+  }
+  .show{
+    left: 0;
+    width: 100%;
+  }
+  .hide{
+    left: -35rem;
   }
 }
+
 
 @keyframes animateFor {
   0%,

@@ -1,13 +1,19 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components'
 import avatarImg from '../../assets/icons/avatar.png'
 import { MdArrowDropDown } from 'react-icons/md'
-const TopNav = () => {
+import { HiMiniBars3BottomRight } from "react-icons/hi2";
+const TopNav = ({setShowSideBar}) => {
+  // const [mobile, setMobile] = useState(true)
   return (
     <TopNavContainerWrapper>
      <div className="left">
         <h4>Hey, Joey</h4>
         <p>Let's learn something new today!</p>
+     </div>
+     <div className="bars" onClick={() => {setShowSideBar(true)}}>
+        <HiMiniBars3BottomRight />
      </div>
      <div className="right">
         <div className="usr">
@@ -36,6 +42,12 @@ const TopNavContainerWrapper = styled.nav`
         color: rgb(5, 63, 63);
     }
   }
+  .bars{
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding-left: 8px;
+  }
   .right{
     .usr{
         cursor: pointer;
@@ -61,6 +73,14 @@ const TopNavContainerWrapper = styled.nav`
                 width: 100%;
             }
         }
+    }
+  }
+  @media screen and (max-width: 430px) {
+    .left{
+      display: none;
+    }
+    .bars{
+      display: flex;
     }
   }
 `
