@@ -123,6 +123,10 @@ const SideBarContainer = styled.aside`
   overflow: hidden;
   transition: left 0.3s ease-in-out;
 
+  .bars{
+    display: none;
+  }
+
   @media screen and (max-width: 912px) {
     background: linear-gradient(
       135deg,
@@ -162,13 +166,16 @@ const LogoWrap = styled.div`
   img {
     width: 50%;
   }
-  .bars{
-    font-size: 1.9rem;
-    font-weight: 600;
-    padding: 10px;
-    color: #fff;
-    cursor: pointer;
-    transform: translateY(.3rem);
+  @media screen and (max-width: 912px) {
+    .bars{
+      display: flex;
+      font-size: 1.9rem;
+      font-weight: 600;
+      padding: 10px;
+      color: #fff;
+      transform: translateY(.3rem);
+      cursor: pointer;
+    }
   }
 `;
 const SideMenuWrapper = styled.div`

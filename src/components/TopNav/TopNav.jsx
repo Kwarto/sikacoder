@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import avatarImg from '../../assets/icons/avatar.png'
 import { MdArrowDropDown } from 'react-icons/md'
 import { RiMenu4Fill } from "react-icons/ri";
+import UserModal from './UserModal';
 
 const TopNav = ({setShowSideBar}) => {
+  const [isModal, setIsModal] = useState(true);
   return (
     <TopNavContainerWrapper>
      <div className="left">
@@ -15,13 +17,14 @@ const TopNav = ({setShowSideBar}) => {
         <RiMenu4Fill />
      </div>
      <div className="right">
-        <div className="usr">
+        <div className="usr" onClick={() => {setIsModal(!isModal)}}>
             <div className="avatar">
                 <img src={avatarImg} alt="usr-profile" />
             </div>
             <h4>Joey Austen <MdArrowDropDown /> </h4>
         </div>
      </div>
+     {isModal && <UserModal isModal={isModal}/>}
     </TopNavContainerWrapper>
   )
 }
@@ -74,6 +77,7 @@ const TopNavContainerWrapper = styled.nav`
         }
     }
   }
+
   @media screen and (max-width: 912px) {
     .left{
       display: none;
