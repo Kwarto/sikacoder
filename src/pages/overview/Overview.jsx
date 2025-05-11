@@ -5,8 +5,8 @@ import { Over, SideBar } from "../../components";
 const Overview = () => {
   const [showDash, setShowDash] = useState(false);
   const [showCourse, setShowCourse] = useState(false);
-  const [showNotice, setShowNotice] = useState(true);
-  const [showTasks, setShowTasks] = useState(false);
+  const [showNotice, setShowNotice] = useState(false);
+  const [showTasks, setShowTasks] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
   return (

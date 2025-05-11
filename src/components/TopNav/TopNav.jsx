@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components'
 import avatarImg from '../../assets/icons/avatar.png'
 import { MdArrowDropDown } from 'react-icons/md'
-import { HiMiniBars3BottomRight } from "react-icons/hi2";
+import { RiMenu4Fill } from "react-icons/ri";
+
 const TopNav = ({setShowSideBar}) => {
-  // const [mobile, setMobile] = useState(true)
   return (
     <TopNavContainerWrapper>
      <div className="left">
@@ -13,7 +12,7 @@ const TopNav = ({setShowSideBar}) => {
         <p>Let's learn something new today!</p>
      </div>
      <div className="bars" onClick={() => {setShowSideBar(true)}}>
-        <HiMiniBars3BottomRight />
+        <RiMenu4Fill />
      </div>
      <div className="right">
         <div className="usr">

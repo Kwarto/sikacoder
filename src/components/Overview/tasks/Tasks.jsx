@@ -79,7 +79,7 @@ const TaskContainerWrapper = styled.article`
 `
 const BannerWrapper = styled.div`
  width: 45%;
- height: 150px;
+ height: 160px;
  border-radius: 10px;
  overflow: hidden;
  img{
@@ -88,31 +88,43 @@ const BannerWrapper = styled.div`
   object-fit: cover;
   border-radius: 10px;
  }
+  @media screen and (max-width: 430px) {
+    width: 50%;
+    height: 130px;
+  }
 `
 const TaskItem = styled.div`
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
   gap: 1rem;
-  padding: 0px 10px;
+  padding: 10px;
   background: #fff;
   border-radius: 10px;
   margin: 10px 0px;
+  @media screen and (max-width: 430px) {
+    height: max-content;
+    margin: 0;
+  }
 `;
 
 const LeftItem = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 10px;
   height: 100%;
   svg{
     font-size: 20px;
     color: green;
+  }
+   @media screen and (max-width: 430px) {
+   gap: 5px;
   }
 `;
 const Info = styled.div`
