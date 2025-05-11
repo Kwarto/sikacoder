@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Over, SideBar } from "../../components";
 
 const Overview = () => {
-  const [showDash, setShowDash] = useState(false);
+  const [showDash, setShowDash] = useState(true);
   const [showCourse, setShowCourse] = useState(false);
   const [showNotice, setShowNotice] = useState(false);
-  const [showTasks, setShowTasks] = useState(true);
+  const [showTasks, setShowTasks] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
   return (

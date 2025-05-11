@@ -6,7 +6,7 @@ import { RiMenu4Fill } from "react-icons/ri";
 import UserModal from './UserModal';
 
 const TopNav = ({setShowSideBar}) => {
-  const [isModal, setIsModal] = useState(true);
+  const [isModal, setIsModal] = useState(false);
   return (
     <TopNavContainerWrapper>
      <div className="left">

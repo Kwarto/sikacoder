@@ -184,6 +184,7 @@ const DashWrapper = styled.article`
   @media screen and (max-width: 430px) {
     grid-template-columns: 100%;
     padding: 20px 0;
+    height: 100%;
   }
 `;
 const LeftContentContainer = styled.div`
