@@ -29,9 +29,9 @@ const MainOverviewContainer = styled.section`
  position: absolute;
  top: 0;
  left: 15rem;
- @media screen and (max-width: 430px) {
-left: 0;
-width: 100%;
+ @media screen and (max-width: 912px) {
+  left: 0;
+  width: 100%;
  }
 `
 const OverviewAreaContainer = styled.article`

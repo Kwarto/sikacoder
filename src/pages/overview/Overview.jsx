@@ -18,6 +18,7 @@ const Overview = () => {
         setShowTasks={setShowTasks}
         showSettings={showSettings}
         showSideBar={showSideBar}
+        setShowSideBar={setShowSideBar}
       />
       <Over
         showDash={showDash}
@@ -35,7 +36,9 @@ const OverviewContainerWrapper = styled.main`
   max-width: 100%;
   min-height: 100vh;
   position: relative;
-
+  .active{
+    left: 0;
+  }
 `;
 
 export default Overview;

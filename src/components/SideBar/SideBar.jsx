@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logoImg from "../../assets/images/sc-logo.png";
 import layerImg from "../../assets/images/bg_dots.svg";
 import corImg from "../../assets/images/end_shape02.svg";
+import { RiMenu4Fill } from "react-icons/ri";
 import {
   MdDashboard,
   MdNote,
@@ -16,12 +17,16 @@ const SideBar = ({
   setShowNotice,
   setShowTasks,
   setShowSettings,
-  showSideBar
+  showSideBar,
+  setShowSideBar
 }) => {
   return (
-    <SideBarContainer className={showSideBar ? 'show' : 'hide'}>
+    <SideBarContainer className={showSideBar ? 'active' : ''}>
       <LogoWrap>
         <img src={logoImg} alt="sikacoder-logo" />
+      <div className="bars" onClick={() => {setShowSideBar(false)}}>
+        <RiMenu4Fill />
+     </div>
       </LogoWrap>
       <SideMenuWrapper>
         <div
@@ -32,6 +37,7 @@ const SideBar = ({
             setShowNotice(false);
             setShowTasks(false);
             setShowSettings(false);
+            setShowSideBar(false);
           }}
         >
           <MdDashboard />
@@ -45,6 +51,7 @@ const SideBar = ({
             setShowNotice(false);
             setShowTasks(false);
             setShowSettings(false);
+            setShowSideBar(false);
           }}
         >
           <MdNote />
@@ -58,6 +65,7 @@ const SideBar = ({
             setShowNotice(true);
             setShowTasks(false);
             setShowSettings(false);
+            setShowSideBar(false);
           }}
         >
           <MdNotifications />
@@ -71,6 +79,7 @@ const SideBar = ({
             setShowNotice(false);
             setShowTasks(true);
             setShowSettings(false);
+            setShowSideBar(false);
           }}
         >
           <MdTask />
@@ -84,6 +93,7 @@ const SideBar = ({
             setShowNotice(false);
             setShowTasks(false);
             setShowSettings(true);
+            setShowSideBar(false);
           }}
         >
           <MdSettings />
@@ -111,23 +121,54 @@ const SideBarContainer = styled.aside`
   background-position: center;
   background-size: cover;
   overflow: hidden;
-  @media screen and (max-width: 430px) {
+  transition: left 0.3s ease-in-out;
+
+  @media screen and (max-width: 912px) {
+    background: linear-gradient(
+      135deg,
+      rgba(1, 41, 44, 0.973),
+      rgba(0, 25, 34, 0.966)
+    ),
+    url(${layerImg});
+    position: absolute;
+    z-index: 100;
+    width: 15rem;
+    left: -80rem;
+    padding-top: 5px;
+  }
+   @media screen and (max-width: 430px) {
+    background: linear-gradient(
+      135deg,
+      rgba(1, 41, 44, 0.973),
+      rgba(0, 25, 34, 0.966)
+    ),
+    url(${layerImg});
     position: absolute;
     z-index: 100;
     width: 100%;
     left: -35rem;
+    padding-top: 5px;
   }
-`;
+  `;
 const LogoWrap = styled.div`
   width: 100%;
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   backdrop-filter: blur(5px);
+  overflow: hidden;
   cursor: pointer;
   img {
     width: 50%;
+  }
+  .bars{
+    font-size: 1.9rem;
+    font-weight: 600;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    transform: translateY(.3rem);
   }
 `;
 const SideMenuWrapper = styled.div`

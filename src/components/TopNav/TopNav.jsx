@@ -74,7 +74,7 @@ const TopNavContainerWrapper = styled.nav`
         }
     }
   }
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 912px) {
     .left{
       display: none;
     }
