@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   About,
+  Admin,
   Auth,
   Blog,
   Contact,
@@ -25,6 +26,7 @@ const RouterNavigation = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/overview" element={<Dashboard />} />
+        <Route path='/sc-admin-panel' element={<Admin />} />
       </Routes>
     </>
   );

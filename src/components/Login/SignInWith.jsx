@@ -34,11 +34,11 @@ const SignInWith = ({login, setLogin}) => {
         username: response.user.displayName,
         userProfile: response.user.photoURL,
         userId: response.user.uid,
-        timestamp: serverTimestamp()
+        dateJoined: serverTimestamp()
       })
       navigate('/overview');
     }).catch((err) => {
-      alert(err.message);
+      console.log(err.message);
     })
   }
 

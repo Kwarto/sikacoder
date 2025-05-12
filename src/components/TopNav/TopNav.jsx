@@ -12,7 +12,7 @@ const TopNav = ({setShowSideBar}) => {
   return (
     <TopNavContainerWrapper>
      <div className="left">
-        <h4>Hey, {currentUser.displayName}</h4>
+        <h4>Hey, {currentUser ? currentUser.displayName : 'Joey Austen'}</h4>
         <p>Let's learn something new today!</p>
      </div>
      <div className="bars" onClick={() => {setShowSideBar(true)}}>
@@ -21,9 +21,13 @@ const TopNav = ({setShowSideBar}) => {
      <div className="right">
         <div className="usr" onClick={() => {setIsModal(!isModal)}}>
             <div className="avatar">
-                <img src={avatarImg} alt="usr-profile" />
+                {
+                currentUser ?
+                 <img src={currentUser.photoURL} alt="usr-profile" /> :
+                 <img src={avatarImg} alt="usr-profile" />
+                }
             </div>
-            <h4>{currentUser.displayName} <MdArrowDropDown /> </h4>
+            <h4>{currentUser ? currentUser.displayName : 'Joey Austen'} <MdArrowDropDown /> </h4>
         </div>
      </div>
      {isModal && <UserModal isModal={isModal}/>}
@@ -75,6 +79,7 @@ const TopNavContainerWrapper = styled.nav`
             padding: 5px;
             img{
                 width: 100%;
+                border-radius: 50px;
             }
         }
     }
