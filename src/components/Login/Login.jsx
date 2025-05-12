@@ -4,23 +4,30 @@ import SignInWith from "./SignInWith";
 import { IoMdEye } from "react-icons/io";
 import { FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebaseConfig";
 const initialState = {
-  username: "",
+  email: "",
   password: "",
 };
 
 const Login = ({ login, setLogin }) => {
   const [showPass, setShowPass] = useState();
   const [form, setForm] = useState(initialState);
-  const { username, password } = form;
+  const { email, password } = form;
   const navigate = useNavigate();
   const handleOnChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
-    console.log(form);
+    if(email && password){
+      const {user} = await signInWithEmailAndPassword(auth, email, password);
+      console.log(user)
+    }else{
+      console.log('Something went wrong');
+    }
+    navigate('/overview')
   };
   return (
     <LoginContainerWrapper>
@@ -29,11 +36,11 @@ const Login = ({ login, setLogin }) => {
         <div className="input-area">
           <label htmlFor="username">Username or email</label>
           <input
-            type="text"
-            name='username'
-            id="username"
-            placeholder="Username or email"
-            value={username}
+            type="email"
+            name='email'
+            id="email"
+            placeholder="Enter Email ID"
+            value={email}
             onChange={handleOnChange}
           />
         </div>
@@ -59,14 +66,11 @@ const Login = ({ login, setLogin }) => {
         <div className="forget">
           <span>Forgot Password?</span>
         </div>
-        <div
+        <button
           className="btn"
-          onClick={() => {
-            navigate("/overview");
-          }}
         >
           <span>Login</span>
-        </div>
+        </button>
         <SignInWith setLogin={setLogin} login={login} />
       </form>
     </LoginContainerWrapper>

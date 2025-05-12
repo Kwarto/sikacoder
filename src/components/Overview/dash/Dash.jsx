@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import lImg from "../../../assets/images/thumb/course_thumb02.jpg";
 import courseImg from '../../../assets/images/thumb/course_thumb05.jpg'
 import { motion } from "framer-motion";
+import { AuthContext } from "../../../context/AuthContext";
 const Dash = () => {
+  const {currentUser} = useContext(AuthContext)
   return (
     <DashWrapper>
       <LeftContentContainer>
@@ -14,7 +16,7 @@ const Dash = () => {
           animate={{ opacity: 1, y: 1 }}
           transition={{ duration: 1 }}
         >
-          <h3>Welcome, Austen!</h3>
+          <h3>Welcome, {currentUser.displayName}!</h3>
           <p>
             We're trilled to have you, code the future with confidence -{" "}
             <span>Learn. Build. Intern. Succeed.</span> Begin your teach career,
@@ -185,6 +187,7 @@ const DashWrapper = styled.article`
     grid-template-columns: 100%;
     padding: 20px 0;
     height: 100%;
+    overflow-y: scroll;
   }
 `;
 const LeftContentContainer = styled.div`
@@ -210,7 +213,7 @@ const LeftContentContainer = styled.div`
       color: #fff;
       span {
         font-weight: 600;
-        color: rgba(252, 29, 29, 0.918);
+        color: rgb(7, 183, 189);
       }
     }
     .btn {
@@ -366,7 +369,7 @@ const LeftContentContainer = styled.div`
           top: 1rem;
         }
         .lesson-card{
-          height: 100px;
+          height: 120px;
           .lesson-abt{
             h4{
               font-size: 20px;

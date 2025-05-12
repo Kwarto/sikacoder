@@ -4,7 +4,10 @@ import SignInWith from "../Login/SignInWith";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
+import {auth, db} from '../../../firebaseConfig';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { CgSpinner } from "react-icons/cg";
 const initialState = {
   username: "",
   email: "",
@@ -13,15 +16,33 @@ const initialState = {
 const Register = ({ login, setLogin }) => {
   const [showPass, setShowPass] = useState();
   const [form, setForm] = useState(initialState);
+  // const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { username, email, password } = form;
 
   const handleOnChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async(e) => {
     e.preventDefault();
-    console.log(form);
+      if (username && email && password) {
+        const { user } = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        await updateProfile(user, { displayName: `${username}` });
+        setLoading(true);
+        await setDoc(doc(db, 'users', user.uid), {
+          ...form,
+          dateJoined: serverTimestamp(),
+        });
+      } else {
+        return alert('All fields are required!');
+      }
+
+    navigate('/overview');
   };
   return (
     <RegisterContainerWrapper>
@@ -68,14 +89,12 @@ const Register = ({ login, setLogin }) => {
             {showPass ? <FaEyeSlash /> : <IoMdEye />}
           </div>
         </div>
-        <div
+        <button
           className="btn"
-          onClick={() => {
-            navigate("/overview");
-          }}
         >
+          {loading && <CgSpinner className="spinner" />}
           <span>Sign Up</span>
-        </div>
+        </button>
         <SignInWith login={login} setLogin={setLogin} />
       </form>
     </RegisterContainerWrapper>
@@ -135,10 +154,26 @@ const RegisterContainerWrapper = styled.section`
 
     .btn {
       align-self: flex-start;
+      justify-content: center;
+      gap: 1rem;
       margin-left: 8px;
 
       &:hover {
         background: teal;
+      }
+      .spinner {
+        animation: Spin linear infinite 1s;
+        transition: transform 0.3s ease-in-out;
+        font-size: 20px;
+
+        @keyframes Spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
       }
     }
     .login-with {

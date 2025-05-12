@@ -1,9 +1,16 @@
 /* eslint-disable no-unused-vars */
+import { signOut } from "firebase/auth";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { auth } from "../../../firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { MdLogout } from "react-icons/md";
 
 const UserModal = () => {
+  const navigate = useNavigate();
+  const {currentUser} = useContext(AuthContext)
   return (
     <UserModalWrapper>
       <motion.div
@@ -13,8 +20,8 @@ const UserModal = () => {
         transition={{ duration: 1 }}
       >
         <div className="top">
-          <h3>Joey Austen</h3>
-          <h4>joyaust@gmail.com</h4>
+          <h3>{currentUser.displayName}</h3>
+          <h4>{currentUser.email}</h4>
           <span>Web development</span>
         </div>
         <div className="m-bar">
@@ -27,7 +34,10 @@ const UserModal = () => {
             <p>Help & Support</p>
         </div>
         <div className="m-bar">
-            <p className="out">Sign Out</p>
+            <p className="out" onClick={() => {signOut(auth); navigate('/')}}>
+              Sign Out
+            <MdLogout />
+              </p>
         </div>
       </motion.div>
     </UserModalWrapper>
@@ -55,6 +65,7 @@ const UserModalWrapper = styled.article`
         background: rgb(255, 255, 255);
         border-radius: .5rem;
         border-bottom: 1px solid teal;
+        cursor: pointer;
         padding: 5px;
         h4{
             font-size: 20px;
@@ -72,8 +83,13 @@ const UserModalWrapper = styled.article`
         background: rgb(255, 255, 255);
         border-radius: 10px;
         box-shadow: 0 10px 10px rgba(1, 20, 19, 0.027);
-        margin-top: 5px;
+        cursor: pointer;
         p{
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-top: 5px;
+          gap: 1rem;
             font-weight: 600;
             color: rgb(6, 22, 24);
         }

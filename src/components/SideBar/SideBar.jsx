@@ -201,7 +201,7 @@ const SideMenuWrapper = styled.div`
     justify-content: flex-start;
     gap: 1rem;
     font-size: 1.5rem;
-    color: rgb(250, 90, 90);
+    color: rgb(7, 122, 189);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     span {
