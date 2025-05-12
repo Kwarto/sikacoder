@@ -1,6 +1,6 @@
 import React from 'react'
 import icoImg from '../../assets/icons/google.svg'
-import icoImg2 from '../../assets/icons/facebook.svg'
+// import icoImg2 from '../../assets/icons/facebook.svg'
 import { FaGithub } from 'react-icons/fa6'
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { auth, db } from '../../../firebaseConfig'
@@ -50,9 +50,9 @@ const SignInWith = ({login, setLogin}) => {
            <div className="ico-b" onClick={handleGooglePop}>
            <img src={icoImg} alt="" />
            </div>
-           <div className="ico-b">
+           {/* <div className="ico-b">
             <img src={icoImg2} alt="" />
-           </div>
+           </div> */}
            <div className="ico-b" onClick={handleGithubLogin}>
             <FaGithub />
            </div>
