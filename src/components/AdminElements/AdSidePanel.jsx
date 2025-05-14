@@ -16,7 +16,7 @@ const AdSidePanel = ({activeIndex, setActiveIndex}) => {
       itemIcon: <MdSpaceDashboard className="ico" />,
     },
     {
-      itemName: "Interns",
+      itemName: "Verified Interns",
       itemIcon: <FaUserGraduate className="ico" />,
     },
     {

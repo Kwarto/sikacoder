@@ -376,7 +376,8 @@ const DashContainerWrapper = styled.section`
           justify-content: space-between;
           width: 100%;
           /* height: 40%; */
-          background: rgb(250, 250, 250);
+          background: #fff;
+          box-shadow: inset 0 1rem 40px rgba(116, 233, 116, 0.041);
           border-radius: 10px;
           cursor: pointer;
           padding: 10px;
@@ -398,11 +399,11 @@ const DashContainerWrapper = styled.section`
           .about{
             width: 60%;
             h4{
-              font-size: 20px;
+              font-size: 16px;
               color: rgb(11, 62, 104);
             }
             p{
-              font-size: 18px;
+              font-size: 16px;
               span{
                 color: rgb(44, 179, 179);
                 font-size: 16p;
@@ -422,8 +423,7 @@ const DashContainerWrapper = styled.section`
             cursor: pointer;
           }
           &:hover{
-           background: #fff;
-           box-shadow: inset 0 1rem 40px rgba(116, 233, 116, 0.041);
+           box-shadow: none;
           }
         }
       }
