@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Over, SideBar } from "../../components";
 
 const Overview = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [showDash, setShowDash] = useState(true);
   const [showCourse, setShowCourse] = useState(false);
   const [showNotice, setShowNotice] = useState(false);
@@ -19,6 +20,8 @@ const Overview = () => {
         showSettings={showSettings}
         showSideBar={showSideBar}
         setShowSideBar={setShowSideBar}
+        activeIndex={activeIndex}
+        setActiveIndex={setActiveIndex}
       />
       <Over
         showDash={showDash}
@@ -27,6 +30,7 @@ const Overview = () => {
         showTasks={showTasks}
         showSettings={setShowSettings}
         setShowSideBar={setShowSideBar}
+        activeIndex={activeIndex}
       />
     </OverviewContainerWrapper>
   );

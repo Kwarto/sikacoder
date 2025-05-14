@@ -6,99 +6,55 @@ import corImg from "../../assets/images/end_shape02.svg";
 import { RiMenu4Fill } from "react-icons/ri";
 import {
   MdDashboard,
-  MdNote,
   MdNotifications,
   MdSettings,
   MdTask,
 } from "react-icons/md";
-const SideBar = ({
-  setShowDash,
-  setShowCourse,
-  setShowNotice,
-  setShowTasks,
-  setShowSettings,
-  showSideBar,
-  setShowSideBar
-}) => {
+import { FaBookOpen } from "react-icons/fa6";
+const SideBar = ({showSideBar, setShowSideBar, activeIndex, setActiveIndex}) => {
+  const menuItems = [
+    {
+      itemName: "Dashboard",
+      itemIcon: <MdDashboard className="ico" />,
+    },
+    {
+      itemName: "My Courses",
+      itemIcon: <FaBookOpen className="ico" />,
+    },
+    {
+      itemName: "Announcement",
+      itemIcon: <MdNotifications className="ico" />,
+    },
+    {
+      itemName: "Tasks",
+      itemIcon: <MdTask className="ico" />,
+    },
+    {
+      itemName: 'Settings',
+      itemIcon: <MdSettings />
+    }
+  ];
   return (
     <SideBarContainer className={showSideBar ? 'active' : ''}>
       <LogoWrap>
         <img src={logoImg} alt="sikacoder-logo" />
-      <div className="bars" onClick={() => {setShowSideBar(false)}}>
-        <RiMenu4Fill />
-     </div>
+        <div className="bars" onClick={() => {setShowSideBar(false)}}>
+          <RiMenu4Fill />
+        </div>
       </LogoWrap>
       <SideMenuWrapper>
-        <div
-          className="link"
-          onClick={() => {
-            setShowDash(true);
-            setShowCourse(false);
-            setShowNotice(false);
-            setShowTasks(false);
-            setShowSettings(false);
-            setShowSideBar(false);
-          }}
-        >
-          <MdDashboard />
-          <span>Dashboard</span>
-        </div>
-        <div
-          className="link"
-          onClick={() => {
-            setShowDash(false);
-            setShowCourse(true);
-            setShowNotice(false);
-            setShowTasks(false);
-            setShowSettings(false);
-            setShowSideBar(false);
-          }}
-        >
-          <MdNote />
-          <span>My Courses</span>
-        </div>
-        <div
-          className="link"
-          onClick={() => {
-            setShowDash(false);
-            setShowCourse(false);
-            setShowNotice(true);
-            setShowTasks(false);
-            setShowSettings(false);
-            setShowSideBar(false);
-          }}
-        >
-          <MdNotifications />
-          <span>Messages</span>
-        </div>
-        <div
-          className="link"
-          onClick={() => {
-            setShowDash(false);
-            setShowCourse(false);
-            setShowNotice(false);
-            setShowTasks(true);
-            setShowSettings(false);
-            setShowSideBar(false);
-          }}
-        >
-          <MdTask />
-          <span>Tasks</span>
-        </div>
-        <div
-          className="link"
-          onClick={() => {
-            setShowDash(false);
-            setShowCourse(false);
-            setShowNotice(false);
-            setShowTasks(false);
-            setShowSettings(true);
-            setShowSideBar(false);
-          }}
-        >
-          <MdSettings />
-          <span>Settings</span>
-        </div>
+        {menuItems.map((item, index) => (
+          <div
+            key={index}
+            className={`link ${activeIndex === index ? "active" : ""}`}
+            onClick={() => {
+              setActiveIndex(index);
+            }}
+          >
+            {item.itemIcon}
+            <span>{item.itemName}</span>
+          </div>
+        ))}
       </SideMenuWrapper>
       <AdsContainer>
         <div className="cor">
@@ -192,16 +148,14 @@ const SideMenuWrapper = styled.div`
   .link {
     width: 100%;
     height: 50px;
-    background: rgba(0, 128, 128, 0.144);
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 128, 128, 0.116);
-    padding: 0 5px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
     font-size: 1.5rem;
-    color: rgb(7, 122, 189);
+    color: rgb(25, 124, 182);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     span {
@@ -210,10 +164,10 @@ const SideMenuWrapper = styled.div`
       font-weight: 600;
       margin-top: 3px;
     }
-    &:hover {
-      background: rgba(1, 27, 27, 0.144);
-      box-shadow: none;
-    }
+  }
+  .active {
+    background: rgba(1, 27, 27, 0.733);
+    box-shadow: 0 5px 10px rgba(0, 128, 128, 0.116);
   }
   @media screen and (max-width: 430px) {
     .link{
