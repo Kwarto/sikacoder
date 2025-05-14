@@ -4,6 +4,8 @@ import { FaBookOpen, FaBullhorn, FaUserGraduate } from "react-icons/fa6";
 import { MdArrowDropUp } from "react-icons/md";
 import courseImg1 from '../../assets/images/thumb/course_thumb01.jpg';
 import courseImg2 from '../../assets/images/thumb/course_thumb02.jpg';
+import usrPro from '../../assets/icons/avatar.png'
+import { FaEnvelope, FaPhone } from 'react-icons/fa';
 const Overview = () => {
   return (
     <DashContainerWrapper>
@@ -117,7 +119,56 @@ const Overview = () => {
                 </div>
               </div>
             </div>
-            <div className="stat-card"></div>
+            <div className="stat-card left">
+              <div className="head">
+                <h3>New Applicants</h3>
+                <span>See All</span>
+              </div>
+              <div className="new-intern-wrapper">
+                <div className="new-intern-card">
+                  <div className="profile">
+                    <img src={usrPro} alt="user-profile" />
+                  </div>
+                  <div className="about">
+                    <h4>Danny Nelson</h4>
+                    <p>Applied as <span>Web Developer</span></p>  
+                    <small>May 12, 2025</small>  
+                  </div>
+                  <div className="contact">
+                    <FaEnvelope />
+                    <FaPhone />
+                  </div>
+                </div>
+                <div className="new-intern-card">
+                  <div className="profile">
+                    <img src={usrPro} alt="user-profile" />
+                  </div>
+                  <div className="about">
+                    <h4>Danny Nelson</h4>
+                    <p>Applied as <span>Web Developer</span></p>  
+                    <small>May 12, 2025</small>  
+                  </div>
+                  <div className="contact">
+                    <FaEnvelope />
+                    <FaPhone />
+                  </div>
+                </div>
+                <div className="new-intern-card">
+                  <div className="profile">
+                    <img src={usrPro} alt="user-profile" />
+                  </div>
+                  <div className="about">
+                    <h4>Danny Nelson</h4>
+                    <p>Applied as <span>Web Developer</span></p>  
+                    <small>May 12, 2025</small>  
+                  </div>
+                  <div className="contact">
+                    <FaEnvelope />
+                    <FaPhone />
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
         </DashContainerWrapper>
   )
@@ -296,6 +347,84 @@ const DashContainerWrapper = styled.section`
         &:hover{
           background: #fff;
           box-shadow: inset 0 1rem 40px rgba(116, 233, 116, 0.041);
+        }
+      }
+    }
+    .left{
+      .head{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span{
+          font-size: 18px;
+          font-weight: 500;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+      .new-intern-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        height: 90%;
+        padding-top: 10px;
+        .new-intern-card{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          /* height: 40%; */
+          background: rgb(250, 250, 250);
+          border-radius: 10px;
+          cursor: pointer;
+          padding: 10px;
+          transition: all 0.3s ease-in-out;
+          margin: 6px 0;
+          overflow: hidden;
+          .profile{
+            width: 70px;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(255, 255, 255);
+            border-radius: 10px;
+            img{
+              width: 80%;
+            }
+          }
+          .about{
+            width: 60%;
+            h4{
+              font-size: 20px;
+              color: rgb(11, 62, 104);
+            }
+            p{
+              font-size: 18px;
+              span{
+                color: rgb(44, 179, 179);
+                font-size: 16p;
+              }
+            }
+            small{
+              font-weight: 600;
+              color: #111;
+            }
+          }
+          .contact{
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1rem;
+            gap: 1rem;
+            color: teal;
+            cursor: pointer;
+          }
+          &:hover{
+           background: #fff;
+           box-shadow: inset 0 1rem 40px rgba(116, 233, 116, 0.041);
+          }
         }
       }
     }

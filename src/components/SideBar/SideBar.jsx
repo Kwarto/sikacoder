@@ -70,8 +70,8 @@ const SideBarContainer = styled.aside`
   height: 100vh;
   background: linear-gradient(
       135deg,
-      rgba(0, 75, 80, 0.945),
-      rgba(0, 25, 34, 0.966)
+      rgba(1, 23, 44, 0.938),
+      rgba(0, 10, 14, 0.952)
     ),
     url(${layerImg});
   background-position: center;
@@ -166,7 +166,7 @@ const SideMenuWrapper = styled.div`
     }
   }
   .active {
-    background: rgba(1, 27, 27, 0.733);
+    background: rgba(17, 76, 153, 0.103);
     box-shadow: 0 5px 10px rgba(0, 128, 128, 0.116);
   }
   @media screen and (max-width: 430px) {
