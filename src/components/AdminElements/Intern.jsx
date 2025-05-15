@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaHome, FaMapMarker } from 'react-icons/fa'
 import { FaPhone, FaTableList } from 'react-icons/fa6'
 import { MdDashboard, MdEmail } from 'react-icons/md'
@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { usrData } from '../../utils/usrData'
 
 const Intern = () => {
+  const [isGrid, setIsGrid] = useState(false);
   return (
     <InternsContainerWrapper>
       <HeaderWrapper>
@@ -18,16 +19,16 @@ const Intern = () => {
             </div>
           </div>
         <div className="right">
-          <div className="ico-box">
+          <div className="ico-box" onClick={() => {setIsGrid(true)}}>
             <MdDashboard />
           </div>
-          <div className="ico-box">
+          <div className="ico-box" onClick={() => {setIsGrid(false)}}>
             <FaTableList />
           </div>
         </div>
         </div>
       </HeaderWrapper>
-      <InternsListGridContainer className='grid-col-4'>
+      <InternsListGridContainer className={isGrid ? `grid-col-4` : 'list-content'}>
         {usrData && usrData.map((intern) => {
           return(
             <div className="intern-card" key={intern.id}>
@@ -63,6 +64,43 @@ const InternsContainerWrapper = styled.article`
  padding: 10px;
  gap: 1rem;
  overflow-y: scroll;
+
+.list-content{
+  height: 70%;
+  overflow-y: scroll;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  .intern-card{
+    display: flex;
+    margin: 10px 0;
+    .intern-info{
+     width: 30%;
+     justify-content: flex-start;
+     .profile{
+       width: 60px;
+       aspect-ratio: 1/1;
+     }
+     .meta{
+      h4{
+        margin: 0;
+      }
+     }
+    }
+    .intern-contact{
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      li{
+        width: 50%;
+        justify-content: center;
+        background: transparent;
+        box-shadow: none;
+        color: rgba(2, 19, 20, 0.795);
+      }
+    }
+  }
+}
 `
 const HeaderWrapper = styled.div`
  width: 100%;
@@ -112,13 +150,12 @@ const HeaderWrapper = styled.div`
 `
 const InternsListGridContainer = styled.div`
   width: 100%;
-  height: 100%;
   border-radius: .5rem;
-  padding: 10px;
+  padding: 20px 5px;
   overflow-y: scroll;
   .intern-card{
     width: 100%;
-    height: 100%;
+    height: max-content;
     background: #fff;
     border-radius: .5rem;
     box-shadow:  0 0 10px rgba(0, 5, 5, 0.082);
@@ -153,7 +190,6 @@ const InternsListGridContainer = styled.div`
     }
     .intern-contact{
       width: 100%;
-      height: 65%;
       margin-top: 8px;
       li{
         display: flex;
@@ -168,6 +204,14 @@ const InternsListGridContainer = styled.div`
         font-weight: 500;
         color: #fff;
       }
+    }
+  }
+  .list-content{
+    .intern-card{
+      display: flex;
+      align-items: center;
+      height: max-content;
+      background: red;
     }
   }
 `
