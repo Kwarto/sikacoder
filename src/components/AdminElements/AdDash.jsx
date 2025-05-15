@@ -6,6 +6,7 @@ import Intern from "./Intern";
 import Programs from "./Programs";
 import Announce from "./Announce";
 import Blogpost from "./Blogpost";
+import { MdCloudUpload } from "react-icons/md";
 
 const AdDash = ({ activeIndex }) => {
   const renderComponent = () => {
@@ -27,6 +28,9 @@ const AdDash = ({ activeIndex }) => {
   return (
     <AdDashContainerWrapper>
       <AdNav />
+      <AddPostModalButton>
+        <MdCloudUpload />
+      </AddPostModalButton>
       {renderComponent()}
     </AdDashContainerWrapper>
   );
@@ -42,4 +46,21 @@ const AdDashContainerWrapper = styled.section`
   overflow: hidden;
 `;
 
+const AddPostModalButton = styled.article`
+  position: absolute;
+  top: 25rem;
+  left: .2rem;
+  z-index: 1000;
+  width: 60px;
+  aspect-ratio: 1/1;
+  background: rgb(9, 178, 207);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.11);
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 export default AdDash;
