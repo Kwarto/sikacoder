@@ -8,7 +8,7 @@ import {
   FaNewspaper,
   FaUserGraduate,
 } from "react-icons/fa6";
-const AdSidePanel = ({activeIndex, setActiveIndex}) => {
+const AdSidePanel = ({activeIndex, setActiveIndex, setShowPost, setIsDrawer}) => {
   
   const menuItems = [
     {
@@ -51,6 +51,8 @@ const AdSidePanel = ({activeIndex, setActiveIndex}) => {
             className={`menu-link ${activeIndex === index ? "active" : ""}`}
             onClick={() => {
               setActiveIndex(index);
+              setShowPost(false);
+              setIsDrawer(false);
             }}
           >
             {item.itemIcon}

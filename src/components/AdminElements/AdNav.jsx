@@ -2,21 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import logoImg from '../../assets/images/sc-logo.png';
 import avImg from '../../assets/icons/avatar.png'
-const AdNav = () => {
+const AdNav = ({isDrawer, setIsDrawer}) => {
   return (
     <AdNavContainer>
       <LogoWrapper>
          <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrapper>
-      <ProfileWrapper>
+      <ProfileWrapper onClick={() => {setIsDrawer(!isDrawer)}}>
         <img src={avImg} alt="profile" />
+        
       </ProfileWrapper>
     </AdNavContainer>
   )
 }
 
 const AdNavContainer = styled.nav`
- width: 100%;
+ width: calc(100% - 15rem);
  height: 70px;
  background: rgba(255, 255, 255, 0.678);
  box-shadow: 0 1rem 40px rgba(4, 46, 35, 0.048);
@@ -26,6 +27,10 @@ const AdNavContainer = styled.nav`
  align-items: center;
  justify-content: space-between;
  padding: 10px;
+ position: fixed;
+ left: 15rem;
+ right: 0;
+ z-index: 100;
 `;
 
 const LogoWrapper = styled.div`

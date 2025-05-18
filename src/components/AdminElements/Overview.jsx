@@ -177,13 +177,13 @@ const Overview = () => {
 const DashContainerWrapper = styled.section`
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 75px 10px 0 10px;
   .top {
     width: 100%;
     height: 30%;
     .top-menu-card {
       width: 100%;
-      height: 160px;
+      height: max-content;
       background: linear-gradient(
         135deg,
         rgba(9, 145, 150, 0.712),
@@ -194,13 +194,20 @@ const DashContainerWrapper = styled.section`
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       transition: box-shadow, transform 0.3s ease-in-out;
+      gap: .6rem;
+      padding: 0 8px;
       .first {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         padding: 10px;
         gap: 1rem;
+        width: 100%;
         .ico-wrap {
           width: 60px;
           aspect-ratio: 1/1;
@@ -226,11 +233,11 @@ const DashContainerWrapper = styled.section`
         }
       }
       .mid {
-        /* padding-left: .2rem; */
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         margin: 10px 0;
+        width: 100%;
         h3 {
           color: #fff;
           .drop {
@@ -238,7 +245,7 @@ const DashContainerWrapper = styled.section`
           }
         }
         .date {
-          width: 150px;
+          width: 130px;
           height: 40px;
           background: rgba(0, 0, 0, 0.123);
           border-radius: 5px;
@@ -292,17 +299,17 @@ const DashContainerWrapper = styled.section`
   }
   .stat-card-wrapper{
     display: grid;
-    grid-template-columns: 58% 40%;
+    grid-template-columns: 59% 40%;
     place-items: center;
-    gap: .8rem;
+    gap: .5rem;
     height: calc(100% - 30%);
+    overflow-y: scroll;
     .stat-card{
       width: 100%;
-      height: 80%;
+      height: max-content;
       background: rgb(255, 255, 255);
       border-radius: 1rem;
       box-shadow: 0 1rem 40px rgba(116, 233, 116, 0.041);
-      transform: translateY(-2rem);
       padding: 10px;
       overflow: hidden;
       .course-card{
@@ -375,7 +382,6 @@ const DashContainerWrapper = styled.section`
           align-items: center;
           justify-content: space-between;
           width: 100%;
-          /* height: 40%; */
           background: #fff;
           box-shadow: inset 0 1rem 40px rgba(116, 233, 116, 0.041);
           border-radius: 10px;

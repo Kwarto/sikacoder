@@ -113,6 +113,46 @@ const Programs = () => {
             <li><FaUserGraduate />250+</li>
           </div>
         </div>
+        <div className="course-card">
+          <div className="banner">
+            <img src={bannerImg} alt="" />
+          </div>
+          <div className="meta-info">
+            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
+            <li><FaUserGraduate />250+</li>
+          </div>
+        </div>
+        <div className="course-card">
+          <div className="banner">
+            <img src={bannerImg} alt="" />
+          </div>
+          <div className="meta-info">
+            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
+            <li><FaUserGraduate />250+</li>
+          </div>
+        </div>
+        <div className="course-card">
+          <div className="banner">
+            <img src={bannerImg} alt="" />
+          </div>
+          <div className="meta-info">
+            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
+            <li><FaUserGraduate />250+</li>
+          </div>
+        </div>
+        <div className="course-card">
+          <div className="banner">
+            <img src={bannerImg} alt="" />
+          </div>
+          <div className="meta-info">
+            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
+            <li><FaUserGraduate />250+</li>
+          </div>
+        </div>
       </AllCoursesContainerWrapper>
     </ProgramsContainerWrapper>
   )
@@ -121,7 +161,7 @@ const Programs = () => {
 const ProgramsContainerWrapper = styled.article`
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 70px 10px 0 10px;
 `
 const SkillLevelContainerWrapper = styled.div`
  width: 100%;
@@ -129,7 +169,7 @@ const SkillLevelContainerWrapper = styled.div`
  gap: .5rem;
  .skill-level-card{
    width: 98%;
-   height: 95%;
+   height: max-content;
    background-image: linear-gradient(
         135deg,
         rgba(38, 138, 91, 0.986),
@@ -215,11 +255,11 @@ const SkillLevelContainerWrapper = styled.div`
 ` 
 const AllCoursesContainerWrapper = styled.div`
  width: 100%;
- height: 65%;
+ height: calc(100% - 30%);
  padding: 8px;
  .course-card{
    width: 100%;
-   height: 85%;
+   height: max-content;
    background: #fff;
    border-radius: 1rem;
    box-shadow: 0 1rem 30px rgba(2, 120, 156, 0.048);

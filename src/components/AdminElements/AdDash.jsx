@@ -7,8 +7,12 @@ import Programs from "./Programs";
 import Announce from "./Announce";
 import Blogpost from "./Blogpost";
 import { MdCloudUpload } from "react-icons/md";
+import UserAccountMa from "./UserAccountMa";
+import Post from "./Post";
 
-const AdDash = ({ activeIndex }) => {
+const AdDash = ({isDrawer, setIsDrawer, activeIndex, showPost, setShowPost }) => {
+  
+  
   const renderComponent = () => {
     switch (activeIndex) {
       case 0:
@@ -27,10 +31,12 @@ const AdDash = ({ activeIndex }) => {
   };
   return (
     <AdDashContainerWrapper>
-      <AdNav />
-      <AddPostModalButton>
+      <AdNav setIsDrawer={setIsDrawer} isDrawer={isDrawer}/>
+      <AddPostModalButton onClick={() =>{setShowPost(true)}}>
         <MdCloudUpload />
       </AddPostModalButton>
+      {isDrawer && <UserAccountMa />}
+      {showPost && <Post />}
       {renderComponent()}
     </AdDashContainerWrapper>
   );
@@ -38,12 +44,12 @@ const AdDash = ({ activeIndex }) => {
 
 const AdDashContainerWrapper = styled.section`
   width: calc(100% - 15rem);
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(135deg, rgb(241, 241, 241), rgba(0, 0, 0, 0.336));
   position: absolute;
   top: 0;
   left: 15rem;
-  overflow: hidden;
+  overflow-y: scroll;
 `;
 
 const AddPostModalButton = styled.article`

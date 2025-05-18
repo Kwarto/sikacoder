@@ -62,15 +62,15 @@ const InternsContainerWrapper = styled.article`
  justify-content: center;
  flex-direction: column;
  padding: 10px;
- gap: 1rem;
+ gap: .5rem;
  overflow-y: scroll;
+ padding: 75px 10px 0 10px;
 
 .list-content{
-  height: 70%;
+  height: 90%;
   overflow-y: scroll;
   gap: 1rem;
   width: 100%;
-  height: 100%;
   .intern-card{
     display: flex;
     margin: 10px 0;
@@ -104,6 +104,7 @@ const InternsContainerWrapper = styled.article`
 `
 const HeaderWrapper = styled.div`
  width: 100%;
+ height: max-content;
  background: rgb(255, 255, 255);
  box-shadow:  0 0 10px rgba(0, 5, 5, 0.082);
  border-radius: 10px;
@@ -111,6 +112,7 @@ const HeaderWrapper = styled.div`
  align-items: center;
  justify-content: space-between;
  padding: 10px;
+ overflow: hidden;
  .top{
   display: flex;
   align-items: center;
@@ -150,8 +152,9 @@ const HeaderWrapper = styled.div`
 `
 const InternsListGridContainer = styled.div`
   width: 100%;
+  height: 90%;
   border-radius: .5rem;
-  padding: 20px 5px;
+  padding: 0 5px;
   overflow-y: scroll;
   .intern-card{
     width: 100%;
