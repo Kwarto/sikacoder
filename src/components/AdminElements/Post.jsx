@@ -1,13 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import styled from "styled-components";
 import preBg from '../../assets/images/thumb/course_thumb08.jpg';
 const initialState = {
   title: '',
-  blogBanner: '',
   category: '',
   description: '',
-  date: ''
 };
 
 const categoryOption = [
@@ -18,11 +17,12 @@ const categoryOption = [
   'Marketing',
 ];
 const Post = () => {
-  const [form, setForm] = useState(initialState)
+  const [form, setForm] = useState(initialState);
+  const [file, setFile] = useState(null)
   const [isBlog, setIsBlog] = useState(true);
   const [isCourse, setIsCourse] = useState(false);
   const [isNotice, setIsNotice] = useState(false);
-  const {title, blogBanner, category, description, date} = form;
+  const {title,  category, description,} = form;
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -78,7 +78,7 @@ const Post = () => {
       <AddBlogContainer>
         <form>
           <div className="blog-banner-container">
-            <input type="file" name="file" id="file" />
+            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             <label htmlFor="file">
               <FaCloudUploadAlt />
             </label>
