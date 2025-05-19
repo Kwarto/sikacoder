@@ -9,6 +9,7 @@ import {
   Dashboard,
   Home,
   Intern,
+  LoginAdmin,
   Network,
   Services,
 } from "../pages";
@@ -26,7 +27,8 @@ const RouterNavigation = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/overview" element={<Dashboard />} />
-        <Route path='/sc-admin-panel' element={<Admin />} />
+        <Route path='/sc-admin-panel/login' element={<LoginAdmin />} />
+        <Route path='/sc-admin-panel' element={<Admin /> } />
       </Routes>
     </>
   );

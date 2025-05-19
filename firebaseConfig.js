@@ -4,13 +4,12 @@ import { getAnalytics } from "firebase/analytics";
 import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyARSj6dj8c3RTPl4jPjMiW9LDbZEP6sU5M",
-  authDomain: "sikacoder.firebaseapp.com",
-  projectId: "sikacoder",
-  storageBucket: "sikacoder.firebasestorage.app",
-  messagingSenderId: "266623423163",
-  appId: "1:266623423163:web:52bfbbc9550826f3e8cf9e",
-  measurementId: "G-3WNEBYFSPS"
+  apiKey: "AIzaSyCR9ZNNAUsF9xO2JULSVOPr8xKgqfDJJ-A",
+  authDomain: "shub-98c02.firebaseapp.com",
+  projectId: "shub-98c02",
+  storageBucket: "shub-98c02.appspot.com",
+  messagingSenderId: "978431886627",
+  appId: "1:978431886627:web:b5e23458a7730dcc1cf896"
 };
 
 // Initialize Firebase

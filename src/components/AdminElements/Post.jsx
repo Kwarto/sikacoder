@@ -109,9 +109,9 @@ const Post = () => {
         <div
           className="add-post-for-card card"
           onClick={() => {
-            setIsBlog(false);
+            setIsBlog(true);
             setIsCourse(false);
-            setIsNotice(true);
+            setIsNotice(false);
           }}
         >
           <div className="ico-box">
@@ -381,12 +381,12 @@ const AddBlogContainer = styled.article`
     .form-container {
       width: calc(100% - 30%);
       height: 100%;
-      background: #ccc;
       padding: 10px;
       .input-field {
-        width: 80%;
+        width: 98%;
         height: 70px;
         background: #fff;
+        border: 1px solid #ccc;
         border-radius: 10px;
         margin: 10px 0;
         input,
@@ -401,9 +401,10 @@ const AddBlogContainer = styled.article`
         }
       }
       .input-area {
-        width: 80%;
+        width: 98%;
         height: 260px;
         background: #fff;
+        border: 1px solid #ccc;
         border-radius: 10px;
         textarea {
           width: 100%;

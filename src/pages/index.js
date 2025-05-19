@@ -8,3 +8,4 @@ export {default as Blog} from '../pages/Blog/Blog';
 export {default as Auth} from '../pages/auth/Auth';
 export {default as Dashboard} from '../pages/overview/Overview';
 export {default as Admin} from '../pages/admin/Admin';
+export {default as LoginAdmin} from '../pages/admin/Auth';
