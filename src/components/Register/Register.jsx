@@ -35,8 +35,9 @@ const Register = ({ login, setLogin }) => {
         await updateProfile(user, { displayName: `${username}` });
         setLoading(true);
         await setDoc(doc(db, 'users', user.uid), {
-          ...form,
-          dateJoined: serverTimestamp(),
+           username: username,
+           emailId: email,
+           dateJoined: serverTimestamp(),
         });
       } else {
         return alert('All fields are required!');

@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { signOut } from "firebase/auth";
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { auth } from "../../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import {  useUserAuth } from "../../context/UserAuthContext";
 import { MdLogout } from "react-icons/md";
 
 const UserModal = () => {
   const navigate = useNavigate();
-  const {currentUser} = useContext(AuthContext)
+  const {user} = useUserAuth(); 
   return (
     <UserModalWrapper>
       <motion.div
@@ -20,8 +20,8 @@ const UserModal = () => {
         transition={{ duration: 1 }}
       >
         <div className="top">
-          <h3>{currentUser.displayName}</h3>
-          <h4>{currentUser.email}</h4>
+          <h3>{user.displayName}</h3>
+          <h4>{user.email}</h4>
           <span>Web development</span>
         </div>
         <div className="m-bar">

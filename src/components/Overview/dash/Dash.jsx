@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import lImg from "../../../assets/images/thumb/course_thumb02.jpg";
 import courseImg from '../../../assets/images/thumb/course_thumb05.jpg'
 import { motion } from "framer-motion";
-import { AuthContext } from "../../../context/AuthContext";
+import { useUserAuth } from "../../../context/UserAuthContext";
+
 const Dash = () => {
-  const {currentUser} = useContext(AuthContext)
+  const {user} = useUserAuth();
   return (
     <DashWrapper>
       <LeftContentContainer>
@@ -16,7 +17,7 @@ const Dash = () => {
           animate={{ opacity: 1, y: 1 }}
           transition={{ duration: 1 }}
         >
-          <h3>Welcome, {currentUser.displayName}!</h3>
+          <h3>Welcome, {user.displayName}!</h3>
           <p>
             We're trilled to have you, code the future with confidence -{" "}
             <span>Learn. Build. Intern. Succeed.</span> Begin your teach career,

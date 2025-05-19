@@ -28,3 +28,7 @@ export {default as TopNav} from '../components/TopNav/TopNav';
 export {default as AdNav} from '../components/AdminElements/AdNav';
 export {default as AdSidePanel} from '../components/AdminElements/AdSidePanel';
 export {default as AdDash} from '../components/AdminElements/AdDash';
+
+//ProtectedRoute Import
+export {default as AdminProtectedRoute} from '../components/ProtectedRoute/AdminProtectedRoute'
+export {default as UserProtectedRoute} from '../components/ProtectedRoute/UserProtectedRoute'

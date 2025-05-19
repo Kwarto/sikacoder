@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import avatarImg from '../../assets/icons/avatar.png'
 import { MdArrowDropDown } from 'react-icons/md'
 import { RiMenu4Fill } from "react-icons/ri";
 import UserModal from './UserModal';
-import { AuthContext } from '../../context/AuthContext';
+import { useUserAuth } from '../../context/UserAuthContext';
 
 const TopNav = ({setShowSideBar}) => {
   const [isModal, setIsModal] = useState(false);
-  const {currentUser} = useContext(AuthContext);
+  const {user} = useUserAuth();
   return (
     <TopNavContainerWrapper>
      <div className="left">
-        <h4>Hey, {currentUser ? currentUser.displayName : 'Joey Austen'}</h4>
+        <h4>Hey, {user ? user.displayName : 'Joey Austen'}</h4>
         <p>Let's learn something new today!</p>
      </div>
      <div className="bars" onClick={() => {setShowSideBar(true)}}>
@@ -22,12 +22,12 @@ const TopNav = ({setShowSideBar}) => {
         <div className="usr" onClick={() => {setIsModal(!isModal)}}>
             <div className="avatar">
                 {
-                currentUser ?
-                 <img src={currentUser.photoURL} alt="usr-profile" /> :
+                user ?
+                 <img src={user.photoURL} alt="usr-profile" /> :
                  <img src={avatarImg} alt="usr-profile" />
                 }
             </div>
-            <h4>{currentUser ? currentUser.displayName : 'Joey Austen'} <MdArrowDropDown /> </h4>
+            <h4>{user ? user.displayName : 'Joey Austen'} <MdArrowDropDown /> </h4>
         </div>
      </div>
      {isModal && <UserModal isModal={isModal}/>}
