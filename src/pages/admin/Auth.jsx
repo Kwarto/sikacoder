@@ -94,7 +94,7 @@ const Auth = () => {
               By sign in you agree to sikacoder admin data privacy policy
             </p>
           </div>
-          <button className="btn">{loading && <CgSpinner className="spinner"/>} <span>Login</span></button>
+          <button className="btn">{loading && <CgSpinner className="spinner"/>} <span>{login ? 'Login' : 'Register'}</span></button>
         </div>
       </form>
     </AdminAuthContainerWrapper>
