@@ -20,7 +20,7 @@ const SignInWith = ({login, setLogin}) => {
         userId: response.user.uid,
         dateJoined: serverTimestamp()
       })
-      navigate(`/overview`);
+      navigate(`/`);
     }).catch((err) => {
       alert(err.message);
     })
@@ -36,7 +36,7 @@ const SignInWith = ({login, setLogin}) => {
         userId: response.user.uid,
         dateJoined: serverTimestamp()
       })
-      navigate('/overview');
+      navigate('/');
     }).catch((err) => {
       console.log(err.message);
     })

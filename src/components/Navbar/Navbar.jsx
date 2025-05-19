@@ -6,8 +6,10 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import { IoMdClose } from "react-icons/io";
 import { motion } from 'framer-motion';
+import { useUserAuth } from '../../context/UserAuthContext';
 
 const Navbar = () => {
+  const {user} = useUserAuth();
   const navigate = useNavigate();
   const [mobile, setMobile] = useState(false);
   return (
@@ -34,7 +36,10 @@ const Navbar = () => {
           <NavLink className='nav_link' to={'/blog'}>
             Blog
           </NavLink>
-        <div className="btn" onClick={() => {navigate('/auth')}}>Get Started</div>
+        {!user ?<div className="btn" onClick={() => {navigate('/auth')}}>Get Started</div> :
+        <div className="profile-wrapper">
+          <img src={user.photoURL} alt={user.displayName} />
+        </div>}
         </MenuListContainerWrapper>}
         {mobile && <motion.div className="mobile" initial={{opacity: 0, scale: 0}} animate={{opacity: 1, scale: 1}} transition={{duration: 1}}>
         <div className="hamburger" onClick={() => {setMobile(!mobile)}}>
@@ -79,6 +84,21 @@ const NavbarContainerWrapper = styled.nav`
    margin-right: 1.5rem;
    font-size: 1.5rem;
    display: none;
+ }
+ .profile-wrapper{
+   width: 50px;
+   aspect-ratio: 1/1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 3px;
+   background: rgb(241, 241, 241);
+   border-radius: .5rem;
+   margin-right: 10px;
+   img{
+    width: 100%;
+    border-radius: inherit;
+   }
  }
  @media screen and (max-width: 430px) {
    overflow-y: hidden;

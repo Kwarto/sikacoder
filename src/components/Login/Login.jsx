@@ -27,7 +27,7 @@ const Login = ({ login, setLogin }) => {
     }else{
       console.log('Something went wrong');
     }
-    navigate('/overview')
+    navigate('/')
   };
   return (
     <LoginContainerWrapper>
