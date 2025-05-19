@@ -1,4 +1,5 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+/* eslint-disable no-unused-vars */
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { auth, db } from "../../../firebaseConfig";
@@ -27,20 +28,32 @@ const Auth = () => {
   const navigate = useNavigate();
   const [adminData, setAdminDate] = useState({ adminSchema });
   const { username, email, password } = adminData;
+  const [loading, setLoading] = useState(false);
+  const [login, setLogin] = useState(true);
   const handleChange = (e) => {
     setAdminDate({ ...adminData, [e.target.name]: e.target.value });
   };
   const handleAdminAuth = async (e) => {
     e.preventDefault();
-    if(username && email && password){
-        const {user} = await createUserWithEmailAndPassword(auth, email, password);   
-        await updateProfile(user, {displayName: `${username}`});
-        await setDoc(doc(db, "admins", user.uid), {
-           ...adminData,
-          dateRegistered: serverTimestamp()
-        })
+    if(!login){
+        if(username && email && password){
+            const {user} = await createUserWithEmailAndPassword(auth, email, password);   
+            await updateProfile(user, {displayName: `${username}`});
+            setLoading(true);
+            await setDoc(doc(db, "admins", user.uid), {
+               ...adminData,
+              dateRegistered: serverTimestamp()
+            })
+        }else{
+            return alert('All fields are required')
+        }
     }else{
-        return alert('All fields are required')
+        if(email && password){
+            const {user} = await signInWithEmailAndPassword(auth, email, password);
+            console.log(user);
+        }else{
+            console.log('Something went wrong');
+        }
     }
     navigate('/sc-admin-panel') 
   };
@@ -51,7 +64,7 @@ const Auth = () => {
           <h3>Sign In.</h3>
         </div>
         <div className="input-container">
-          <div className="input-field">
+         { !login && <div className="input-field">
             <input
               type="text"
               name="username"
@@ -59,7 +72,7 @@ const Auth = () => {
               value={username}
               onChange={handleChange}
             />
-          </div>
+          </div>}
           <div className="input-field">
             <input
               type="email"
@@ -81,7 +94,7 @@ const Auth = () => {
               By sign in you agree to sikacoder admin data privacy policy
             </p>
           </div>
-          <button className="btn"><CgSpinner className="spinner"/> <span>Login</span></button>
+          <button className="btn">{loading && <CgSpinner className="spinner"/>} <span>Login</span></button>
         </div>
       </form>
     </AdminAuthContainerWrapper>
@@ -169,7 +182,9 @@ const AdminAuthContainerWrapper = styled.section`
 
       .btn {
         display: flex;
-        align-self: flex-start;
+        align-self: center;
+        justify-content: center;
+        gap: 1rem;
         background: teal;
 
         &:hover {
