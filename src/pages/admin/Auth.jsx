@@ -182,7 +182,7 @@ const AdminAuthContainerWrapper = styled.section`
 
       .btn {
         display: flex;
-        align-self: center;
+        align-self: flex-start;
         justify-content: center;
         gap: 1rem;
         background: teal;
