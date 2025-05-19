@@ -30,8 +30,8 @@ const Auth = () => {
             await updateProfile(user, {displayName: `${username}`});
             setLoading(true);
             await setDoc(doc(db, "admins", user.uid), {
-              ...adminData.username,
-              ...adminData.email,
+              username: username,
+              emailId: email,
               dateRegistered: serverTimestamp()
             })
         }else{
