@@ -7,6 +7,7 @@ export {default as Courses} from '../components/Courses/Courses';
 export {default as SingleCourse} from '../components/Courses/SingleCourse/SingleCourse';
 export {default as CourseDetail} from '../components/Courses/Detail/Detail';
 export {default as CoreInfo} from '../components/CoreInfo/CoreInfo';
+export {default as Enroll} from '../components/Courses/Enroll/Enroll';
 export {default as More} from '../components/More/MoreInfo';
 export {default as Process} from '../components/Process/Process';
 export {default as Why} from '../components/Why/WhyChoose';

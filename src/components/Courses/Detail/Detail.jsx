@@ -14,8 +14,10 @@ import {
   MdCode,
   MdFileDownload,
 } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 const Detail = ({ courseId, setShowDetail }) => {
   const [courseDetail, setCourseDetail] = useState([]);
+  const navigate = useNavigate()
   useEffect(() => {
     const findCourse = courseList.filter((item) => item.id === courseId)[0];
     setCourseDetail(findCourse);
@@ -139,7 +141,7 @@ const Detail = ({ courseId, setShowDetail }) => {
               practice your skills as you learn.
             </h4>
           </div>
-          <div className="btn">
+          <div className="btn" onClick={() => {navigate(`/internship/${courseId}/enroll`)}}>
             Enroll Now
             <MdArrowForward />
           </div>
