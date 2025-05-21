@@ -7,11 +7,13 @@ import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
 import { useUserAuth } from "../../context/UserAuthContext";
+import Modal from "./Modal";
 
 const Navbar = () => {
   const { user } = useUserAuth();
   const navigate = useNavigate();
   const [mobile, setMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   return (
     <NavbarContainerWrapper>
       <LogoWrapper
@@ -101,7 +103,7 @@ const Navbar = () => {
         </motion.div>
       )}
       {user && (
-        <div className="profile">
+        <div className="profile" onClick={() => {setShowModal(!showModal)}}>
           <img src={user.photoURL} alt={user.displayName} />
         </div>
       )}
@@ -113,6 +115,7 @@ const Navbar = () => {
       >
         <HiMiniBars3BottomRight />
       </div>
+      {showModal && <Modal />}
     </NavbarContainerWrapper>
   );
 };
@@ -148,6 +151,7 @@ const NavbarContainerWrapper = styled.nav`
       border-radius: inherit;
     }
   }
+
   @media screen and (max-width: 430px) {
     overflow-y: hidden;
     padding: 10px;

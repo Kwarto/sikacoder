@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -14,12 +14,29 @@ const domainOption = [
   "Java Programming",
   "C++ Programming",
 ];
+const initialState = {
+  email: '',
+  fullName: '',
+  contactNumber: '',
+  country: '',
+  college: '',
+  domain: ''
+};
 
 const Enroll = () => {
-  const navigate = useNavigate()
-   const onDomainChange = (e) => {
-    e.target.value;
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState(initialState);
+  const  {email, fullName, contactNumber, country, college, domain} = formData;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const onDomainChange = (e) => {
+    setFormData({...formData, domain: e.target.value});
+  };
+  const handleEnrollSubmit = (e) => {
+    e.preventDefault();
+
+  }
   return (
     <EnrollContainerWrapper>
       <div className="enroll-form-container">
@@ -49,12 +66,14 @@ const Enroll = () => {
           </div>
 
           <div className="layer-c">
-          <h4>📜 After Completion of the Program, You Will Receive:</h4>
-          <ul>
-            <li>✅ Program Completion Certificate issued by IIT + MICROSOFT</li>
-          <li>✅ 3-month Co-Branded Internship Certificate</li>
-          <li>✅ Letter of Recommendation (based on performance)</li>
-          </ul>
+            <h4>📜 After Completion of the Program, You Will Receive:</h4>
+            <ul>
+              <li>
+                ✅ Program Completion Certificate issued by IIT + MICROSOFT
+              </li>
+              <li>✅ 3-month Co-Branded Internship Certificate</li>
+              <li>✅ Letter of Recommendation (based on performance)</li>
+            </ul>
             <h4>🎯 Perks & Benefits:</h4>
             <ul>
               <li>✅ Mock Interview Preparation Tips</li>
@@ -78,46 +97,91 @@ const Enroll = () => {
           </div>
         </div>
         <div className="enroll-form">
-          <form>
+          <form onSubmit={handleEnrollSubmit}>
             <div className="input-field">
               <label htmlFor="emailId">Email Id</label>
-              <span>➝ Make sure this is correct, as your offer letter will be sent to this email.</span>
-              <input type="email" name="email" id="emailId" placeholder="Email Id goes here.." />
+              <span>
+                ➝ Make sure this is correct, as your offer letter will be sent
+                to this email.
+              </span>
+              <input
+                type="email"
+                name="email"
+                id="emailId"
+                placeholder="Email Id goes here.."
+                value={email}
+                onChange={handleChange}
+              />
             </div>
-             <div className="input-field">
+            <div className="input-field">
               <label htmlFor="fullName">Your Full Name</label>
-              <span>➝ Enter your full name as you want it on the offer letter.</span>
-              <input type="text" name="fullName" id="fullName" placeholder="Enter Your Full Name" />
+              <span>
+                ➝ Enter your full name as you want it on the offer letter.
+              </span>
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                placeholder="Enter Your Full Name"
+                value={fullName}
+                onChange={handleChange}
+              />
             </div>
-             <div className="input-field">
+            <div className="input-field">
               <label htmlFor="contact">Contact NUmber</label>
               <span>➝ Enter your contact number as backup address</span>
-              <input type="tel" name="contactNumber" id="contact" placeholder="Number" />
+              <input
+                type="tel"
+                name="contactNumber"
+                id="contact"
+                placeholder="Number"
+                value={contactNumber}
+                onChange={handleChange}
+              />
             </div>
-             <div className="input-field">
+            <div className="input-field">
               <label htmlFor="country">Your Country</label>
               <span>➝ Enter the Country your are applying from</span>
-              <input type="text" name="country" id="country" placeholder="Country" />
+              <input
+                type="text"
+                name="country"
+                id="country"
+                placeholder="Country"
+                value={country}
+                onChange={handleChange}
+              />
             </div>
-             <div className="input-field">
+            <div className="input-field">
               <label htmlFor="college">College Name</label>
               <span>➝ Enter the full name of your college/university.</span>
-              <input type="text" name="college" id="college" placeholder="Confirm College" />
+              <input
+                type="text"
+                name="college"
+                id="college"
+                placeholder="Confirm College"
+                value={college}
+                onChange={handleChange}
+              />
             </div>
-             <div className="input-field">
+            <div className="input-field">
               <label>Internship Domain</label>
-                <select  onChange={onDomainChange}>
-                  <option>Please Select Domain</option>
-                  {domainOption.map((option, index) => (
-                    <option value={option || ""} key={index}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-             
-            <button className="btn" onClick={() => {navigate('/overview')}}>
-                <span>Submit Form</span>
+              <select value={domain} onChange={onDomainChange}>
+                <option>Please Select Domain</option>
+                {domainOption.map((option, index) => (
+                  <option value={option || ""} key={index}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/overview");
+              }}
+            >
+              <span>Submit Form</span>
             </button>
           </form>
         </div>
@@ -142,55 +206,55 @@ const EnrollContainerWrapper = styled.section`
     grid-template-columns: 70% 30%;
     place-items: center;
     gap: 1rem;
-    overflow-y: scroll;
     .enroll-info {
-        padding: 12px;
+      padding: 12px;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      .layer-a, .layer-b, .layer-c,.note{
-        p{
-            max-width: 700px;
+      .layer-a,
+      .layer-b,
+      .layer-c,
+      .note {
+        p {
+          max-width: 700px;
         }
-        span{
-            font-weight: 600;
+        span {
+          font-weight: 600;
         }
-        h4{
-            color: teal;
+        h4 {
+          color: teal;
         }
-        ul{
-            padding: 3px 0;
-            li{
-                font-weight: 500;
-                color: #111;
-            }
+        ul {
+          padding: 3px 0;
+          li {
+            font-weight: 500;
+            color: #111;
+          }
         }
       }
-      .note{
-        h4{
-            max-width: 600px;
-            font-size: 16px;
-            font-weight: 500;
-            color: red;
-            padding: 5px 0;
+      .note {
+        h4 {
+          max-width: 600px;
+          font-size: 16px;
+          font-weight: 500;
+          color: red;
+          padding: 5px 0;
         }
       }
     }
-    .enroll-form{
+    .enroll-form {
       width: 100%;
       height: 100%;
       background: rgb(255, 254, 254);
-      overflow-y: scroll;
-      form{
+      form {
         width: 100%;
         height: max-content;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        gap: .6rem;
-        overflow-y: scroll;
-        .input-field{
+        gap: 0.6rem;
+        .input-field {
           width: 98%;
           height: max-content;
           display: flex;
@@ -198,27 +262,29 @@ const EnrollContainerWrapper = styled.section`
           justify-content: center;
           flex-direction: column;
           overflow-y: hidden;
-          label{
+          label {
             font-size: 18px;
             color: teal;
           }
-          span{
+          span {
             padding: 6px 0;
             color: #111;
           }
-          input,select{
+          input,
+          select {
             width: 95%;
             height: 45px;
             border: 1px solid #ccc;
-            border-radius: .5rem;
+            border-radius: 0.5rem;
             background: #fff;
+            cursor: pointer;
             padding: 0 12px;
             font-size: 17px;
             appearance: none;
           }
         }
       }
-      .btn{
+      .btn {
         align-self: flex-start;
       }
     }

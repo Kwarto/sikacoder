@@ -74,6 +74,10 @@ const Post = () => {
   };
 
   const handleCourseSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  const handleBlogSubmit = (e) => {
     e.preventDefault();
   };
 
@@ -122,7 +126,7 @@ const Post = () => {
       </div>
       {isBlog && (
         <AddBlogContainer>
-          <form>
+          <form onSubmit={handleBlogSubmit}>
             <div className="blog-banner-container">
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />
               <label htmlFor="file">
@@ -178,7 +182,7 @@ const Post = () => {
             <Input
               name="name"
               placeholder="Course Name"
-              value={formData.name}
+              value={formData.name &&""  }
               onChange={handleChange}
               required
             />
