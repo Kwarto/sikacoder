@@ -4,29 +4,29 @@ import styled from 'styled-components'
 import thumb1 from '../../../assets/images/thumb/course_thumb01.jpg'
 import { CourseDetail } from '../..'
 
-const SingleCourse = (props) => {
-  const {id, title, thumb, category, desc, instructors } = props.data; 
+const SingleCourse = ({course}) => {
+  // const { title, thumb, category, desc, instructors } = data; 
   const [showDetail, setShowDetail] = useState(false)
-
+  console.log(course)
   return (
     <>
     <SingleCourseContainerWrapper onClick={() => {setShowDetail(true)}}>
      <div className="thumb-box">
-      <img src={thumb} alt={title} />
+      <img src={thumb1} alt={course?.courseName} />
      <div className="cat">
-        <span>{category}</span>
+        <span>Web Development</span>
      </div>
      </div>
      <div className="meta-info">
-        <h3>{title}..</h3>
-        <p>{desc.substring(0, 90)}..</p>
-        <small>By <span>{instructors}</span></small>
+        <h3>{course?.courseName}..</h3>
+        <p>{course?.description.substring(0, 144)}..</p>
+        <small>By <span>{course?.instructor}</span></small>
         <div className="btn" onClick={() => {setShowDetail(true)}}>
             Interested
         </div>
      </div>
     </SingleCourseContainerWrapper>
-    {showDetail && <CourseDetail setShowDetail={setShowDetail} courseId={id} /> }
+    {showDetail && <CourseDetail setShowDetail={setShowDetail} courseId={course?.uid} /> }
     </>
   )
 }
@@ -95,7 +95,7 @@ const SingleCourseContainerWrapper = styled.div`
         font-weight: 400;
     }
     .btn{
-        
+        margin-top: 1rem;
     }
 }
 &:hover{

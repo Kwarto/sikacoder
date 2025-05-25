@@ -43,20 +43,19 @@ const Navbar = () => {
           <NavLink className="nav_link" to={"/blog"}>
             Blog
           </NavLink>
-          {!user ? (
-            <div
+          
+            {!user && <div
               className="btn"
               onClick={() => {
                 navigate("/auth");
               }}
             >
               Get Started
-            </div>
-          ) : (
-            <div className="profile-wrapper">
+            </div>}
+          
+           { user && <div className="profile-wrapper" onClick={() => {setShowModal(!showModal)}}>
               <img src={user.photoURL} alt={user.displayName} />
-            </div>
-          )}
+            </div>}
         </MenuListContainerWrapper>
       )}
       {mobile && (
@@ -92,14 +91,14 @@ const Navbar = () => {
           <NavLink className="nav_link" to={"/blog"}>
             Blog
           </NavLink>
-          <div
+          {!user && <div
             className="btn"
             onClick={() => {
               navigate("/auth");
             }}
           >
             Get Started
-          </div>
+          </div>}
         </motion.div>
       )}
       {user && (
@@ -135,10 +134,12 @@ const NavbarContainerWrapper = styled.nav`
   }
   .profile {
     display: none;
+    cursor: pointer;
   }
   .profile-wrapper {
     width: 50px;
     aspect-ratio: 1/1;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,6 +159,13 @@ const NavbarContainerWrapper = styled.nav`
     .hamburger {
       display: flex;
       transform: translateX(1rem);
+    }
+    .profile{
+      display: flex;
+       width: 40px;
+      padding: 1px;
+      border-radius: 10px;
+      transform: translate(4rem, -0.1rem);
     }
     .profile-wrapper {
       width: 40px;

@@ -1,9 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import inImg from '../../assets/images/in_hero_bg.jpg'
 import SingleCourse from './SingleCourse/SingleCourse'
-import {courseList} from '../../utils/courseData'
+// import {courseList} from '../../utils/courseData'
+import { collection, onSnapshot } from 'firebase/firestore'
+import { db } from '../../../firebaseConfig'
 const Courses = () => {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, 'courses'),
+      (snapshot) => {
+        let list = [];
+        snapshot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setCourses(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    return () => {
+      unsub();
+    };
+    // eslint-disable-next-line
+  }, []);
   return (
     <CoursesContainerWrapper>
      <article className='left-panel'>
@@ -41,9 +65,9 @@ const Courses = () => {
         </div>
      </article>
      <article className='right-panel grid-col-3'>
-        {courseList && courseList.map((course, id) => (
-          <SingleCourse data={course} key={id}/>
-        ))}
+        {courses && courses.map((course) => 
+        <SingleCourse course={course}/>
+        )}
      </article>
      
     </CoursesContainerWrapper>

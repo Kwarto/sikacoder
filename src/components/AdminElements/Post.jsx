@@ -3,10 +3,18 @@ import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import styled from "styled-components";
 import preBg from "../../assets/images/thumb/course_thumb08.jpg";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 const initialState = {
   title: "",
   category: "",
-  description: "",
+  desc: "",
 };
 
 const categoryOption = [
@@ -17,16 +25,13 @@ const categoryOption = [
   "Marketing",
 ];
 
-const levelOption = [
-  "Beginner",
-  "Intermediate",
-  "Advance"
-]
+const levelOption = ["Beginner", "Intermediate", "Advance"];
 const Post = () => {
   const [form, setForm] = useState(initialState);
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
-    name: "",
+    courseName: "",
+    courseCategory: "",
     description: "",
     level: "",
     credential: "",
@@ -40,16 +45,40 @@ const Post = () => {
     rating: 0,
   });
 
-  
   const [isBlog, setIsBlog] = useState(true);
   const [isCourse, setIsCourse] = useState(false);
   const [isNotice, setIsNotice] = useState(false);
-  const { title, category, description } = form;
+  //Blog Form
+  const { title, category, desc } = form;
+
+  //Course Form
+  const {
+    courseName,
+    courseCategory,
+    description,
+    level,
+    credential,
+    duration,
+    instructor,
+    startDate,
+    endDate,
+    audienceType,
+    prerequisites,
+    resources,
+    rating,
+  } = formData;
   const [resourceInput, setResourceInput] = useState("");
   const [uploading, setUploading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [err, setErr] = useState(false);
+  const [success, setSuccess] = useState(false);
+ 
+  //Course onChange handler
+  const handleCourseChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  //BLog Form Handling
+  //Blog Form Handling
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -58,10 +87,10 @@ const Post = () => {
     setForm({ ...form, category: e.target.value });
   };
 
-//Course Form Handling
+  //Course Form Handling
   const onLevelChange = (e) => {
-    setFormData({...formData, level: e.target.value});
-  }
+    setFormData({ ...formData, level: e.target.value });
+  };
 
   const handleAddResource = () => {
     if (resourceInput) {
@@ -73,12 +102,45 @@ const Post = () => {
     }
   };
 
-  const handleCourseSubmit = (e) => {
-    e.preventDefault()
-  }
-
-  const handleBlogSubmit = (e) => {
+  const handleCourseSubmit = async (e) => {
     e.preventDefault();
+    if (
+      courseName &&
+      courseCategory &&
+      description &&
+      level &&
+      credential &&
+      duration &&
+      instructor &&
+      startDate &&
+      endDate &&
+      audienceType &&
+      prerequisites &&
+      resources &&
+      rating
+    ) {
+       await addDoc(collection(db, 'courses'), {
+        ...formData,
+        datePublished: serverTimestamp()
+       })
+      setSuccessMessage(true);
+    }else{
+      console.log('Something went wrong, check input fields and try again!');
+    }
+    setFormData('')
+  };
+
+  const handleBlogSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, "blogs"), {
+        ...form,
+        datePosted: serverTimestamp(),
+      });
+      setSuccess(true);
+    } catch (error) {
+      setErr(error.message);
+    }
   };
 
   return (
@@ -159,16 +221,18 @@ const Post = () => {
               </div>
               <div className="input-area">
                 <textarea
-                  name="description"
-                  id="description"
+                  name="desc"
+                  id="desc"
                   placeholder="Blog Description"
-                  value={description}
+                  value={desc}
                   onChange={handleChange}
                 />
               </div>
               <button className="btn btn-primary">Submit Blog</button>
             </div>
           </form>
+          {err && <div>{err}</div>}
+          {success && <div>Blog data posted successfully</div>}
         </AddBlogContainer>
       )}
       {isCourse && (
@@ -176,14 +240,21 @@ const Post = () => {
           <FormWrapper onSubmit={handleCourseSubmit}>
             <Heading>Upload New Course</Heading>
             {successMessage && (
-              <SuccessMessage>{successMessage}</SuccessMessage>
+              <SuccessMessage>Course Uploaded Successfully</SuccessMessage>
             )}
 
             <Input
-              name="name"
+              name="courseName"
               placeholder="Course Name"
-              value={formData.name &&""  }
-              onChange={handleChange}
+              value={formData.courseName}
+              onChange={handleCourseChange}
+              required
+            />
+             <Input
+              name="courseCategory"
+              placeholder="Course Category"
+              value={formData.courseCategory}
+              onChange={handleCourseChange}
               required
             />
             <Textarea
@@ -191,61 +262,61 @@ const Post = () => {
               placeholder="Description"
               rows={4}
               value={formData.description}
-              onChange={handleChange}
+              onChange={handleCourseChange}
               required
             />
             <Level className="level">
-                <select value={formData.level} onChange={onLevelChange}>
-                  <option>Please Select Level</option>
-                  {levelOption.map((option, index) => (
-                    <option value={option || ""} key={index}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </Level>
+              <select value={formData.level} onChange={onLevelChange}>
+                <option>Please Select Level</option>
+                {levelOption.map((option, index) => (
+                  <option value={option || ""} key={index}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </Level>
             <Input
               name="credential"
               placeholder="Credential"
               value={formData.credential}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
             <Input
               name="duration"
               placeholder="Duration"
               value={formData.duration}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
             <Input
               name="instructor"
               placeholder="Instructor"
               value={formData.instructor}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
             <Input
               type="date"
               name="startDate"
               value={formData.startDate}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
             <Input
               type="date"
               name="endDate"
               value={formData.endDate}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
             <Input
               name="audienceType"
               placeholder="Audience Type"
               value={formData.audienceType}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
             <Textarea
               name="prerequisites"
               placeholder="Prerequisites"
               rows={2}
               value={formData.prerequisites}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
 
             <Label>Add Learning Resource:</Label>
@@ -256,7 +327,12 @@ const Post = () => {
                 onChange={(e) => setResourceInput(e.target.value)}
                 className="res-in"
               />
-              <Button className="res-btn" type="button" secondary onClick={handleAddResource}>
+              <Button
+                className="res-btn"
+                type="button"
+                secondary
+                onClick={handleAddResource}
+              >
                 Add
               </Button>
             </div>
@@ -273,9 +349,9 @@ const Post = () => {
               max="5"
               placeholder="Rating (1-5)"
               value={formData.rating}
-              onChange={handleChange}
+              onChange={handleCourseChange}
             />
-            <Button type="submit" disabled={uploading}>
+            <Button type="submit" >
               {uploading ? "Uploading..." : "Submit Course"}
             </Button>
           </FormWrapper>
@@ -447,23 +523,22 @@ const FormWrapper = styled.form`
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  .addRes{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 1rem;
-   width: 100%;
-   .res-in{
-     flex: 1;
-     width: 80%;
-   }
-   .res-btn{
-     width: 20%;
-     transform: translateY(-1rem);
-   }
+  .addRes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    .res-in {
+      flex: 1;
+      width: 80%;
+    }
+    .res-btn {
+      width: 20%;
+      transform: translateY(-1rem);
+    }
   }
 `;
-
 
 const Heading = styled.h2`
   font-size: 1.75rem;
@@ -481,17 +556,17 @@ const Input = styled.input`
 `;
 
 const Level = styled.div`
- width: 100%;
- select{
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fff;
-  margin-bottom: 1rem;
-  appearance: none;
- }
-`
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 1rem;
+    appearance: none;
+  }
+`;
 
 const Textarea = styled.textarea`
   width: 100%;
@@ -526,7 +601,7 @@ const ResourceList = styled.ul`
   margin: 0.5rem 0;
   padding: 1.25rem 0;
   font-size: 0.9rem;
-  li{
+  li {
     font-size: 16px;
     font-weight: 500;
   }
@@ -542,7 +617,6 @@ const Label = styled.label`
   margin-bottom: 0.5rem;
   display: block;
 `;
-
 
 const AddNoticeContainer = styled(AddBlogContainer)`
   background: rgb(0, 255, 21);

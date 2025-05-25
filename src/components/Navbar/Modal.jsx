@@ -1,9 +1,13 @@
+import { signOut } from 'firebase/auth'
 import React from 'react'
 import { FaBookOpen, FaGears } from 'react-icons/fa6'
 import { MdLogout } from 'react-icons/md'
 import styled from 'styled-components'
+import { auth } from '../../../firebaseConfig'
+import { useNavigate } from 'react-router-dom'
 
 const Modal = () => {
+  const navigate = useNavigate();
   return (
     <ModalContainerWrapper>
       <div className="meta-info">
@@ -16,11 +20,11 @@ const Modal = () => {
             <FaGears className='linkIco' />
             <span>Manage Account</span>
         </div>
-        <div className="link-wrapper">
+        <div className="link-wrapper" onClick={() => {navigate("/course-bag")}}>
             <FaBookOpen className='linkIco' />
             <span>My Course</span>
         </div>
-        <div className="link-wrapper">
+        <div className="link-wrapper" onClick={signOut(auth)}>
             <MdLogout className='linkIco' />
             <span>Sign Out</span>
         </div>
@@ -41,6 +45,7 @@ const ModalContainerWrapper = styled.div`
   right: .5rem;
   background: #fff;
   border-radius: .5rem;
+  cursor: pointer;
   z-index: 1000;
   padding: 10px;
   overflow-y: hidden;

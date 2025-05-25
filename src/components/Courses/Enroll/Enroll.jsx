@@ -1,7 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { MdOutlineDeviceUnknown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
+import { useUserAuth } from "../../../context/UserAuthContext";
+import { collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+import { db } from "../../../../firebaseConfig";
 const domainOption = [
   "Web Development",
   "App Development",
@@ -15,28 +20,41 @@ const domainOption = [
   "C++ Programming",
 ];
 const initialState = {
-  email: '',
-  fullName: '',
-  contactNumber: '',
-  country: '',
-  college: '',
-  domain: ''
+  email: "",
+  fullName: "",
+  contactNumber: "",
+  country: "",
+  college: "",
+  domain: "",
 };
 
 const Enroll = () => {
+  const {user} = useUserAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
-  const  {email, fullName, contactNumber, country, college, domain} = formData;
+  const { email, fullName, contactNumber, country, college, domain } = formData;
+  const { err, setErr } = useState(false);
+  const [success, setSuccess] = useState(false)
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onDomainChange = (e) => {
-    setFormData({...formData, domain: e.target.value});
+    setFormData({ ...formData, domain: e.target.value });
   };
-  const handleEnrollSubmit = (e) => {
+  const handleEnrollSubmit = async (e) => {
     e.preventDefault();
-
-  }
+    if(email && fullName && contactNumber && country &&college && domain){
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, {
+        ...formData,
+        dateJoined: serverTimestamp()
+      })
+      setSuccess(true);
+    }else{
+      console.log('Something went wrong')
+    }
+    setFormData('')
+  };
   return (
     <EnrollContainerWrapper>
       <div className="enroll-form-container">
@@ -176,16 +194,32 @@ const Enroll = () => {
             </div>
 
             <button
+             type="submit"
               className="btn"
-              onClick={() => {
-                navigate("/overview");
-              }}
             >
               <span>Submit Form</span>
             </button>
           </form>
         </div>
       </div>
+      {success && (
+        <motion.div
+          className="success"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+          Internship registration form submitted Successfully
+        </motion.div>
+      )}
+      {err && <motion.div
+          className="err"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+        {err}
+        </motion.div>}
     </EnrollContainerWrapper>
   );
 };
@@ -196,6 +230,24 @@ const EnrollContainerWrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  .success, .err {
+    background: rgba(238, 240, 238, 0.966);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.041);
+    position: fixed;
+    right: 30rem;
+    top: 40px;
+    width: 350px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: green;
+  }
+  .err{
+    color: tomato;
+  }
   .enroll-form-container {
     width: 100%;
     height: 100%;
