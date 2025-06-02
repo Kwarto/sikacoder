@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import thumb1 from '../../../assets/images/thumb/course_thumb01.jpg'
 import { CourseDetail } from '../..'
 
-const SingleCourse = ({course}) => {
+const SingleCourse = ({courses, course}) => {
   // const { title, thumb, category, desc, instructors } = data; 
   const [showDetail, setShowDetail] = useState(false)
   console.log(course)
@@ -26,7 +26,7 @@ const SingleCourse = ({course}) => {
         </div>
      </div>
     </SingleCourseContainerWrapper>
-    {showDetail && <CourseDetail setShowDetail={setShowDetail} courseId={course?.uid} /> }
+    {showDetail && <CourseDetail setShowDetail={setShowDetail} courses={courses} courseId={course?.id} /> }
     </>
   )
 }
@@ -84,6 +84,7 @@ const SingleCourseContainerWrapper = styled.div`
     /* height: calc(430px - 180px); */
     padding: 10px 0 0 0;
     h3{
+        font-size: 1.23rem;
         transition: text-decoration ease-in-out 0.3s;
       
         &:hover{

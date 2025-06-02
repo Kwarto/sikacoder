@@ -43,17 +43,16 @@ const Navbar = () => {
           <NavLink className="nav_link" to={"/blog"}>
             Blog
           </NavLink>
-          
-            {!user && <div
+            {!user ? <div
               className="btn"
               onClick={() => {
                 navigate("/auth");
               }}
             >
               Get Started
-            </div>}
-          
-           { user && <div className="profile-wrapper" onClick={() => {setShowModal(!showModal)}}>
+            </div>
+              :
+            <div className="profile-wrapper" onClick={() => {setShowModal(!showModal)}}>
               <img src={user.photoURL} alt={user.displayName} />
             </div>}
         </MenuListContainerWrapper>

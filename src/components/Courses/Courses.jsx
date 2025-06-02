@@ -26,7 +26,6 @@ const Courses = () => {
     return () => {
       unsub();
     };
-    // eslint-disable-next-line
   }, []);
   return (
     <CoursesContainerWrapper>
@@ -66,7 +65,7 @@ const Courses = () => {
      </article>
      <article className='right-panel grid-col-3'>
         {courses && courses.map((course) => 
-        <SingleCourse course={course}/>
+        <SingleCourse course={course} courses={courses}/>
         )}
      </article>
      

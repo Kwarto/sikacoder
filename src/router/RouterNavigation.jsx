@@ -12,6 +12,7 @@ import {
   LoginAdmin,
   Network,
   Services,
+  StatusBoard,
 } from "../pages";
 import { UserProtectedRoute, AdminProtectedRoute, Enroll } from "../components";
 import { UserAuthProvider } from "../context/UserAuthContext";
@@ -31,6 +32,7 @@ const RouterNavigation = () => {
           </UserProtectedRoute>
           } />
         <Route path={`/internship/:id/enroll`} element={<Enroll />} />
+        <Route path='/internship/application/:id/status' element={<StatusBoard />} />
         <Route path="/network" element={<Network />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />

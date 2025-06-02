@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { MdOutlineDeviceUnknown } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useUserAuth } from "../../../context/UserAuthContext";
-import { collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
 const domainOption = [
   "Web Development",
@@ -30,6 +29,7 @@ const initialState = {
 
 const Enroll = () => {
   const {user} = useUserAuth();
+  const {id} = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
   const { email, fullName, contactNumber, country, college, domain } = formData;
@@ -47,6 +47,7 @@ const Enroll = () => {
       const userRef = doc(db, "users", user.uid);
       await updateDoc(userRef, {
         ...formData,
+        courseRegisteredId: id,
         dateJoined: serverTimestamp()
       })
       setSuccess(true);
@@ -54,6 +55,7 @@ const Enroll = () => {
       console.log('Something went wrong')
     }
     setFormData('')
+    navigate(`/internship/application/${id}/status`);
   };
   return (
     <EnrollContainerWrapper>
@@ -134,7 +136,7 @@ const Enroll = () => {
             <div className="input-field">
               <label htmlFor="fullName">Your Full Name</label>
               <span>
-                ➝ Enter your full name as you want it on the offer letter.
+                ➝ Enter your Full Name as you want it on the offer letter and certificate.
               </span>
               <input
                 type="text"
@@ -258,6 +260,7 @@ const EnrollContainerWrapper = styled.section`
     grid-template-columns: 70% 30%;
     place-items: center;
     gap: 1rem;
+    padding: 20px;
     .enroll-info {
       padding: 12px;
       width: 100%;
@@ -316,6 +319,7 @@ const EnrollContainerWrapper = styled.section`
           overflow-y: hidden;
           label {
             font-size: 18px;
+            font-weight: 400;
             color: teal;
           }
           span {

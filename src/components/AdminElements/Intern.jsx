@@ -1,12 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaHome, FaMapMarker } from 'react-icons/fa'
 import { FaPhone, FaTableList } from 'react-icons/fa6'
 import { MdDashboard, MdEmail } from 'react-icons/md'
 import styled from 'styled-components'
-import { usrData } from '../../utils/usrData'
+import { collection, onSnapshot } from 'firebase/firestore'
+import { db } from '../../../firebaseConfig'
+import InternDetail from './InternDetail'
 
 const Intern = () => {
   const [isGrid, setIsGrid] = useState(false);
+  const [interns, setInterns] = useState([]);
+  const [showDetailModal, setShowDetailModal] =useState(true);
+     console.log(interns);
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, 'users'),
+      (snapshot) => {
+        let list = [];
+        snapshot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setInterns(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    return () => {
+      unsub();
+    };
+  }, []);
   return (
     <InternsContainerWrapper>
       <HeaderWrapper>
@@ -29,27 +53,28 @@ const Intern = () => {
         </div>
       </HeaderWrapper>
       <InternsListGridContainer className={isGrid ? `grid-col-4` : 'list-content'}>
-        {usrData && usrData.map((intern) => {
+        {interns && interns.map((intern) => {
           return(
             <div className="intern-card" key={intern.id}>
           <div className="intern-info">
             <div className="profile">
-              <img src={intern.userProfile} alt={intern.userName} />
+              <img src={intern.userProfile} alt={intern.username} />
             </div>
             <div className="meta">
-              <h4>{intern.userName}</h4>
-              <span>{intern.courseApplied}</span>
+              <h4>{intern.fullName}</h4>
+              <span>{intern.domain}</span>
             </div>
           </div>
           <div className="intern-contact">
-            <li><MdEmail /> {intern.emailId}</li>
-            <li><FaMapMarker /> {intern.location}</li>
-            <li><FaPhone /> {intern.phone}</li>
+            <li><MdEmail /> {intern.email}</li>
+            <li><FaMapMarker /> {intern.country}</li>
+            <li><FaPhone /> {intern.contactNumber}</li>
           </div>
         </div>
           )
         })}
       </InternsListGridContainer>
+      {showDetailModal && <InternDetail setShowDetailModal={setShowDetailModal} />}
     </InternsContainerWrapper>
   )
 }
@@ -173,13 +198,14 @@ const InternsListGridContainer = styled.div`
       .profile{
         width: 80px;
         aspect-ratio: 1/1;
-        background: rgba(24, 23, 23, 0.877);
+        background: rgba(187, 185, 185, 0.103);
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         img{
           width: 80%;
+          border-radius: inherit;
         }
       }
       .meta{

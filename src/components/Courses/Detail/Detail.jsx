@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -15,11 +16,11 @@ import {
   MdFileDownload,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-const Detail = ({ courseId, setShowDetail }) => {
+const Detail = ({courses, courseId, setShowDetail }) => {
   const [courseDetail, setCourseDetail] = useState([]);
   const navigate = useNavigate()
   useEffect(() => {
-    const findCourse = courseList.filter((item) => item.id === courseId)[0];
+    const findCourse = courses.filter((item) => item.id === courseId)[0];
     setCourseDetail(findCourse);
   }, [courseId]);
   console.log(courseDetail);
@@ -33,19 +34,16 @@ const Detail = ({ courseId, setShowDetail }) => {
       >
         <article className="short-meta-info-wrapper">
           <div className="top-detail">
-            <img src={courseDetail?.thumb} alt="" />
+            <img src={courseDetail?.thumb} alt={courseDetail?.courseId} />
           </div>
           <div className="st-abt">
-            <h1>{courseDetail?.title}</h1>
+            <h1>{courseDetail?.courseName}</h1>
             <p>
-              {courseDetail?.desc}__ Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Blanditiis expedita commodi voluptatum?
-              Voluptate eaque provident corrupti unde dolorum eum facere omnis
-              laborum sit reiciendis. Provident?
+              {courseDetail?.description}
             </p>
             <div className="sm-info">
-              <h4>{courseDetail?.category}</h4>
-              <h4>{courseDetail?.skill_level}</h4>
+              <h4>{courseDetail?.courseCategory}</h4>
+              <h4>{courseDetail?.level}</h4>
               <h4>
                 <FaStar className="ico" /> {courseDetail?.rating}{" "}
                 <small>(Rating)</small>
@@ -87,50 +85,27 @@ const Detail = ({ courseId, setShowDetail }) => {
           </div>
           <div className="what-cover">
             <h3>This Course Include:</h3>
-            <div className="cover-ls">
-              <div className="ls-box">
-                <MdCalendarMonth className="ico" />
-                <p>3 Months Intern</p>
-              </div>
-              <div className="ls-box">
-                <MdFileDownload className="ico" />
-                <p>50+ downloadable resources</p>
-              </div>
-              <div className="ls-box">
-                <MdArticle className="ico" />
-                <p>20+ Articles shared</p>
-              </div>
-              <div className="ls-box">
-                <MdCode className="ico" />
-                <p>8 coding task</p>
-              </div>
-              <div className="ls-box">
-                <IoMdTrophy className="ico" />
-                <p>Awards & Recommendation</p>
-              </div>
-              <div className="ls-box">
-                <MdBuild className="ico" />
-                <p>CV/Resume Builder</p>
-              </div>
-            </div>
+ 
+                <li>
+                  <MdCalendarMonth className="ico" />
+                  {courseDetail?.resources}
+                </li>
           </div>
           <div className="require">
             <h3>Requirements</h3>
             <ul>
               <li>
                 <MdCheck />
-                No programming experience needed, You'll learn all that you want
-                to know.
+               {courseDetail.prerequisites}
               </li>
               <li>
-                <MdCheck /> A computer with access to the internet.{" "}
+                <MdCheck /> {courseDetail.prerequisites}
               </li>
               <li>
-                <MdCheck /> No paid softwares require.
+                <MdCheck /> {courseDetail.prerequisites}
               </li>
               <li>
-                <MdCheck /> Software installation step-by-step walkthrough and
-                set up.
+                <MdCheck /> {courseDetail.prerequisites}
               </li>
             </ul>
           </div>
@@ -169,7 +144,7 @@ const DetailContainerWrapper = styled.section`
     gap: 1rem;
     h1 {
       color: rgb(26, 25, 25);
-      font-size: 2.3rem;
+      font-size: 2rem;
     }
     .close {
       position: fixed;
@@ -208,7 +183,7 @@ const DetailContainerWrapper = styled.section`
         }
       }
       .st-abt {
-        padding: 10px 0;
+        padding: 5px 0;
         p {
           padding: 15px 0;
           max-width: 600px;
@@ -256,26 +231,20 @@ const DetailContainerWrapper = styled.section`
       }
       .what-cover {
         margin: 12px 0;
-        .cover-ls {
-          display: flex;
+        width: 100%;
+        background: red;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+         li{
           width: 100%;
-          flex-wrap: wrap;
-          flex: 1 30rem;
-          align-items: flex-start;
-          justify-content: flex-start;
-          gap: 1rem;
-          .ls-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 230px;
-            transform: translateX(-3.5rem);
-            .ico {
-              color: teal;
-            }
+          background: blue;
+          display: block;
+          .ico {
+            color: teal;
           }
-        }
+         }
       }
       .btn {
         display: flex;
