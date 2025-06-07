@@ -5,7 +5,9 @@ import { motion } from "framer-motion";
 import profileImg from "../../assets/icons/avatar.png";
 import { MdEdit, MdShield } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa6";
+import { useUserAuth } from "../../context/UserAuthContext";
 const UserAccountMa = () => {
+ const {user} = useUserAuth()
   return (
     <UserAccountManageContainer>
       <motion.div
@@ -19,10 +21,10 @@ const UserAccountMa = () => {
             <MdEdit />
           </div>
           <div className="profile">
-            <img src={profileImg} alt="" />
+            <img src={user.photoURL} alt="" />
           </div>
           <div className="usr-name">
-            <h4>Kwarteng Joseph</h4>
+            <h4>{user.displayName}</h4>
             <span>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </span>
@@ -122,6 +124,7 @@ const UserAccountManageContainer = styled.div`
         justify-content: center;
         img {
           width: 80%;
+          border-radius: 50px;
         }
       }
       .usr-name {

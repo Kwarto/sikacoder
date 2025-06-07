@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import styled from "styled-components";
 import { Over, SideBar } from "../../components";
+
 
 const Overview = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -10,6 +11,7 @@ const Overview = () => {
   const [showTasks, setShowTasks] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
+
   return (
     <OverviewContainerWrapper>
       <SideBar

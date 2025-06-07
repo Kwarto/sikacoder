@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import styled from "styled-components";
 import preBg from "../../assets/images/thumb/course_thumb08.jpg";
@@ -10,7 +10,8 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { db } from "../../../firebaseConfig";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { db, storage } from "../../../firebaseConfig";
 const initialState = {
   title: "",
   category: "",
@@ -72,6 +73,7 @@ const Post = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [err, setErr] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [progress, setProgress] = useState(false);
  
   //Course onChange handler
   const handleCourseChange = (e) => {
@@ -129,6 +131,44 @@ const Post = () => {
     }
     setFormData('')
   };
+
+  //Blog Post Banner Upload
+  useEffect(() => {
+    const uploadFile = () => {
+      const storageRef = ref(storage, `Images/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgress(progress);
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload paused');
+              break;
+            case 'running':
+              console.log('Upload is running');
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+            alert('banner uploaded');
+            setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
+          });
+        }
+      );
+    };
+
+    file && uploadFile();
+  }, [file]);
+
 
   const handleBlogSubmit = async (e) => {
     e.preventDefault();
@@ -190,7 +230,7 @@ const Post = () => {
         <AddBlogContainer>
           <form onSubmit={handleBlogSubmit}>
             <div className="blog-banner-container">
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+              <input type="file" id='file' onChange={(e) => setFile(e.target.files[0])} />
               <label htmlFor="file">
                 <FaCloudUploadAlt />
               </label>
@@ -228,7 +268,7 @@ const Post = () => {
                   onChange={handleChange}
                 />
               </div>
-              <button className="btn btn-primary">Submit Blog</button>
+              <button className="btn btn-primary" disabled={progress !== null && progress > 100}>Submit Blog</button>
             </div>
           </form>
           {err && <div>{err}</div>}
@@ -436,6 +476,7 @@ const AddBlogContainer = styled.article`
         border-radius: 1rem;
         box-shadow: 0 0 10px rgba(20, 20, 20, 0.527);
         color: cyan;
+        cursor: pointer;
       }
       input {
         display: none;

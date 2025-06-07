@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import logoImg from '../../assets/images/sc-logo.png';
-import avImg from '../../assets/icons/avatar.png'
+import { useUserAuth } from '../../context/UserAuthContext';
 const AdNav = ({isDrawer, setIsDrawer}) => {
+  const {user} = useUserAuth()
   return (
     <AdNavContainer>
       <LogoWrapper>
          <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrapper>
       <ProfileWrapper onClick={() => {setIsDrawer(!isDrawer)}}>
-        <img src={avImg} alt="profile" />
-        
+        <img src={user.photoURL} alt="profile" />
       </ProfileWrapper>
     </AdNavContainer>
   )
@@ -57,6 +57,7 @@ const ProfileWrapper = styled.div`
   cursor: pointer;
   img{
     width: 80%;
+    border-radius: 10px;
   }
 `
 

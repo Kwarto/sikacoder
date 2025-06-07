@@ -1,31 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
-import { blogData } from '../../utils/blogData'
 import { FaEye } from 'react-icons/fa'
-const Blogpost = () => {
+
+import bannerImg from '../../assets/images/mission.jpg'
+
+const Blogpost = ({blogs}) => {
+  
+
   return (
-    <BlogpostContainerWrapper className='grid-col-4'>
-      {blogData && blogData.map((blog) => {
-        return(
-           <div className="blog-card" key={blog.id}>
-           <div className="banner-box">
-              <img src={blog.banner} alt="" />
+    <BlogpostContainerWrapper className='grid-col-3'>
+      {blogs?.map((blog) => (
+        <div className="blog-card" key={blog.id}>
+        <div className="banner-box">
+           <img src={bannerImg} alt="" />
+        </div>
+        <div className="meta-info">
+          <div className="small-info">
+           <li>{blog.category}</li>
+           <li></li>
+          </div>
+            <h4>{blog.title.substring(0,35)}</h4>
+           <p>{blog.desc.substring(0,130)}...</p>
+           <div className="views">
+             <FaEye className='ico'/>
+             <p>123</p>
            </div>
-           <div className="meta-info">
-             <div className="small-info">
-              <li>{blog.category}</li>
-              <li>{blog.datePosted}</li>
-             </div>
-               <h4>{blog.title}</h4>
-              <p>{blog.desc.substring(0, 75)}....</p>
-              <div className="views">
-                <FaEye className='ico'/>
-                <p>{blog.views}</p>
-              </div>
-           </div>
-         </div>
-        )
-       })}
+        </div>
+      </div>
+      ))}
     </BlogpostContainerWrapper>
   )
 }

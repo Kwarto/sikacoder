@@ -43,18 +43,17 @@ const Enroll = () => {
   };
   const handleEnrollSubmit = async (e) => {
     e.preventDefault();
-    if(email && fullName && contactNumber && country &&college && domain){
+    if(email && fullName && contactNumber && country && college && domain){
       const userRef = doc(db, "users", user.uid);
       await updateDoc(userRef, {
         ...formData,
         courseRegisteredId: id,
-        dateJoined: serverTimestamp()
-      })
+        dateJoined: serverTimestamp(),
+      }) 
       setSuccess(true);
     }else{
-      console.log('Something went wrong')
+      console.log('Something Went Wrong');
     }
-    setFormData('')
     navigate(`/internship/application/${id}/status`);
   };
   return (

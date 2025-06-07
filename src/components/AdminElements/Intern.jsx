@@ -1,42 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import { FaHome, FaMapMarker } from 'react-icons/fa'
 import { FaPhone, FaTableList } from 'react-icons/fa6'
 import { MdDashboard, MdEmail } from 'react-icons/md'
 import styled from 'styled-components'
-import { collection, onSnapshot } from 'firebase/firestore'
-import { db } from '../../../firebaseConfig'
 import InternDetail from './InternDetail'
 
-const Intern = () => {
+const Intern = ({interns}) => {
   const [isGrid, setIsGrid] = useState(false);
-  const [interns, setInterns] = useState([]);
-  const [showDetailModal, setShowDetailModal] =useState(true);
-     console.log(interns);
-  useEffect(() => {
-    const unsub = onSnapshot(
-      collection(db, 'users'),
-      (snapshot) => {
-        let list = [];
-        snapshot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
-        });
-        setInterns(list);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  const [showDetailModal, setShowDetailModal] =useState(false);
 
-    return () => {
-      unsub();
-    };
-  }, []);
   return (
     <InternsContainerWrapper>
       <HeaderWrapper>
         <div className="top">
           <div className="left">
-            <h3>Verified Interns [50]</h3>
+            <h3>Verified Interns [{interns?.length}]</h3>
             <div className="small">
             <FaHome />
             <span>- Interns</span>
@@ -55,7 +33,7 @@ const Intern = () => {
       <InternsListGridContainer className={isGrid ? `grid-col-4` : 'list-content'}>
         {interns && interns.map((intern) => {
           return(
-            <div className="intern-card" key={intern.id}>
+          <div className="intern-card" key={intern.id} onClick={() => {setShowDetailModal(true)}}>
           <div className="intern-info">
             <div className="profile">
               <img src={intern.userProfile} alt={intern.username} />
@@ -74,7 +52,7 @@ const Intern = () => {
           )
         })}
       </InternsListGridContainer>
-      {showDetailModal && <InternDetail setShowDetailModal={setShowDetailModal} />}
+      {showDetailModal && <InternDetail interns={interns} setShowDetailModal={setShowDetailModal} />}
     </InternsContainerWrapper>
   )
 }

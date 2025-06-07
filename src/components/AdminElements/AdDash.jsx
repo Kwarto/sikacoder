@@ -10,21 +10,21 @@ import { MdCloudUpload } from "react-icons/md";
 import UserAccountMa from "./UserAccountMa";
 import Post from "./Post";
 
-const AdDash = ({isDrawer, setIsDrawer, activeIndex, showPost, setShowPost }) => {
+const AdDash = ({isDrawer, courses, users, blogs, setIsInterns, setIsDrawer, activeIndex, showPost, setShowPost }) => {
   
   
   const renderComponent = () => {
     switch (activeIndex) {
       case 0:
-        return <Overview />;
+        return <Overview courses={courses} users={users} blogs={blogs} setIsInterns={setIsInterns}/>;
       case 1:
-        return <Intern />;
+        return <Intern interns={users} />;
       case 2:
-        return <Programs />;
+        return <Programs courses={courses}/>;
       case 3:
         return <Announce />;
       case 4:
-        return <Blogpost />;
+        return <Blogpost blogs={blogs} />;
       default:
         break;
     }

@@ -8,6 +8,7 @@ import { useUserAuth } from "../../../context/UserAuthContext";
 
 const Dash = () => {
   const {user} = useUserAuth();
+
   return (
     <DashWrapper>
       <LeftContentContainer>

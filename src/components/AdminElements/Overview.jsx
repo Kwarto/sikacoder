@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { FaBookOpen, FaBullhorn, FaUserGraduate } from "react-icons/fa6";
 import { MdArrowDropUp } from "react-icons/md";
 import courseImg1 from '../../assets/images/thumb/course_thumb01.jpg';
-import courseImg2 from '../../assets/images/thumb/course_thumb02.jpg';
-import usrPro from '../../assets/icons/avatar.png'
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
-const Overview = () => {
+
+const Overview = ({courses, users, blogs, setIsInterns}) => {
+  
   return (
     <DashContainerWrapper>
           <article className="top grid-col-4">
@@ -22,7 +22,8 @@ const Overview = () => {
               </div>
               <div className="mid">
                 <h3>
-                  <MdArrowDropUp className="drop" /> 500+
+                  <MdArrowDropUp className="drop" /> 
+                  00{users?.length}+
                 </h3>
                 <div className="date">
                   <span>May 20, 2025</span>
@@ -41,7 +42,8 @@ const Overview = () => {
               </div>
               <div className="mid">
                 <h3>
-                  <MdArrowDropUp className="drop" /> 500+
+                  <MdArrowDropUp className="drop" /> 
+                  00{courses?.length}+
                 </h3>
                 <div className="date">
                   <span>May 20, 2025</span>
@@ -79,7 +81,8 @@ const Overview = () => {
               </div>
               <div className="mid">
                 <h3>
-                  <MdArrowDropUp className="drop" /> 500+
+                  <MdArrowDropUp className="drop" /> 
+                  00{blogs?.length}+
                 </h3>
                 <div className="date">
                   <span>May 20, 2025</span>
@@ -92,46 +95,37 @@ const Overview = () => {
               <div className="head">
                 <h3>Top Courses</h3>
               </div>
-              <div className="course-card">
+            {courses && courses?.map((course) => (
+              <div className="course-card" key={course.id}>
                 <div className="course-banner">
                   <img src={courseImg1} alt="course_id" />
                 </div>
                 <div className="course-abt">
-                  <h3>Complete Web Development </h3>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat quam, eos voluptas excepturi maxime totam.</p>
+                  <h3>{course.courseName} </h3>
+                  <p>{course.description.substring(0, 105)}..</p>
                 <div className="course-sub">
                   <FaUserGraduate />
                   <samp>280</samp>
                 </div>
                 </div>
               </div>
-               <div className="course-card">
-                <div className="course-banner">
-                  <img src={courseImg2} alt="course_id" />
-                </div>
-                <div className="course-abt">
-                  <h3>Complete Python Programming </h3>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat quam, eos voluptas excepturi maxime totam.</p>
-                <div className="course-sub">
-                  <FaUserGraduate />
-                  <samp>220</samp>
-                </div>
-                </div>
-              </div>
+            ))}
+    
             </div>
             <div className="stat-card left">
               <div className="head">
                 <h3>New Applicants</h3>
-                <span>See All</span>
+                <span onClick={() => {setIsInterns(true)}}>See All</span>
               </div>
               <div className="new-intern-wrapper">
-                <div className="new-intern-card">
+              {users && users?.map((user) => (
+                <div className="new-intern-card" key={user.userId}>
                   <div className="profile">
-                    <img src={usrPro} alt="user-profile" />
+                    <img src={user.userProfile} alt="user-profile" />
                   </div>
                   <div className="about">
-                    <h4>Danny Nelson</h4>
-                    <p>Applied as <span>Web Developer</span></p>  
+                    <h4>{user.username}</h4>
+                    <p>Applied as <span>{user.domain}</span></p>  
                     <small>May 12, 2025</small>  
                   </div>
                   <div className="contact">
@@ -139,34 +133,7 @@ const Overview = () => {
                     <FaPhone />
                   </div>
                 </div>
-                <div className="new-intern-card">
-                  <div className="profile">
-                    <img src={usrPro} alt="user-profile" />
-                  </div>
-                  <div className="about">
-                    <h4>Danny Nelson</h4>
-                    <p>Applied as <span>Web Developer</span></p>  
-                    <small>May 12, 2025</small>  
-                  </div>
-                  <div className="contact">
-                    <FaEnvelope />
-                    <FaPhone />
-                  </div>
-                </div>
-                <div className="new-intern-card">
-                  <div className="profile">
-                    <img src={usrPro} alt="user-profile" />
-                  </div>
-                  <div className="about">
-                    <h4>Danny Nelson</h4>
-                    <p>Applied as <span>Web Developer</span></p>  
-                    <small>May 12, 2025</small>  
-                  </div>
-                  <div className="contact">
-                    <FaEnvelope />
-                    <FaPhone />
-                  </div>
-                </div>
+              ))}
               </div>
             </div>
           </article>
@@ -400,6 +367,7 @@ const DashContainerWrapper = styled.section`
             border-radius: 10px;
             img{
               width: 80%;
+              border-radius: inherit;
             }
           }
           .about{

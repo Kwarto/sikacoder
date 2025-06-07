@@ -9,8 +9,9 @@ import { FaPlay } from 'react-icons/fa'
 import { FcSerialTasks } from "react-icons/fc";
 import { FaRegFolderOpen } from "react-icons/fa6";
 import Video from '../dash/Video/Video'
-const MyCourses = () => {
+const MyCourses = ({courses}) => {
   const [isModal, setIsModal] = useState(false)
+  console.log(courses)
   return (
     <MyCourseContainerWrapper>
      <div className="main-course">

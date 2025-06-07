@@ -4,7 +4,11 @@ import { FaGears } from 'react-icons/fa6'
 import { MdArrowDropUp } from 'react-icons/md'
 import styled from 'styled-components'
 import bannerImg from '../../assets/images/thumb/course_thumb06.jpg'
-const Programs = () => {
+
+
+const Programs = ({courses}) => {
+
+
   return (
     <ProgramsContainerWrapper>
       <SkillLevelContainerWrapper className='grid-col-3'>
@@ -14,7 +18,7 @@ const Programs = () => {
                <FaStackOverflow />
             </div>
             <div className="level-txt">
-              <h3>Beginner Courses</h3>
+              <h3>Beginners Course</h3>
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
           </div>
@@ -73,86 +77,19 @@ const Programs = () => {
         </div>
       </SkillLevelContainerWrapper>
       <AllCoursesContainerWrapper className='grid-col-4'>
-        <div className="course-card">
+        {courses && courses.map((course) => (
+         <div className="course-card" key={course.id}>
           <div className="banner">
             <img src={bannerImg} alt="" />
           </div>
           <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
+            <h4>{course.courseName.substring(0, 34)}</h4>
+            <span>{course.description.substring(0, 100)}.</span>
             <li><FaUserGraduate />250+</li>
           </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
-        <div className="course-card">
-          <div className="banner">
-            <img src={bannerImg} alt="" />
-          </div>
-          <div className="meta-info">
-            <h4>Beginners Guide To Become Professional Frontend Developer </h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vero molestiae similique..</span>
-            <li><FaUserGraduate />250+</li>
-          </div>
-        </div>
+         </div>
+        ))}
+       
       </AllCoursesContainerWrapper>
     </ProgramsContainerWrapper>
   )
@@ -281,6 +218,7 @@ const AllCoursesContainerWrapper = styled.div`
      height: 40%;
      overflow: hidden;
      h4{
+      font-size: 16px;
       color: rgba(2, 19, 20, 0.795);
      }
      span{
