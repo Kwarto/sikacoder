@@ -1,42 +1,76 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import bgImg from '../../../assets/images/side-bg.png'
 import { MdLeaderboard, MdLineAxis, MdPlayLesson, MdTimelapse } from 'react-icons/md'
 import { IoMdGitNetwork } from 'react-icons/io'
 import logoImg from '../../../assets/icons/favicon.png';
 import courseImg from '../../../assets/images/thumb/course_thumb02.jpg'
-import { FaPlay } from 'react-icons/fa'
+import { FaAward, FaPlay } from 'react-icons/fa'
 import { FcSerialTasks } from "react-icons/fc";
 import { FaRegFolderOpen } from "react-icons/fa6";
 import Video from '../dash/Video/Video'
-const MyCourses = ({courses}) => {
-  const [isModal, setIsModal] = useState(false)
-  console.log(courses)
+import { useUserAuth } from '../../../context/UserAuthContext';
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../../../../firebaseConfig'
+
+const MyCourses = () => {
+  const {user} = useUserAuth();
+  const userId = user.uid;
+  const [isModal, setIsModal] = useState(false);
+  const [usrObj,setUsrObj] = useState(null);
+  const [userCourseData, setUserCourseData] = useState([])
+  const userCourseId = usrObj?.courseRegisteredId;
+  useEffect(() => {
+    const fetchUsrObj = async () => {
+      const docRef = doc(db, 'users', userId);
+      const docSnap = await getDoc(docRef);
+      if(docSnap.exists()){
+        setUsrObj(docSnap.data())
+      }else{
+        console.log('Error')
+      }
+    }
+    fetchUsrObj()
+  },[userId])
+
+ useEffect(() => {
+  const fetchUserCourse = async () =>{
+
+    const docRef = doc(db, 'courses', userCourseId);
+    const courseSnap = await getDoc(docRef)
+     if(courseSnap.exists()){
+      setUserCourseData(courseSnap.data())
+     }else{
+      console.log('Error')
+     }
+  }
+  fetchUserCourse()
+ },[userCourseId])
   return (
     <MyCourseContainerWrapper>
      <div className="main-course">
-      <div className="course-sm-info">
-        <h3>Learn Next.js</h3>
+      <div className="course-sm-info" key={userCourseData?.id}>
+        <h3>{userCourseData?.courseName}</h3>
         <div className="time-level-instructor">
             <div className="author-img">
               <img src={logoImg} alt="" />
             </div>
             <div className="time-span">
               <MdTimelapse />
-              <span>2 hrs</span>
+              <span>{userCourseData?.duration}</span>
             </div>
 
          <div className="level">
           <MdLeaderboard />
-          <span>Intermediate</span>
+          <span>{userCourseData?.level}</span>
          </div>
          <div className="community">
-          <IoMdGitNetwork />
-          <span>Community</span>
+          <FaAward />
+          <span>{userCourseData?.credential}</span>
          </div>
         </div>
         <div className="caption">
-          <p>Learn to build web apps with Next.js world's most popular full-stack framework. You will cover routing, layouts, data fetching, optimizing assets and more, while build EventHub a site for event ticking and booking.</p>
+          <p>{userCourseData?.description}</p>
         </div>
         <div className="btn-primary">
           <MdLineAxis/>
@@ -56,7 +90,6 @@ const MyCourses = ({courses}) => {
             </div>
           </div>
           <div className="topic-abt">
-            <h3>Next.js Introduction</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis quam eveniet nostrum repellendus maxime unde.</p>
             <div className="time-span">
               <MdTimelapse />

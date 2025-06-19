@@ -122,7 +122,7 @@ const NavbarContainerWrapper = styled.nav`
   width: 100%;
   height: 70px;
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.027);
+  box-shadow: 0 1rem 40px rgba(0, 0, 0, 0.349);
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -7,13 +7,13 @@ import Messages from "./messages/Messages";
 import Tasks from "./tasks/Tasks";
 import Settings from "./settings/Settings";
 
-const Overview = ({ activeIndex, setShowSideBar, courses }) => {
+const Overview = ({ activeIndex, setShowSideBar, courses, interns }) => {
   const renderComponent = () => {
     switch (activeIndex) {
       case 0:
         return <Dash  />;
       case 1:
-        return <MyCousrses courses={courses} />;
+        return <MyCourses courses={courses} interns={interns} />;
       case 2:
         return <Messages />;
       case 3:

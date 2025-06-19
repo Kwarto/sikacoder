@@ -1,13 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, { useState} from 'react'
 import { FaHome, FaMapMarker } from 'react-icons/fa'
-import { FaPhone, FaTableList } from 'react-icons/fa6'
-import { MdDashboard, MdEmail } from 'react-icons/md'
+import { FaBarsProgress, FaPhone, FaTableList } from 'react-icons/fa6'
+import { MdDashboard, MdEmail, MdVerifiedUser } from 'react-icons/md'
 import styled from 'styled-components'
 import InternDetail from './InternDetail'
 
 const Intern = ({interns}) => {
   const [isGrid, setIsGrid] = useState(false);
-  const [showDetailModal, setShowDetailModal] =useState(false);
+  const [isVerified, setIsVerified] = useState(true);
+  const [isDetail, setIsDetail] = useState(false);
 
   return (
     <InternsContainerWrapper>
@@ -33,8 +35,9 @@ const Intern = ({interns}) => {
       <InternsListGridContainer className={isGrid ? `grid-col-4` : 'list-content'}>
         {interns && interns.map((intern) => {
           return(
-          <div className="intern-card" key={intern.id} onClick={() => {setShowDetailModal(true)}}>
-          <div className="intern-info">
+          <>
+          <div className="intern-card" key={intern.id}>
+          <div className="intern-info" onClick={() => {setIsDetail(true)}}>
             <div className="profile">
               <img src={intern.userProfile} alt={intern.username} />
             </div>
@@ -47,12 +50,15 @@ const Intern = ({interns}) => {
             <li><MdEmail /> {intern.email}</li>
             <li><FaMapMarker /> {intern.country}</li>
             <li><FaPhone /> {intern.contactNumber}</li>
+            {isVerified && <li className='status'><MdVerifiedUser />Verified</li>}
+            {!isVerified && <li className='status re'><FaBarsProgress />Pending</li>}
           </div>
         </div>
+      {isDetail && <InternDetail usrId={intern.id} setIsDetail={setIsDetail}/>}
+          </>
           )
         })}
       </InternsListGridContainer>
-      {showDetailModal && <InternDetail interns={interns} setShowDetailModal={setShowDetailModal} />}
     </InternsContainerWrapper>
   )
 }
@@ -100,6 +106,20 @@ const InternsContainerWrapper = styled.article`
         background: transparent;
         box-shadow: none;
         color: rgba(2, 19, 20, 0.795);
+      }
+      .status{
+        background: rgb(28, 226, 216);
+        box-shadow: inset 0 0 10px rgba(10, 78, 82, 0.24);
+        color: #01334b;
+        border-radius: 8px;
+        width: 160px;
+        height: 40px;
+        font-weight: 600;
+        overflow-y: hidden;
+      }
+      .re{
+        background: rgb(253, 239, 44);
+        color: #000207;
       }
     }
   }
@@ -210,6 +230,15 @@ const InternsListGridContainer = styled.div`
         margin: 2px 0;
         font-weight: 500;
         color: #fff;
+      }
+      .status{
+        background: rgb(58, 207, 200);
+        box-shadow: inset 0 0 10px rgba(103, 176, 236, 0.247);
+        font-weight: 600;
+      }
+      .re{
+        background: rgb(253, 239, 44);
+        color: #000207;
       }
     }
   }

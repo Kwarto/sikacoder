@@ -1,6 +1,8 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import styled from "styled-components";
 import { Over, SideBar } from "../../components";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 
 
 const Overview = () => {
@@ -11,7 +13,46 @@ const Overview = () => {
   const [showTasks, setShowTasks] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
-
+  const [courses, setCourses] = useState([]);
+  const [interns, setInterns] = useState([]);
+    useEffect(() => {
+      const unsub = onSnapshot(
+        collection(db, 'courses'),
+        (snapshot) => {
+          let list = [];
+          snapshot.docs.forEach((doc) => {
+            list.push({ id: doc.id, ...doc.data() });
+          });
+          setCourses(list);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  
+      return () => {
+        unsub();
+      };
+    }, []);
+    useEffect(() => {
+      const unsub = onSnapshot(
+        collection(db, 'users'),
+        (snapshot) => {
+          let list = [];
+          snapshot.docs.forEach((doc) => {
+            list.push({ id: doc.id, ...doc.data() });
+          });
+          setInterns(list);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  
+      return () => {
+        unsub();
+      };
+    }, []);
   return (
     <OverviewContainerWrapper>
       <SideBar
@@ -33,6 +74,8 @@ const Overview = () => {
         showSettings={setShowSettings}
         setShowSideBar={setShowSideBar}
         activeIndex={activeIndex}
+        courses={courses}
+        interns={interns}
       />
     </OverviewContainerWrapper>
   );

@@ -1,35 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import bgImg from "../../assets/images/in_hero_bg.jpg";
 import { FaInfo } from "react-icons/fa6";
-import {doc, getDoc } from "firebase/firestore";
-import { db } from "../../../firebaseConfig";
-
-const InternDetail = ({ interns, setShowDetailModal }) => {
-  const [registeredCourse, setRegisteredCourse] = useState([]);
-  const courseId = interns.map((item) => item.courseRegisteredId);
-  useEffect(() => {
-    courseId && getRegisteredCourse()
- 
-  }, [courseId])
-  const getRegisteredCourse = async () => {
-    const docRef = doc(db, "courses", courseId);
-    const userCourseSnap = await getDoc(docRef);
-    if(userCourseSnap.exists()){
-      setRegisteredCourse({...userCourseSnap.data()})
-    }
-  }
-  
-  console.log(registeredCourse)
 
 
+const InternDetail = ({usrId, interns, setIsDetail }) => {
+ console.log(usrId)
   return (
     <InternDetailContainerWrapper>
       <div
         className="close"
         onClick={() => {
-          setShowDetailModal(false);
+          setIsDetail(false);
         }}
       >
         X
@@ -37,7 +19,7 @@ const InternDetail = ({ interns, setShowDetailModal }) => {
       {interns &&
         interns.map((intern) => {
           return (
-            <article key={intern.id} className="grid-col-2">
+            <article key={intern.id} className="grid-col-2" id={'user' `${intern.id}`} onClick={getUser}>
               <div className="top-wrap">
                 <div className="img-card">
                   <img src={intern.userProfile} alt="" />

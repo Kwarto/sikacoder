@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaCheckCircle, FaCloudUploadAlt } from "react-icons/fa";
 import styled from "styled-components";
 import preBg from "../../assets/images/thumb/course_thumb08.jpg";
 import {
@@ -43,6 +43,8 @@ const Post = () => {
     audienceType: "",
     prerequisites: "",
     resources: [],
+    lessons: [],
+    tasks:[],
     rating: 0,
   });
 
@@ -52,7 +54,7 @@ const Post = () => {
   //Blog Form
   const { title, category, desc } = form;
 
-  //Course Form
+  //Course Form 
   const {
     courseName,
     courseCategory,
@@ -67,13 +69,15 @@ const Post = () => {
     prerequisites,
     resources,
     rating,
+    tasks,
+    lessons
   } = formData;
   const [resourceInput, setResourceInput] = useState("");
-  const [uploading, setUploading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [err, setErr] = useState(false);
   const [success, setSuccess] = useState(false);
   const [progress, setProgress] = useState(false);
+  const [taskInput, setTaskInput] = useState("");
  
   //Course onChange handler
   const handleCourseChange = (e) => {
@@ -104,6 +108,17 @@ const Post = () => {
     }
   };
 
+  const handleAddTask = () => {
+    if(taskInput){
+
+      setFormData((prev) => ({
+        ...prev,
+        tasks: [...prev.tasks, taskInput]
+      }));
+      setTaskInput("");
+    }
+  }
+
   const handleCourseSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -119,11 +134,13 @@ const Post = () => {
       audienceType &&
       prerequisites &&
       resources &&
-      rating
+      rating &&
+      tasks && 
+      lessons
     ) {
        await addDoc(collection(db, 'courses'), {
         ...formData,
-        datePublished: serverTimestamp()
+        datePublished: new Date()
        })
       setSuccessMessage(true);
     }else{
@@ -132,10 +149,11 @@ const Post = () => {
     setFormData('')
   };
 
+
   //Blog Post Banner Upload
   useEffect(() => {
     const uploadFile = () => {
-      const storageRef = ref(storage, `Images/${file.name}`);
+      const storageRef = ref(storage, `lessonsSrc/${file.name}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         'state_changed',
@@ -159,8 +177,8 @@ const Post = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-            alert('banner uploaded');
-            setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
+            console.log('banner uploaded');
+            setFormData((prev) => ({ ...prev.lessons, lessonDir: downloadUrl }));
           });
         }
       );
@@ -168,7 +186,6 @@ const Post = () => {
 
     file && uploadFile();
   }, [file]);
-
 
   const handleBlogSubmit = async (e) => {
     e.preventDefault();
@@ -378,10 +395,35 @@ const Post = () => {
             </div>
             <ResourceList>
               {formData.resources.map((res, idx) => (
-                <li key={idx}>{res}</li>
+                <li key={idx}><FaCheckCircle className="ico"/>                                                                                                                                                          {res}</li>
               ))}
             </ResourceList>
-
+            <Label>Add Tasks: </Label>
+            <div className="addTask">
+              <Input 
+                type="text" 
+                value={taskInput}
+                onChange={(e) => setTaskInput(e.target.value)}
+                className="res-in"
+              />
+              <Button
+                className="res-btn"
+                type="button"
+                secondary
+                onClick={handleAddTask}
+              >
+                Add
+              </Button>
+            </div>
+            <TaskList>
+              {formData.tasks.map((tsk, idt) => (
+                <li key={idt}><FaCheckCircle className="ico"/>{tsk}</li>
+              ))}
+            </TaskList>
+            {/* <Label htmlFor="file">Upload Lessons</Label>
+            <div className="addLes">
+             <Input type="file" name="file" id="file" onChange={(e) => setFile(e.target.files[0])} />
+            </div> */}
             <Input
               name="rating"
               type="number"
@@ -391,8 +433,8 @@ const Post = () => {
               value={formData.rating}
               onChange={handleCourseChange}
             />
-            <Button type="submit" >
-              {uploading ? "Uploading..." : "Submit Course"}
+            <Button type="submit" disabled={progress !== null && progress > 100} >
+              Submit Course
             </Button>
           </FormWrapper>
         </AddCourseContainer>
@@ -564,7 +606,7 @@ const FormWrapper = styled.form`
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  .addRes {
+  .addRes, .addTask, .addLes {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -594,6 +636,7 @@ const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const Level = styled.div`
@@ -619,7 +662,7 @@ const Textarea = styled.textarea`
 `;
 
 const Button = styled.button`
-  background-color: ${(props) => (props.secondary ? "#3498db" : "#27ae60")};
+  background-color: ${(props) => (props.secondary ? "rgb(52, 152, 219)" : "#27ae60")};
   color: white;
   padding: 0.75rem 1.25rem;
   border: none;
@@ -642,11 +685,26 @@ const ResourceList = styled.ul`
   margin: 0.5rem 0;
   padding: 1.25rem 0;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 90%;
   li {
     font-size: 16px;
     font-weight: 500;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    .ico{
+      color: rgb(7, 238, 238);
+    }
   }
 `;
+
+const TaskList = styled(ResourceList)``
 
 const SuccessMessage = styled.p`
   color: #27ae60;

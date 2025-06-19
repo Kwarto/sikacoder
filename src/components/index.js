@@ -19,6 +19,7 @@ export {default as Login} from '../components/Login/Login';
 export {default as SignInWith} from '../components/Login/SignInWith';
 export {default as Register} from '../components/Register/Register';
 export {default as Footer} from '../components/Footer/Footer';
+export {default as Loader} from '../components/Loader/Loader';
 
 //User Overview Imports
 export {default as Over} from '../components/Overview/Overview';
