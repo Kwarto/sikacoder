@@ -5,7 +5,7 @@ import Loader from '../Loader/Loader';
 const UserProtectedRoute = ({children}) => {
   const {user, loading} = useUserAuth();
   if(loading) return <Loader />;
-  if(!user) return Auth;
+  if(!user) return <Auth />;
   return children;
 }
 

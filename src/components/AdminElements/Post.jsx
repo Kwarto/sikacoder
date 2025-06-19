@@ -78,6 +78,7 @@ const Post = () => {
   const [success, setSuccess] = useState(false);
   const [progress, setProgress] = useState(false);
   const [taskInput, setTaskInput] = useState("");
+  const [assetsCtl, setAssetCtl] = useState(false);
  
   //Course onChange handler
   const handleCourseChange = (e) => {
@@ -420,10 +421,6 @@ const Post = () => {
                 <li key={idt}><FaCheckCircle className="ico"/>{tsk}</li>
               ))}
             </TaskList>
-            {/* <Label htmlFor="file">Upload Lessons</Label>
-            <div className="addLes">
-             <Input type="file" name="file" id="file" onChange={(e) => setFile(e.target.files[0])} />
-            </div> */}
             <Input
               name="rating"
               type="number"
@@ -437,6 +434,9 @@ const Post = () => {
               Submit Course
             </Button>
           </FormWrapper>
+          {assetsCtl && <AssetCtlContainer>
+            <h1>Hello, World</h1>
+          </AssetCtlContainer>}
         </AddCourseContainer>
       )}
       {isNotice && <AddNoticeContainer></AddNoticeContainer>}
@@ -622,6 +622,12 @@ const FormWrapper = styled.form`
     }
   }
 `;
+const AssetCtlContainer = styled.form`
+  width: 80%;
+  height: 98%;
+  background: black;
+  color: #fff;
+`
 
 const Heading = styled.h2`
   font-size: 1.75rem;

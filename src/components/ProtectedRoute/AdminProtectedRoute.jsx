@@ -6,7 +6,7 @@ import Loader from '../Loader/Loader';
 const AdminProtectedRoute = ({children}) => {
   const {admin, loading} = useAdminAuth();
   if(loading) return <Loader />;
-  if(!admin) return LoginAdmin;
+  if(!admin) return <LoginAdmin />;
   return children;
 }
 

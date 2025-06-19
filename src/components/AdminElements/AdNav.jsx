@@ -10,7 +10,7 @@ const AdNav = ({isDrawer, setIsDrawer}) => {
          <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrapper>
       <ProfileWrapper onClick={() => {setIsDrawer(!isDrawer)}}>
-        <img src={user.photoURL} alt="profile" />
+        <img src={user?.photoURL} alt="profile" />
       </ProfileWrapper>
     </AdNavContainer>
   )

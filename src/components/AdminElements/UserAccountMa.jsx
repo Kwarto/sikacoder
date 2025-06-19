@@ -2,12 +2,16 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import profileImg from "../../assets/icons/avatar.png";
 import { MdEdit, MdShield } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa6";
 import { useUserAuth } from "../../context/UserAuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebaseConfig";
+import { FaPowerOff } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const UserAccountMa = () => {
- const {user} = useUserAuth()
+ const {user} = useUserAuth();
+ const navigate = useNavigate();
   return (
     <UserAccountManageContainer>
       <motion.div
@@ -17,14 +21,17 @@ const UserAccountMa = () => {
         transition={{ duration: 1 }}
       >
         <div className="user-profile-box">
-          <div className="edit">
-            <MdEdit />
+          <div className="edit" onClick={() => {signOut(auth);}}>
+            <FaPowerOff />
           </div>
           <div className="profile">
-            <img src={user.photoURL} alt="" />
+            <img src={user?.photoURL} alt={user?.displayName} /> 
+            <div className="usr">
+             {user?.displayName.substring(0,1)}
+            </div>
           </div>
           <div className="usr-name">
-            <h4>{user.displayName}</h4>
+            <h4>{user?.displayName}</h4>
             <span>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </span>
@@ -46,7 +53,7 @@ const UserAccountMa = () => {
         </div>
         <div className="add">
           <div className="edit">
-            <FaUserPlus />
+            <MdEdit />
           </div>
           <div className="ico-wrap">
             <FaUserPlus />
