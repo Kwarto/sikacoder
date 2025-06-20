@@ -78,7 +78,7 @@ const Post = () => {
   const [success, setSuccess] = useState(false);
   const [progress, setProgress] = useState(false);
   const [taskInput, setTaskInput] = useState("");
-  const [assetsCtl, setAssetCtl] = useState(false);
+  const [assetsCtl, setAssetsCtl] = useState(false);
  
   //Course onChange handler
   const handleCourseChange = (e) => {
@@ -144,6 +144,7 @@ const Post = () => {
         datePublished: new Date()
        })
       setSuccessMessage(true);
+      setAssetsCtl(true);
     }else{
       console.log('Something went wrong, check input fields and try again!');
     }
@@ -295,7 +296,7 @@ const Post = () => {
       )}
       {isCourse && (
         <AddCourseContainer>
-          <FormWrapper onSubmit={handleCourseSubmit}>
+          {!assetsCtl && <FormWrapper onSubmit={handleCourseSubmit}>
             <Heading>Upload New Course</Heading>
             {successMessage && (
               <SuccessMessage>Course Uploaded Successfully</SuccessMessage>
@@ -433,7 +434,7 @@ const Post = () => {
             <Button type="submit" disabled={progress !== null && progress > 100} >
               Submit Course
             </Button>
-          </FormWrapper>
+          </FormWrapper>}
           {assetsCtl && <AssetCtlContainer>
             <h1>Hello, World</h1>
           </AssetCtlContainer>}
