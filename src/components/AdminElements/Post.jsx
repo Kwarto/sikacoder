@@ -455,7 +455,7 @@ const Post = () => {
 
 const PostContainerWrapper = styled.section`
   width: 100%;
-  height: 100vh;
+  height: max-content;
   background: linear-gradient(135deg, rgb(213, 219, 215), rgb(226, 232, 247));
   position: absolute;
   top: 0;
@@ -489,10 +489,11 @@ const PostContainerWrapper = styled.section`
 `;
 const AddBlogContainer = styled.article`
   width: 95%;
-  height: 100%;
-  /* background: rgba(255, 255, 255, 0.979); */
+  height: 95vh;
+  background: rgba(255, 255, 255, 0.979);
   border-radius: 10px;
   margin: 5px auto;
+  overflow-y: hidden;
   form {
     width: 98%;
     height: 100%;
@@ -552,15 +553,17 @@ const AddBlogContainer = styled.article`
 `;
 const AddCourseContainer = styled(AddBlogContainer)`
   background: transparent;
-  height: 100vh;
+  height: max-content;
+  overflow-y: scroll;
 `;
 
 const FormWrapper = styled.form`
   max-width: 1000px;
-  height: 100%;
+  height: 100vh;
   margin: 3rem auto;
+  overflow-y: scroll;
   padding: 2rem;
-  background: #ffffff;
+  background: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   display: flex;

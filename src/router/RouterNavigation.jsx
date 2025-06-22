@@ -46,9 +46,9 @@ const RouterNavigation = () => {
             <Route
               path="/network"
               element={
-                <UserProtectedRoute>
+                // <UserProtectedRoute>
                   <Network />
-                </UserProtectedRoute>
+                // </UserProtectedRoute>
               }
             />
             <Route path="/services" element={<Services />} />
@@ -56,9 +56,9 @@ const RouterNavigation = () => {
             <Route
               path="/blog"
               element={
-                <UserProtectedRoute>
+                // <UserProtectedRoute>
                   <Blog />
-                </UserProtectedRoute>
+                // </UserProtectedRoute>
               }
             />
             <Route

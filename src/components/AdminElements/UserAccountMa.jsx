@@ -21,7 +21,7 @@ const UserAccountMa = () => {
         transition={{ duration: 1 }}
       >
         <div className="user-profile-box">
-          <div className="edit" onClick={() => {signOut(auth);}}>
+          <div className="edit" style={{background: "red"}} onClick={() => {signOut(auth);}}>
             <FaPowerOff />
           </div>
           <div className="profile">
