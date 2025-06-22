@@ -45,22 +45,19 @@ const SignInWith = ({login, setLogin}) => {
   return (
     <>
       <div className="login-with">
-         <h4>Sign In With</h4>
+         <h4>Continue with</h4>
          <div className="ico-wrap">
            <div className="ico-b" onClick={handleGooglePop}>
            <img src={icoImg} alt="" />
            </div>
-           {/* <div className="ico-b">
-            <img src={icoImg2} alt="" />
-           </div> */}
            <div className="ico-b" onClick={handleGithubLogin}>
             <FaGithub />
            </div>
          </div>
       </div>
       <div className="do">
-        {login && <p>Don't have account? <span onClick={() => {setLogin(false);}}>Sign Up</span></p>}
-        {!login && <p>Already have account? <span onClick={() => {setLogin(true);}}>Login</span></p>}
+        {login && <p>Don't have an account? <span onClick={() => {setLogin(false);}}>Sign Up</span></p>}
+        {!login && <p>Already have an account? <span onClick={() => {setLogin(true);}}>Login</span></p>}
       </div>
     </>
   )

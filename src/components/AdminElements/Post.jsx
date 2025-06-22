@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { FaCheckCircle, FaCloudUploadAlt } from "react-icons/fa";
+import { FaBookOpen, FaCheckCircle, FaCloudUploadAlt, FaComment, FaNewspaper } from "react-icons/fa";
 import styled from "styled-components";
 import preBg from "../../assets/images/thumb/course_thumb08.jpg";
 import {
@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { db, storage } from "../../../firebaseConfig";
+import { MdCloudUpload } from "react-icons/md";
 const initialState = {
   title: "",
   category: "",
@@ -213,23 +214,7 @@ const Post = () => {
             setIsNotice(false);
           }}
         >
-          <div className="ico-box">
-            <FaCloudUploadAlt />
-          </div>
-          <h3>Make Blog Post</h3>
-        </div>
-        <div
-          className="add-post-for-card card"
-          onClick={() => {
-            setIsBlog(false);
-            setIsCourse(true);
-            setIsNotice(false);
-          }}
-        >
-          <div className="ico-box">
-            <FaCloudUploadAlt />
-          </div>
-          <h3>Upload Course</h3>
+          <FaComment />
         </div>
         <div
           className="add-post-for-card card"
@@ -239,24 +224,23 @@ const Post = () => {
             setIsNotice(false);
           }}
         >
-          <div className="ico-box">
-            <FaCloudUploadAlt />
-          </div>
-          <h3>Post Announcement</h3>
+
+          <FaNewspaper />
+        </div>
+        <div
+          className="add-post-for-card card"
+          onClick={() => {
+            setIsBlog(false);
+            setIsCourse(true);
+            setIsNotice(false);
+          }}
+        >
+          <FaBookOpen />
         </div>
       </div>
       {isBlog && (
         <AddBlogContainer>
           <form onSubmit={handleBlogSubmit}>
-            <div className="blog-banner-container">
-              <input type="file" id='file' onChange={(e) => setFile(e.target.files[0])} />
-              <label htmlFor="file">
-                <FaCloudUploadAlt />
-              </label>
-              <div className="file-preview">
-                <img src={preBg} alt="" />
-              </div>
-            </div>
             <div className="form-container">
               <div className="input-field">
                 <input
@@ -436,7 +420,31 @@ const Post = () => {
             </Button>
           </FormWrapper>}
           {assetsCtl && <AssetCtlContainer>
-            <h1>Hello, World</h1>
+            <div className="head">
+            <h3>Upload Course Banner & Lessons</h3>
+            <div className="ico">
+              <MdCloudUpload/>
+            </div>
+            </div>
+            <div className="form-area-gap">
+              <div className="form-card-wrap">
+                <div className="input-box">
+                <label htmlFor="file">Upload course banner <MdCloudUpload /></label>
+                  <input type="file" name="file" className="bFile" />
+                </div>
+                <div className="input-box">
+                  <input type="text" name="topic" placeholder="Lessons Topic" />
+                </div>
+                <div className="input-box">
+                  <input type="text" name="topicDesc" placeholder="Topic Explanation" />
+                </div>
+                <div className="btn">Submit Lesson</div>
+              </div>
+              <div className="upload-card-wrap">
+                <input type="file" name="file" />
+                <label htmlFor="file">Upload Lesson <MdCloudUpload /></label>
+              </div>
+            </div>
           </AssetCtlContainer>}
         </AddCourseContainer>
       )}
@@ -455,95 +463,45 @@ const PostContainerWrapper = styled.section`
   right: 0;
   bottom: 0;
   z-index: 1000;
+  padding: 20px 0;
   .top {
-    width: 100%;
-    height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     gap: 1rem;
     padding: 10px;
+    position: absolute;
+    top: 3rem;
+    right: -1.5rem;
+    width: 100px;
 
     .add-post-for-card {
-      width: 35%;
-      height: 90px;
+      width: 50%;
       background: #fff;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-around;
-      flex-direction: row;
-      border-radius: 1rem;
-      .ico-box {
-        background: rgb(4, 27, 27);
-        width: 50px;
-        aspect-ratio: 1/1;
-        color: cyan;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 1rem;
-        font-size: 1.3rem;
-      }
+      border-radius: .5rem;
+      color: teal;
     }
   }
 `;
 const AddBlogContainer = styled.article`
-  width: 99%;
-  height: 80%;
-  background: rgba(255, 255, 255, 0.979);
+  width: 95%;
+  height: 100%;
+  /* background: rgba(255, 255, 255, 0.979); */
   border-radius: 10px;
   margin: 5px auto;
   form {
-    width: 100%;
+    width: 98%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    .blog-banner-container {
-      width: 30%;
-      height: 90%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      font-size: 5rem;
-      overflow: hidden;
-      label {
-        width: 95%;
-        height: 35%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgb(30, 30, 31);
-        border-radius: 1rem;
-        box-shadow: 0 0 10px rgba(20, 20, 20, 0.527);
-        color: cyan;
-        cursor: pointer;
-      }
-      input {
-        display: none;
-      }
-      .file-preview {
-        width: 95%;
-        height: 50%;
-        background: rgb(241, 241, 243);
-        border-radius: 1rem;
-        transform: translateY(2rem);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img {
-          width: 95%;
-          height: 90%;
-          object-fit: cover;
-          border-radius: inherit;
-        }
-      }
-    }
+    flex-direction: column;
     .form-container {
-      width: calc(100% - 30%);
+      width: 100%;
       height: 100%;
       padding: 10px;
       .input-field {
@@ -594,12 +552,12 @@ const AddBlogContainer = styled.article`
 `;
 const AddCourseContainer = styled(AddBlogContainer)`
   background: transparent;
-  height: 80%;
+  height: 100vh;
 `;
 
 const FormWrapper = styled.form`
   max-width: 1000px;
-  min-height: max-content;
+  height: 100%;
   margin: 3rem auto;
   padding: 2rem;
   background: #ffffff;
@@ -624,10 +582,114 @@ const FormWrapper = styled.form`
   }
 `;
 const AssetCtlContainer = styled.form`
-  width: 80%;
-  height: 98%;
-  background: black;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .head{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    h3{
+      text-transform: uppercase;
+    }
+    .ico{
+      width: 30px;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: teal;
+      border-radius: .5rem;
+    }
+  }
+  .form-area-gap{
+    width: 95%;
+    height: 90%;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    place-items: center;
+    gap: 1rem;
+    .form-card-wrap{
+      width: 100%;
+      height: 90%;
+      background: rgb(255, 255, 255);
+      border-radius: 1rem;
+      box-shadow: inset 0 0 10px rgba(192, 236, 240, 0.801);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .input-box{
+        width: 95%;
+        height: 80px;
+        background: transparent;
+        border-radius: .8rem;
+        box-shadow: 0 8px 20px rgba(1, 3, 3, 0.055);
+        border: 1px solid teal;
+        margin: 10px 0;
+        input{
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          padding: 0 15px;
+          font-size: 1.2rem;
+        }
+        .bFile{
+          display: none;
+        }
+        label{
+          width: 100%;
+          height: 100%;
+          color: #000;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+      }
+      .btn{
+        display: flex;
+        align-self: flex-start;
+        margin-left: 1rem;
+      }
+    }
+    .upload-card-wrap{
+      width: 90%;
+      height: 90%;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      input{
+        display: none;
+      }
+      label{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        color: rgba(0, 0, 0, 0.863);
+        cursor: pointer;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+  }
 `
 
 const Heading = styled.h2`

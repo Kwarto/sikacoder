@@ -48,14 +48,17 @@ const Register = ({ login, setLogin }) => {
   return (
     <RegisterContainerWrapper>
       <form className="form-container" onSubmit={handleSubmitForm}>
-        <h3>Sign Up Sikacoder</h3>
+        <div className="head">
+          <h1>Create Account</h1>
+          <p>Start your journey with us today</p>
+        </div>
         <div className="input-area">
           <label htmlFor="username">Username</label>
           <input
             type="text"
             name="username"
             id="username"
-            placeholder="Username"
+            placeholder="RL Morgan"
             value={username}
             onChange={handleOnChange}
           />
@@ -66,7 +69,7 @@ const Register = ({ login, setLogin }) => {
             type="email"
             name="email"
             id="email"
-            placeholder="example@gmail.com"
+            placeholder="rlmorgan@gmail.com"
             value={email}
             onChange={handleOnChange}
           />
@@ -77,7 +80,7 @@ const Register = ({ login, setLogin }) => {
             type={showPass ? "text" : "password"}
             name="password"
             id="password"
-            placeholder="$_sc****"
+            placeholder="Password"
             value={password}
             onChange={handleOnChange}
           />
@@ -105,44 +108,63 @@ const RegisterContainerWrapper = styled.section`
   width: 100%;
   height: 100%;
   overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .form-container {
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: 98%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    h3 {
-      align-self: flex-start;
-      padding: 15px 5px;
+    background: rgb(255, 255, 255);
+    border-radius: 1rem;
+    .head{
+      text-align: center;
+      h1 {
+        color: rgb(12, 111, 124);
+        font-size: 1.8rem;
+        padding: 5px 5px;
+      }
+      p{
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: rgba(47, 65, 80, 0.938);
+      }
     }
     .input-area {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       flex-direction: column;
       width: 100%;
-      height: 90px;
+      height: 100px;
       padding: 6px;
-      margin: 6px 0;
+      margin: 2px 0;
       position: relative;
       label {
+        overflow-y: hidden;
+        color: rgba(47, 65, 80, 0.938);
         font-size: 20px;
+         display: flex;
+         align-self: center;
+         width: 70%;
       }
       input {
-        height: 95%;
+        height: 90%;
         width: 70%;
         padding: 0 15px;
         margin-top: 10px;
         border: 1px solid rgb(216, 215, 215);
         border-radius: 8px;
-        box-shadow: 0 1rem 5px rgba(0, 0, 0, 0.034);
+        box-shadow: inset 0 1rem 20px rgba(85, 61, 189, 0);
         font-size: 18px;
       }
       .eye {
         position: absolute;
-        top: 2.8rem;
-        right: 33%;
+        top: 3.2rem;
+        right: 18%;
         background: transparent;
         width: 30px;
         aspect-ratio: 1/1;
@@ -150,51 +172,42 @@ const RegisterContainerWrapper = styled.section`
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        color: rgba(47, 65, 80, 0.938);
       }
     }
-
+    .forget {
+      width: 68%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      text-decoration: underline;
+      color: teal;
+      font-weight: 500;
+    }
     .btn {
       align-self: flex-start;
-      justify-content: center;
-      gap: 1rem;
       margin-left: 8px;
-
+      transform: translate(5.4rem, 0);
       &:hover {
         background: teal;
       }
-      .spinner {
-        animation: Spin linear infinite 1s;
-        transition: transform 0.3s ease-in-out;
-        font-size: 20px;
-
-        @keyframes Spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      }
     }
     .login-with {
-      width: 100%;
+      width: 70%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      .hr {
-        width: 50px;
-        height: 2px;
-        background: red;
+      margin: 2px 0;
+      h4{
+        font-size: 1.2rem;
+        color: rgba(47, 65, 80, 0.938);
       }
-      h4 {
-        transform: translateX(-5rem);
-      }
+  
       .ico-wrap {
         width: 60%;
         height: 80px;
-        transform: translateX(-4.5rem);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -209,8 +222,8 @@ const RegisterContainerWrapper = styled.section`
           background: #fff;
           border-radius: 50px;
           border: 1px solid rgba(0, 0, 0, 0.034);
-          box-shadow: 0 1rem 20px rgba(0, 0, 0, 0.034);
-          transition: box-shadow cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
+          box-shadow: inset 0 1rem 20px rgba(0, 0, 0, 0.034);
+          transition: box-shadow ease-in-out 0.3s;
           cursor: pointer;
           &:hover {
             box-shadow: none;
@@ -219,9 +232,13 @@ const RegisterContainerWrapper = styled.section`
       }
     }
     .do {
-      width: 100%;
-      transform: translate(11rem, 20px);
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       p {
+        color: rgba(47, 65, 80, 0.938);
+        font-weight: 400;
         span {
           color: teal;
           cursor: pointer;
@@ -232,14 +249,19 @@ const RegisterContainerWrapper = styled.section`
   @media screen and (max-width: 430px) {
     .form-container {
       .input-area {
-        height: 110px;
-        input {
-          width: 98%;
+        input, label {
+          width: 95%;
         }
+
         .eye {
-          top: 3.5rem;
           right: 2rem;
         }
+      }
+      .forget {
+        width: 85%;
+      }
+      .btn{
+        transform: translateX(.7rem);
       }
       .login-with {
         padding: 30px 0;
@@ -249,7 +271,6 @@ const RegisterContainerWrapper = styled.section`
         }
       }
       .do {
-        transform: translate(0);
         text-align: center;
       }
     }

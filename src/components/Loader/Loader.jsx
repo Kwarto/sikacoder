@@ -1,10 +1,15 @@
 import React from 'react'
+import { MdArrowBack } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import {useUserAuth} from '../../context/UserAuthContext'
+
 const Loader = () => {
-    const {user} = useUserAuth()
+ const navigate = useNavigate();
   return (
     <LoaderContainer>
+     <div className="back" onClick={() => {navigate('/')}}>
+       <MdArrowBack />
+     </div>
      <div className="mid">
         <div className="one"></div>
         <div className="two"></div>
@@ -12,10 +17,7 @@ const Loader = () => {
      </div>
      <h1>SIKACODER</h1>
      <div className="alert">
-        {!user ?
-        <h4>Please Register Account And Visit The Route Again..</h4> :
-        <h4>Check Your Network Cables And Reload..</h4>
-        }
+        <h4>Check Your Network Cables And Refresh</h4> 
      </div>
     </LoaderContainer>
   )
@@ -104,6 +106,15 @@ const LoaderContainer = styled.section`
         font-size: 1.2rem;
         color: #ccc;
       }
+    }
+    .back{
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-weight: 700;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: #fff;
     }
 `
 

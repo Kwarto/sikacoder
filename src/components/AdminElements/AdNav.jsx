@@ -10,7 +10,7 @@ const AdNav = ({isDrawer, setIsDrawer}) => {
          <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrapper>
       <ProfileWrapper onClick={() => {setIsDrawer(!isDrawer)}}>
-        <img src={user?.photoURL} alt="profile" />
+        <h4>{user?.displayName.substring(0,1)}J</h4>
       </ProfileWrapper>
     </AdNavContainer>
   )
@@ -51,13 +51,14 @@ const ProfileWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(255, 255, 255);
+  background: rgb(12, 68, 68);
   box-shadow: 10px 0 10px rgba(0, 0, 0, 0.075);
   border-radius: 10px;
   cursor: pointer;
-  img{
-    width: 80%;
-    border-radius: 10px;
+  h4{
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
   }
 `
 

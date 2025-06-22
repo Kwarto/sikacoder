@@ -11,6 +11,7 @@ import {  doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useParams } from "react-router-dom";
+import { FaPlay } from "react-icons/fa";
 const StatusBoard = () => {
   let { id } = useParams();
   const courseId = id;
@@ -37,10 +38,9 @@ const StatusBoard = () => {
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit,
             quia, nam ab in, saepe eligendi non ex error consequatur esse
-            impedit. Laudantium temporibus molestiae dolore tempora sunt aliquam
-            ab quasi cum aliquid consectetur, doloribus tenetur?
+            impedit. Laudantium temporibus molestiae dolore tempora.
           </p>
-          <div className="btn">Read More</div>
+          <div className="btn"><FaPlay /> Watch Now</div>
           <div className="sm-img">
             <img src={smImg} alt="" />
           </div>
@@ -70,7 +70,7 @@ const StatusBoard = () => {
           </div>
           <div className="course-abt">
             <h3>{registeredCourse?.courseName}</h3>
-            <p>{registeredCourse?.description.substring(0, 250)}...</p>
+            <p>{registeredCourse?.description.substring(0, 240)}...</p>
           </div>
           <div className="status-wrap">
             <div className="sm-ico">
@@ -110,7 +110,6 @@ const LeftContainerWrapper = styled.article`
   .course-brief {
     height: 62%;
     width: 100%;
-    background: rgb(83, 200, 247);
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.034);
     display: flex;
@@ -129,11 +128,7 @@ const LeftContainerWrapper = styled.article`
   }
 `;
 const TopBannerContainer = styled.div`
-  background: linear-gradient(
-    135deg,
-    rgba(48, 217, 247, 0.137),
-    rgba(14, 190, 221, 0.226)
-  );
+  background: #fff;
   box-shadow: inset 0 0 10px rgba(48, 217, 247, 0.226);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -146,10 +141,20 @@ const TopBannerContainer = styled.div`
 
   h1 {
     font-size: 2rem;
+    color: rgb(9, 68, 63);
   }
   p {
     max-width: 600px;
     padding: 6px;
+  }
+  .btn{
+     width: 155px;
+     height: 60px;
+     gap: 1rem;
+     background: rgb(50, 97, 97);
+     &:hover{
+      background:  rgb(8, 63, 63);
+     }
   }
   .sm-img {
     position: absolute;
@@ -166,6 +171,10 @@ const TopBannerContainer = styled.div`
     .sm-img {
       display: none;
     }
+
+    h1{
+      font-size: 1.8rem;
+    }
   }
 `;
 const RightContainerWrapper = styled.article`
@@ -180,11 +189,10 @@ const RightContainerWrapper = styled.article`
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
-  padding: 4px;
+  padding: 15px 4px;
   .course-preview-banner {
     width: 98%;
     height: 40%;
-    background: rgba(255, 0, 0, 0.068);
     border-radius: 10px;
     overflow-y: hidden;
     img {
@@ -203,9 +211,10 @@ const RightContainerWrapper = styled.article`
       padding: 8px;
       gap: 0.5rem;
       .sm-card {
-        background: rgba(46, 199, 245, 0.068);
-        color: rgb(31, 199, 241);
-        font-weight: 600;
+        background: rgba(2, 36, 44, 0.075);
+        color: rgb(8, 63, 63);
+        font-weight: 700;
+        font-size: 1.125rem;
         border-radius: 0.5rem;
         box-shadow: 0 0 10px rgba(3, 24, 24, 0.021);
         cursor: pointer;
@@ -214,52 +223,46 @@ const RightContainerWrapper = styled.article`
         justify-content: center;
         gap: 0.2rem;
         width: max-content;
-        padding: 8px 10px;
+        padding: 8px 13px;
         span {
           font-weight: 400;
         }
       }
-      .status {
-      }
     }
     .course-abt {
       h3 {
-        color: rgb(105, 215, 240);
+        color: rgb(8, 63, 63);
+        font-size: 1.4rem;
       }
       padding: 8px;
     }
     .status-wrap {
       width: 98%;
-      height: 120px;
+      height: 140px;
       border-radius: 0.6rem;
-      background: linear-gradient(
-        135deg,
-        rgba(48, 217, 247, 0.137),
-        rgba(14, 190, 221, 0.226)
-      );
       box-shadow: inset 0 0 10px rgba(48, 217, 247, 0.226);
-      padding: 5px;
-      transform: translateY(1rem);
+      padding: 12px;
+      transform: translateY(.7rem);
       .sm-ico {
         width: 30px;
         aspect-ratio: 1/1;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         gap: 0.6rem;
         background: #fff;
         border-radius: 50px;
-        color: rgb(65, 207, 243);
+        color: rgb(23, 60, 70);
         font-size: 1.3rem;
       }
       h4 {
         font-size: 13px;
         padding-top: 8px;
-        color: rgb(14, 187, 199);
+        color: rgb(5, 73, 78);
       }
       p {
-        width: 90%;
-        font-size: 16px;
+        width: 80%;
+        font-size: 18px;
       }
     }
   }

@@ -177,3 +177,7 @@ p {
     transform: translateX(-3px);
   }
 }
+
+section, article, div{
+  overflow-y: hidden;
+}
