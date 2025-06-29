@@ -185,12 +185,17 @@ const HeaderBannerContainer = styled.div`
   img {
     width: 60%;
   }
+  @media screen and (max-width: 430px) {
+    img{
+      width: 70%;
+    }
+  }
 `;
 const ListContainerWrapper = styled.section`
   width: 100%;
   height: 60vh;
   background: rgba(235, 200, 235, 0.067);
-  padding: 0 10px;
+  padding: 0 20px;
   .com-card {
     width: 100%;
     height: 70%;

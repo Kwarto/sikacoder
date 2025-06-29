@@ -4,18 +4,14 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { IoMdClose, IoMdTrophy } from "react-icons/io";
 import styled from "styled-components";
-import { courseList } from "../../../utils/courseData";
 import { FaStar } from "react-icons/fa";
 import {
   MdArrowForward,
-  MdArticle,
-  MdBuild,
-  MdCalendarMonth,
   MdCheck,
-  MdCode,
-  MdFileDownload,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import courseBg from '../../../assets/images/thumb/course_thumb06.jpg'
+import { FaAward } from "react-icons/fa6";
 const Detail = ({courses, courseId, setShowDetail }) => {
   const [courseDetail, setCourseDetail] = useState([]);
   const navigate = useNavigate()
@@ -34,7 +30,7 @@ const Detail = ({courses, courseId, setShowDetail }) => {
       >
         <article className="short-meta-info-wrapper">
           <div className="top-detail">
-            <img src={courseDetail?.thumb} alt={courseDetail?.courseId} />
+            <img src={courseBg} alt={courseDetail?.courseId} />
           </div>
           <div className="st-abt">
             <h1>{courseDetail?.courseName}</h1>
@@ -86,10 +82,12 @@ const Detail = ({courses, courseId, setShowDetail }) => {
           <div className="what-cover">
             <h3>This Course Include:</h3>
  
-                <li>
-                  <MdCalendarMonth className="ico" />
-                  {courseDetail?.resources}
-                </li>
+               {courseDetail?.resources && courseDetail?.resources.map((res, idx) => (
+                  <div key={idx} className="res-s">
+                  <FaAward className="ico" />
+                  <span>{res}</span>
+                </div>
+               )) }
           </div>
           <div className="require">
             <h3>Requirements</h3>
@@ -97,12 +95,6 @@ const Detail = ({courses, courseId, setShowDetail }) => {
               <li>
                 <MdCheck />
                {courseDetail.prerequisites}
-              </li>
-              <li>
-                <MdCheck /> {courseDetail.prerequisites}
-              </li>
-              <li>
-                <MdCheck /> {courseDetail.prerequisites}
               </li>
               <li>
                 <MdCheck /> {courseDetail.prerequisites}
@@ -144,7 +136,7 @@ const DetailContainerWrapper = styled.section`
     gap: 1rem;
     h1 {
       color: rgb(26, 25, 25);
-      font-size: 2rem;
+      font-size: 1.35rem;
     }
     .close {
       position: fixed;
@@ -175,6 +167,7 @@ const DetailContainerWrapper = styled.section`
         height: 290px;
         border-radius: 10px;
         box-shadow: 10px 5px rgba(0, 0, 0, 0.034);
+        overflow-y: hidden;
         img {
           width: 100%;
           height: 100%;
@@ -232,15 +225,19 @@ const DetailContainerWrapper = styled.section`
       .what-cover {
         margin: 12px 0;
         width: 100%;
-        background: red;
         display: flex;
         align-items: flex-start;
         justify-content: center;
         flex-direction: column;
-         li{
+         .res-s{
           width: 100%;
-          background: blue;
-          display: block;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: .3rem;
+          span{
+            font-size: 1.2rem;
+          }
           .ico {
             color: teal;
           }

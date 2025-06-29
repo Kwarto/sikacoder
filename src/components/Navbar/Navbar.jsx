@@ -43,18 +43,19 @@ const Navbar = () => {
           <NavLink className="nav_link" to={"/blog"}>
             Blog
           </NavLink>
-            {!user ? <div
+            {!user && <div
               className="btn"
               onClick={() => {
                 navigate("/auth");
               }}
             >
               Get Started
-            </div>
-              :
-            <div className="profile-wrapper" onClick={() => {setShowModal(!showModal)}}>
-              <img src={user.photoURL} alt={user.displayName} />
             </div>}
+              
+            {user && <div className="profile-wrapper">
+              <img src={user.photoURL} alt={user.displayName} onClick={() => {setShowModal(true)}}/>
+            </div>}
+            {showModal && <Modal />}
         </MenuListContainerWrapper>
       )}
       {mobile && (
@@ -98,12 +99,12 @@ const Navbar = () => {
           >
             Get Started
           </div>}
-        </motion.div>
-      )}
-      {user && (
-        <div className="profile" onClick={() => {setShowModal(!showModal)}}>
+          {user && (
+        <div className="profile">
           <img src={user.photoURL} alt={user.displayName} />
         </div>
+      )}
+        </motion.div>
       )}
       <div
         className="hamburger"
@@ -113,7 +114,7 @@ const Navbar = () => {
       >
         <HiMiniBars3BottomRight />
       </div>
-      {showModal && <Modal />}
+     
     </NavbarContainerWrapper>
   );
 };
