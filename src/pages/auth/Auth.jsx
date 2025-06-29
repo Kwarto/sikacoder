@@ -33,6 +33,7 @@ const AuthContainerWrapper = styled.section`
   width: 100%;
   height: 100vh;
   gap: 0;
+  overflow-y: hidden;
   @media screen and (max-width: 430px) {
    grid-template-columns: 100%;
   }
@@ -43,10 +44,12 @@ const LeftContainerWrapper = styled.article`
   background: url(${authImg});
   background-position: center;
   background-size: cover;
+  overflow-y: hidden;
   .content{
     width: 100%;
     height: 100%;
     position: relative;
+    overflow-y: hidden;
     .cap{
       width: 500px;
       height: 200px;
