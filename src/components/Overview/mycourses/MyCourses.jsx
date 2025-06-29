@@ -19,7 +19,7 @@ const MyCourses = () => {
   const [isModal, setIsModal] = useState(false);
   const [usrObj,setUsrObj] = useState(null);
   const [userCourseData, setUserCourseData] = useState([])
-  const userCourseId = usrObj?.courseRegisteredId;
+  const userCourseId = usrObj?.courseRegisteredI;
   useEffect(() => {
     const fetchUsrObj = async () => {
       const docRef = doc(db, 'users', userId);
@@ -46,6 +46,8 @@ const MyCourses = () => {
   }
   fetchUserCourse()
  },[userCourseId])
+
+ console.log(userCourseData, usrObj)
   return (
     <MyCourseContainerWrapper>
      <div className="main-course">

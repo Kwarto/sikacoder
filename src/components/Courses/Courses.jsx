@@ -2,13 +2,14 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import inImg from '../../assets/images/in_hero_bg.jpg'
 import SingleCourse from './SingleCourse/SingleCourse'
-// import {courseList} from '../../utils/courseData'
 import { collection, onSnapshot } from 'firebase/firestore'
 import { db } from '../../../firebaseConfig'
+// import { useNavigate } from 'react-router-dom'
 const Courses = () => {
   const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
+  const [filteredCategory, setFilteredCategory] = useState([])
+  // const navigate = useNavigate()
+  useEffect(() => {;
     const unsub = onSnapshot(
       collection(db, 'courses'),
       (snapshot) => {
@@ -27,40 +28,26 @@ const Courses = () => {
       unsub();
     };
   }, []);
+
+  const filterResult = (catItem) => {
+      const res = courses.filter((curData) => {
+        return curData.courseCategory === catItem;
+      })
+      setFilteredCategory(res);
+      console.log(filteredCategory)
+  }
+
   return (
     <CoursesContainerWrapper>
      <article className='left-panel'>
         <div className="category">
           <h3>Category</h3>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
+          <div className="s-cat" onClick={() => filterResult('Web Development')}>
+            <h4>Web Development</h4>
           </div>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
+          <div className="s-cat" onClick={() => {setCourses(courses)}}>
+            <h4>All Categories</h4>
           </div>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
-          </div>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
-          </div>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
-          </div>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
-          </div>
-          <div className="s-cat">
-            <h4>Development</h4>
-            <input type="checkbox" name="checkbox" id="checkItem" />
-          </div>
-
         </div>
      </article>
      <article className='right-panel grid-col-3'>

@@ -21,7 +21,7 @@ const Dash = () => {
           <h3>Welcome, {user.displayName}!</h3>
           <p>
             We're trilled to have you, code the future with confidence -{" "}
-            <span>Learn. Build. Intern. Succeed.</span> Begin your teach career,
+            <span>Learn. Build. Intern. Succeed.</span> Begin your tech career,
             dive into the course, start lesson, complete tasks, get certified.
           </p>
           <div className="btn">Start Course</div>

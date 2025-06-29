@@ -178,6 +178,6 @@ p {
   }
 }
 
-section, article, div{
-  overflow-y: hidden;
-}
+/* section, article, div{
+  overflow-x: hidden;
+} */

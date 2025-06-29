@@ -13,8 +13,8 @@ const Auth = () => {
           <div className="content">
             <div className="cap">
               <img src={fvImg} alt="" />
-              <h4>Sikacoder</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere eos temporibus minus sapiente atque labore eaque facilis exercitationem, dolores eligendi.</p>
+              <h4>Read to Learn!</h4>
+              <p>Log in to your account now and explore our wide range of courses. Find the one that fits your goals and start learning today!</p>
             </div>
             <div className="side-img">
               <img src={lfImg} alt="" />
@@ -57,6 +57,11 @@ const LeftContainerWrapper = styled.article`
       position: absolute;
       top: 8rem;
       left: 1rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
       img{
         width: 50px;
       }

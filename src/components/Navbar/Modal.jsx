@@ -5,14 +5,16 @@ import { MdLogout } from 'react-icons/md'
 import styled from 'styled-components'
 import { auth } from '../../../firebaseConfig'
 import { useNavigate } from 'react-router-dom'
+import { useUserAuth } from '../../context/UserAuthContext'
 
 const Modal = () => {
   const navigate = useNavigate();
+  const {user} = useUserAuth();
   return (
     <ModalContainerWrapper>
       <div className="meta-info">
-        <h4>Kwarteng Joseph</h4>
-        <p>j.kwarteng@sikafx.co.uk</p>
+        <h4>{user?.displayName}</h4>
+        <p>{user?.email}</p>
         <span>Harlow, UK</span>
       </div>
       <div className="link-area">
@@ -20,7 +22,7 @@ const Modal = () => {
             <FaGears className='linkIco' />
             <span>Manage Account</span>
         </div>
-        <div className="link-wrapper" onClick={() => {navigate("/course-bag")}}>
+        <div className="link-wrapper" onClick={() => {navigate("/overview")}}>
             <FaBookOpen className='linkIco' />
             <span>My Course</span>
         </div>

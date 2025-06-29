@@ -426,7 +426,7 @@ const Post = () => {
               <MdCloudUpload/>
             </div>
             </div>
-            <div className="form-area-gap">
+            <form className="form-area-gap">
               <div className="form-card-wrap">
                 <div className="input-box">
                 <label htmlFor="file">Upload course banner <MdCloudUpload /></label>
@@ -444,7 +444,7 @@ const Post = () => {
                 <input type="file" name="file" />
                 <label htmlFor="file">Upload Lesson <MdCloudUpload /></label>
               </div>
-            </div>
+            </form>
           </AssetCtlContainer>}
         </AddCourseContainer>
       )}
@@ -586,7 +586,7 @@ const FormWrapper = styled.form`
 `;
 const AssetCtlContainer = styled.form`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgb(255, 255, 255);
   border-radius: 10px;
   color: #fff;

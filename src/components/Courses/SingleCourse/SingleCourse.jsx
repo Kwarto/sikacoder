@@ -14,12 +14,12 @@ const SingleCourse = ({courses, course}) => {
      <div className="thumb-box">
       <img src={thumb1} alt={course?.courseName} />
      <div className="cat">
-        <span>Web Development</span>
+        <span>{course?.courseCategory}</span>
      </div>
      </div>
      <div className="meta-info">
-        <h3>{course?.courseName}..</h3>
-        <p>{course?.description.substring(0, 144)}..</p>
+        <h3>{course?.courseName.substring(0, 35)}..</h3>
+        <p>{course?.description.substring(0, 130)}..</p>
         <small>By <span>{course?.instructor}</span></small>
         <div className="btn" onClick={() => {setShowDetail(true)}}>
             Interested
