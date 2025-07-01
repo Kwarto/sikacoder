@@ -15,7 +15,7 @@ const Process = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 * id }}>
          
-        <h3>{data.title} {data.icon}</h3>
+        <h4>{data.title} {data.icon}</h4>
         <p>{data.desc}</p>
         <span><MdArrowForward /></span>
       </motion.div>
@@ -30,10 +30,8 @@ const ProcessContainerWrapper = styled.section`
  padding: 20px;
  .card{
     transition: box-shadow 0.3s ease-in-out;
-    height: 75%;
-    p{
-        font-size: 20px;
-    }
+    height: max-content;
+
     span{
         width: 100%;
         display: flex;

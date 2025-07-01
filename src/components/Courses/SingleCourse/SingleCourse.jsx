@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import thumb1 from '../../../assets/images/thumb/course_thumb01.jpg'
 import { CourseDetail } from '../..'
 
 const SingleCourse = ({courses, course}) => {
-  // const { title, thumb, category, desc, instructors } = data; 
   const [showDetail, setShowDetail] = useState(false)
   console.log(course)
   return (
@@ -44,7 +42,7 @@ const SingleCourseContainerWrapper = styled.div`
  transition-delay: .8ms;
  .thumb-box{
     width: 100%;
-    height: 180px;
+    height: 200px;
     border-radius: .5rem;
     position: relative;
     overflow-y: hidden;
@@ -72,6 +70,7 @@ const SingleCourseContainerWrapper = styled.div`
       margin-bottom: 10px;
       span{
         font-weight: 400;
+        font-size: 14px;
       }
       &:hover{
         background: rgb(16, 177, 177);
@@ -81,22 +80,25 @@ const SingleCourseContainerWrapper = styled.div`
 }
 .meta-info{
     width: 100%;
-    /* height: calc(430px - 180px); */
+    height: calc(430px - 180px);
     padding: 10px 0 0 0;
     h3{
-        font-size: 1.23rem;
+        font-size: 16px;
         transition: text-decoration ease-in-out 0.3s;
-      
+        text-transform: uppercase;
         &:hover{
             text-decoration: underline;
         }
     }
     small{
-        font-size: 18px;
-        font-weight: 400;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
     }
     .btn{
         margin-top: 1rem;
+        font-size: 16px;
+        text-transform: uppercase;
     }
 }
 &:hover{

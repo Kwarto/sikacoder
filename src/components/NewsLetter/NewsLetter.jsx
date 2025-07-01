@@ -12,7 +12,7 @@ const NewsLetter = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1>Stay Updated With Latest Offers, Products & Events</h1>
+        <h2>Stay Updated With Latest Offers, Products & Events</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate numquam consectetur voluptatem blanditiis rem, sit error quaerat suscipit alias earum.</p>
         <div className="input-area">
           <div className="input-field">
@@ -27,14 +27,14 @@ const NewsLetter = () => {
 
 const NewsLetterContainerWrapper = styled.section`
   width: 100%;
-  height: 80vh;
+  height: 70vh;
   overflow-y: hidden;
   padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   .sub-wrap {
-    width: 98%;
+    width: 80%;
     height: 95%;
     background: linear-gradient(135deg,rgba(6, 8, 8, 0.986), rgba(1, 63, 63, 0.966)),url(${newsBg});
     background-size: cover;
@@ -46,19 +46,21 @@ const NewsLetterContainerWrapper = styled.section`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 1rem;
     text-align: center;
-    h1{
+    h2{
+        font-size: 1.8rem;
         color: rgb(243, 242, 242);
-        max-width: 650px;
+        max-width: 400px;
         text-align: center;
     }
     p{
         color: rgb(255, 255, 255);
-        max-width: 550px;
+        max-width: 400px;
         padding: 5px 0;
     }
     .input-area{
-        width: 48%;
+        width: 50%;
         height: 60px;
         background: #fff;
         border-radius: .5rem;
@@ -67,25 +69,25 @@ const NewsLetterContainerWrapper = styled.section`
         align-items: center;
         justify-content: center;
         .input-field{
-            width: 75%;
+            width: 70%;
             height: 100%;
             input{
                 background: rgb(250, 249, 249);
                 width: 100%;
                 height: inherit;
                 padding: 0 15px;
-                font-size: 1.3rem;
+                font-size: 1rem;
             }
         }
         button{
-         width: 24%;
+         width: 29%;
          height: 92%;
          background: rgb(223, 49, 57);
          border-radius: 10px;
          box-shadow: 0 1rem 10px rgba(0, 0, 0, 0.096);
          color: #fff;
          cursor: pointer;
-         font-size: 1.3rem;
+         font-size: 1rem;
          font-weight: 600;
          transition: background 0.3s ease-in-out;
          &:hover{

@@ -47,10 +47,12 @@ const CTAContainerWrapper = styled.article`
     h1 {
       color: rgb(255, 255, 255);
       max-width: 600px;
+      padding: 12px 0;
       span {
         color: red;
       }
     }
+    .btn{margin: 8px 0;}
     img {
       position: absolute;
       right: 2rem;

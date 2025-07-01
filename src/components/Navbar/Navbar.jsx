@@ -43,19 +43,19 @@ const Navbar = () => {
           <NavLink className="nav_link" to={"/blog"}>
             Blog
           </NavLink>
-            {!user && <div
-              className="btn"
+           <div
+              className={!user ? "btn" : "off"}
               onClick={() => {
                 navigate("/auth");
               }}
             >
               Get Started
-            </div>}
+            </div>
               
-            {user && <div className="profile-wrapper">
-              <img src={user.photoURL} alt={user.displayName} onClick={() => {setShowModal(true)}}/>
+            {user && <div className="profile-wrapper"  onClick={() => {setShowModal(!showModal)}}>
+              <img src={user?.photoURL} alt={user?.displayName}/>
             </div>}
-            {showModal && <Modal />}
+           
         </MenuListContainerWrapper>
       )}
       {mobile && (
@@ -68,7 +68,7 @@ const Navbar = () => {
           <div
             className="hamburger"
             onClick={() => {
-              setMobile(!mobile);
+              setMobile(false);
             }}
           >
             <IoMdClose />
@@ -91,30 +91,32 @@ const Navbar = () => {
           <NavLink className="nav_link" to={"/blog"}>
             Blog
           </NavLink>
-          {!user && <div
-            className="btn"
+          <div
+            className={!user ? "btn" : "off"}
             onClick={() => {
               navigate("/auth");
             }}
           >
             Get Started
-          </div>}
-          {user && (
-        <div className="profile">
-          <img src={user.photoURL} alt={user.displayName} />
-        </div>
-      )}
+            </div>     
         </motion.div>
       )}
+       
+      {/* user profile */}
+      <div className="profile" onClick={() => {setShowModal(!showModal)}}>
+          <img src={user?.photoURL} alt={user?.displayName} />
+      </div>
+
+      {/* Menu Bars */}
       <div
         className="hamburger"
         onClick={() => {
-          setMobile(!mobile);
+          setMobile(true);
         }}
       >
         <HiMiniBars3BottomRight />
       </div>
-     
+      {showModal && <Modal />}
     </NavbarContainerWrapper>
   );
 };
@@ -127,6 +129,7 @@ const NavbarContainerWrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   .hamburger {
     margin-right: 1.5rem;
     font-size: 1.5rem;
@@ -152,6 +155,7 @@ const NavbarContainerWrapper = styled.nav`
       border-radius: inherit;
     }
   }
+  
 
   @media screen and (max-width: 430px) {
     overflow-y: hidden;
@@ -164,14 +168,15 @@ const NavbarContainerWrapper = styled.nav`
       display: flex;
        width: 40px;
       padding: 1px;
-      border-radius: 10px;
-      transform: translate(4rem, -0.1rem);
+      border-radius: 50px;
+      transform: translate(3rem, -0.1rem);
+      img{border-radius: inherit;}
     }
     .profile-wrapper {
       width: 40px;
       padding: 1px;
       border-radius: 8px;
-      transform: translate(4rem, -0.1rem);
+      transform: translate(4rem, -.1rem);
     }
     .mobile {
       width: 100%;
@@ -238,11 +243,10 @@ const LogoWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   img {
-    width: 160px;
-    transform: translateX(-1rem);
+    width: 120px;
   }
   @media screen and (max-width: 430px) {
     width: 40%;
@@ -254,8 +258,9 @@ const MenuListContainerWrapper = styled.ul`
   justify-content: center;
   gap: 1rem;
   .nav_link {
-    font-size: 1.3rem;
+    font-size: 15px;
     font-weight: 500;
+    text-transform: uppercase;
     color: rgb(1, 17, 17);
     padding: 0 25px;
     transition: color 0.3s ease-in-out;

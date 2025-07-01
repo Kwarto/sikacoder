@@ -65,10 +65,15 @@ const LeftContentWrapper = styled.article`
   }
   p {
     max-width: 550px;
-    font-size: 20px;
     padding: 12px 0;
   }
   .btn {
+    width: 28%;
+  }
+  @media (max-width: 430px){
+    .btn{
+      width: 38%;
+     }
   }
 `;
 const RightBannerWrapper = styled(LeftContentWrapper)`

@@ -13,13 +13,13 @@
 }
 
 @font-face {
-  font-family: "Teko";
-  src: url("./assets/fonts/Teko.ttf");
+  font-family: "Oswald";
+  src: url("./assets/fonts/Oswald.ttf");
   font-display: swap;
 }
 
 :root {
-  --font-fam: "Teko";
+  --font-fam: "Oswald";
 }
 
 html,
@@ -39,18 +39,25 @@ button {
   display: none;
 }
 
+
+.off{
+     display: none;
+     opacity: 0;
+     visisbility: hidden;
+  }
+
 .btn {
   width: 130px;
   height: 50px;
   background: rgb(17, 179, 179);
   border-radius: 12px;
-  box-shadow: 0 1rem 20px rgba(0, 0, 0, 0.123);
+  box-shadow: inset 0 1rem 20px rgba(0, 0, 0, 0.123);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   cursor: pointer;
-  font-size: 1.235rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-right: 15px;
   transition: all 0.3s ease-in-out;
@@ -74,22 +81,23 @@ h1 {
   background-image: linear-gradient(165deg, rgb(255, 0, 0), rgb(29, 226, 226));
   background-clip: text;
   -webkit-background-clip: text;
-  font-size: 3rem;
-  max-width: 450px;
+  font-size: 2.4rem;
+  max-width: 400px;
   font-weight: 800;
 }
 h3 {
   color: rgb(3, 65, 68);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 h4 {
   font-size: 1.08rem;
 }
 p {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: rgb(1, 19, 20);
+  line-height: 1.7;
 }
 
 .grid-col-4 {
@@ -117,7 +125,7 @@ p {
   width: 100%;
   background: #fff;
   border: 1px solid #ccc;
-  box-shadow: 0 1rem 40px rgba(0, 0, 0, 0.116);
+  box-shadow: inset 0 1rem 40px rgba(0, 0, 0, 0.116);
   border-radius: 10px;
   cursor: pointer;
   display: flex;
@@ -145,8 +153,11 @@ p {
 
 @media screen and (max-width: 430px) {
   h1 {
-    font-size: 2.3rem;
+    font-size: 2rem;
     max-width: 750px;
+  }
+  p{
+    font-size: 18px;
   }
   .grid-col-4,
   .grid-col-3,

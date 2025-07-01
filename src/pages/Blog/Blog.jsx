@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Main } from "../../layout";
 import posterImg from "../../assets/images/community-bg.jpg";
@@ -12,8 +12,31 @@ import catImg3 from "../../assets/images/thumb/cat3.webp";
 import catImg4 from "../../assets/images/thumb/cat4.jpg";
 import trendImg4 from "../../assets/images/thumb/course_thumb05.jpg";
 import { motion } from "framer-motion";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+   useEffect(() => {;
+      const unsub = onSnapshot(
+        collection(db, 'blogs'),
+        (snapshot) => {
+          let list = [];
+          snapshot.docs.forEach((doc) => {
+            list.push({ id: doc.id, ...doc.data() });
+          });
+          setBlogs(list);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  
+      return () => {
+        unsub();
+      };
+    }, []);
+    console.log(blogs)
   return (
     <Main>
       <BlogPageContainerWrapper>
@@ -37,7 +60,8 @@ const Blog = () => {
             </div>
           </HeaderContent>
           <LeftContentWrapper>
-            <motion.div
+            {blogs && blogs?.map((blog) => (
+              <motion.div
               className="left-div"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -46,53 +70,20 @@ const Blog = () => {
               <img src={posterImg2} alt="" />
               <div className="layer">
                 <div className="post-meta-data">
-                  <h4>Learn React.Js With Us</h4>
+                  <h4>{blog.title.substring(0, 38)}..</h4>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Illum facilis hic tempore quaerat quibusdam eveniet.
+                    {blog.desc.substring(0, 90)}..
                   </p>
                 </div>
               </div>
             </motion.div>
+            ))}
+            
             <motion.div
               className="left-div"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2 }}
-            >
-              <img src={posterImg3} alt="" />
-              <div className="layer">
-                <div className="post-meta-data">
-                  <h4>Learn React.Js With Us</h4>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Illum facilis hic tempore quaerat quibusdam eveniet.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div
-              className="left-div"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 3 }}
-            >
-              <img src={posterImg3} alt="" />
-              <div className="layer">
-                <div className="post-meta-data">
-                  <h4>Learn React.Js With Us</h4>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Illum facilis hic tempore quaerat quibusdam eveniet.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div
-              className="left-div"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 4 }}
+              transition={{ duration: 1 }}
             >
               <img src={posterImg2} alt="" />
               <div className="layer">
@@ -139,48 +130,23 @@ const Blog = () => {
         </BlogCategoryContainer>
         {/* Trending Blog */}
         <TrendingBloContainerWrapper>
-          <div className="trending-post-wrap">
+          {blogs && blogs?.map((blog) => (
+           <div className="trending-post-wrap" key={blog.id}>
             <div className="trend-banner">
-              <img src={trendImg4} alt="" />
+              <img src={posterImg} alt="" />
             </div>
             <div className="trend-info">
-              <h3>How to earn money online</h3>
+            <div className="sm">
+              <strong>{blog.category}</strong>
+            </div>
+              <h3>{blog.title.substring(0, 38)}</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                voluptas fuga inventore consequuntur illum molestias ab veniam
-                autem laudantium corporis accusantium vel eligendi neque iure
-                beatae, eveniet rem alias adipisci.
+                {blog.desc.substring(0, 184)}..
               </p>
             </div>
-          </div>
-          <div className="trending-post-wrap">
-            <div className="trend-banner">
-              <img src={trendImg4} alt="" />
-            </div>
-            <div className="trend-info">
-              <h3>How to earn money online</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                voluptas fuga inventore consequuntur illum molestias ab veniam
-                autem laudantium corporis accusantium vel eligendi neque iure
-                beatae, eveniet rem alias adipisci.
-              </p>
-            </div>
-          </div>
-          <div className="trending-post-wrap">
-            <div className="trend-banner">
-              <img src={trendImg4} alt="" />
-            </div>
-            <div className="trend-info">
-              <h3>How to earn money online</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                voluptas fuga inventore consequuntur illum molestias ab veniam
-                autem laudantium corporis accusantium vel eligendi neque iure
-                beatae, eveniet rem alias adipisci.
-              </p>
-            </div>
-          </div>
+            
+           </div>
+          ))}
         </TrendingBloContainerWrapper>
       </BlogPageContainerWrapper>
     </Main>
@@ -359,7 +325,7 @@ const CategoryCardWrapper = styled.div`
 `;
 const TrendingBloContainerWrapper = styled.article`
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
@@ -376,7 +342,7 @@ const TrendingBloContainerWrapper = styled.article`
     overflow-y: hidden;
     .trend-banner {
       width: 100%;
-      height: 55%;
+      height: 60%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -389,8 +355,18 @@ const TrendingBloContainerWrapper = styled.article`
     }
     .trend-info {
       padding-top: 8px;
+      .sm{
+        padding: 6px 0;
+        strong{
+          color: red;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 800;
+          text-transform: uppercase;
+        }
+      }
       h3 {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         text-transform: uppercase;
       }
     }

@@ -101,9 +101,11 @@ const LeftContainer = styled.article`
   gap: 1rem;
   .logo-wrapper{
     width: 50%;
+    display: flex;
+    alin-items: center;
+    justify-content: flex-start;
     img{
-      width: 100%;
-      transform: translateX(-1rem);
+      width: 80%;
     }
   }
   .txt{
@@ -113,6 +115,7 @@ const LeftContainer = styled.article`
   }
   .social-wrapper{
     h3{
+      font-size: 20px;
       padding: 8px 0;
       color: #fff;
     }
@@ -157,6 +160,7 @@ const RightContainer = styled.article`
   justify-content: center;
   flex-direction: column;
   h3{
+    font-size: 22px;
     color: rgb(0, 247, 255);
   }
   .links-wp{
@@ -165,7 +169,7 @@ const RightContainer = styled.article`
     justify-content: center;
     flex-direction: column;
     li{
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 600;
       color: #fff;
       cursor: pointer;

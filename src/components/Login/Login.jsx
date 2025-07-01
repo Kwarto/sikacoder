@@ -37,7 +37,7 @@ const Login = ({ login, setLogin }) => {
          <p>Code the future with confidence</p>
         </div>
         <div className="input-area">
-          <label htmlFor="username">Username or email</label>
+          <label htmlFor="username">Enter valid email address</label>
           <input
             type="email"
             name='email'
@@ -122,20 +122,20 @@ const LoginContainerWrapper = styled.section`
       label {
         overflow-y: hidden;
         color: rgba(47, 65, 80, 0.938);
-        font-size: 20px;
+        font-size: 16px;
+        font-weight: 400;
          display: flex;
          align-self: center;
          width: 70%;
       }
       input {
-        height: 90%;
+        height: 70%;
         width: 70%;
         padding: 0 15px;
         margin-top: 10px;
         border: 1px solid rgb(216, 215, 215);
         border-radius: 8px;
         box-shadow: inset 0 1rem 20px rgba(85, 61, 189, 0);
-        font-size: 18px;
       }
       .eye {
         position: absolute;

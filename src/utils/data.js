@@ -13,7 +13,7 @@ export const processData = [
     {
         id: 2,
         title: 'Pick Course',
-        desc: 'Browse through a variety of beginner-friendly and advanced tech courses.Choose the path that fits your interests—from web development to software engineering and start learning at your own pace.',
+        desc: 'Select from variety of beginner-friendly and advanced tech courses that fits your interests from web development to software engineering and start learning at your own pace.',
         // icon: <TbGitCherryPick />,
     },
     {
