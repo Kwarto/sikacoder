@@ -135,11 +135,13 @@ const NavbarContainerWrapper = styled.nav`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 45px;
+    width: 38px;
     aspect-ratio: 1/1;
-    border-radius: .2rem;
+    border-radius: .5rem;
+    background: #f1f1f1;
+    box-shadow: inset 0 0 10x rgb(241, 241, 241);
     img{
-      width: 95%;
+      width: 90%;
       border-radius: inherit;
     }
   }  

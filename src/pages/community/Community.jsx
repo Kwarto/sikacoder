@@ -19,7 +19,7 @@ const Community = () => {
         <CommunityHeaderContainer className="grid-col-2">
           <HeaderContentWrapper>
             <h1>The Only Community of Mentors And Pros You Will Ever Need.</h1>
-            <p>Join the Sikacoder Network. The ultimate hub where aspiring tech minds connect with seasoned pros and mentors. Level up your skills, grow your career, and get the support you need. Don’t miss out — become part of the future today!
+            <p>Join the Sikacoder Network. The ultimate hub where aspiring tech minds connect with seasoned pros and mentors. Level up your skills, grow your career, and get the support you need. Don’t miss out become part of the future today!
             </p>
             <div className="btn">
               <span>
