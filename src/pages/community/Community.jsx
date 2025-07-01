@@ -19,6 +19,8 @@ const Community = () => {
         <CommunityHeaderContainer className="grid-col-2">
           <HeaderContentWrapper>
             <h1>The Only Community of Mentors And Pros You Will Ever Need.</h1>
+            <p>Join the Sikacoder Network. The ultimate hub where aspiring tech minds connect with seasoned pros and mentors. Level up your skills, grow your career, and get the support you need. Don’t miss out — become part of the future today!
+            </p>
             <div className="btn">
               <span>
                 Join Community on Slack <MdArrowForward />
@@ -159,6 +161,10 @@ const HeaderContentWrapper = styled.div`
   h1 {
     max-width: 500px;
   }
+  p{
+    max-width: 500px;
+    padding: 8px 0;
+  }
   .btn {
     align-self: flex-start;
     width: 40%;
@@ -198,7 +204,7 @@ const ListContainerWrapper = styled.section`
   padding: 0 20px;
   .com-card {
     width: 100%;
-    height: 70%;
+    height: max-content;
     background: #fff;
     border-radius: 1rem;
     box-shadow: inset 0 1rem 40px rgb(255, 255, 255);
@@ -221,6 +227,8 @@ const ListContainerWrapper = styled.section`
     }
     .meta {
       h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
         span {
           color: red;
         }

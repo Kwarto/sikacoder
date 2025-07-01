@@ -204,6 +204,7 @@ const ValueContainerWrapper = styled.article`
   }
   h4{
     color: red;
+
   }
   h1{
     color: #fff;
@@ -239,6 +240,10 @@ const ValuesListContainerWrapper = styled.article`
         background: red;
         border-radius: .5rem;
         box-shadow: 0 15px 30pc rgba(0, 0, 0, 0.192);
+    }
+    h3{
+      font-size: 1.4rem;
+      font-weight: 600;
     }
  }
  @media screen and (max-width: 430px){
