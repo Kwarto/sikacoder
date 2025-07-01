@@ -144,7 +144,7 @@ const TopBannerContainer = styled.div`
     color: rgb(9, 68, 63);
   }
   p {
-    max-width: 600px;
+    max-width: 500px;
     padding: 6px;
   }
   .btn{
@@ -192,7 +192,7 @@ const RightContainerWrapper = styled.article`
   padding: 15px 4px;
   .course-preview-banner {
     width: 98%;
-    height: 40%;
+    height: 36%;
     border-radius: 10px;
     overflow-y: hidden;
     img {
@@ -203,7 +203,7 @@ const RightContainerWrapper = styled.article`
   }
   .course-preview-content {
     width: 98%;
-    height: calc(100% - 40%);
+    height: calc(100% - 35%);
     .meta-data {
       display: flex;
       align-items: center;
@@ -213,8 +213,8 @@ const RightContainerWrapper = styled.article`
       .sm-card {
         background: rgba(2, 36, 44, 0.075);
         color: rgb(8, 63, 63);
-        font-weight: 700;
-        font-size: 1.125rem;
+        font-weight: 400;
+        font-size: 14px;
         border-radius: 0.5rem;
         box-shadow: 0 0 10px rgba(3, 24, 24, 0.021);
         cursor: pointer;
@@ -232,7 +232,7 @@ const RightContainerWrapper = styled.article`
     .course-abt {
       h3 {
         color: rgb(8, 63, 63);
-        font-size: 1.4rem;
+        font-size: 1rem;
       }
       padding: 8px;
     }
@@ -261,8 +261,8 @@ const RightContainerWrapper = styled.article`
         color: rgb(5, 73, 78);
       }
       p {
-        width: 80%;
-        font-size: 18px;
+        width: 90%;
+        font-size: 15px;
       }
     }
   }

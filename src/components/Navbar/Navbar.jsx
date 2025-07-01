@@ -23,6 +23,7 @@ const Navbar = () => {
       >
         <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrapper>
+      <NavDivJoinContainer>
       {!mobile && (
         <MenuListContainerWrapper>
           <NavLink className="nav_link" to={"/"}>
@@ -51,12 +52,8 @@ const Navbar = () => {
             >
               Get Started
             </div>
-              
-            {user && <div className="profile-wrapper"  onClick={() => {setShowModal(!showModal)}}>
-              <img src={user?.photoURL} alt={user?.displayName}/>
-            </div>}
-           
         </MenuListContainerWrapper>
+        
       )}
       {mobile && (
         <motion.div
@@ -101,13 +98,10 @@ const Navbar = () => {
             </div>     
         </motion.div>
       )}
-       
-      {/* user profile */}
-      <div className="profile" onClick={() => {setShowModal(!showModal)}}>
-          <img src={user?.photoURL} alt={user?.displayName} />
-      </div>
 
-      {/* Menu Bars */}
+      <div className={user ? "profile" : "off"} onClick={() => {setShowModal(true)}}>
+             <img src={user?.photoURL} alt={user?.displayName} />
+      </div>
       <div
         className="hamburger"
         onClick={() => {
@@ -116,6 +110,7 @@ const Navbar = () => {
       >
         <HiMiniBars3BottomRight />
       </div>
+      </NavDivJoinContainer>
       {showModal && <Modal />}
     </NavbarContainerWrapper>
   );
@@ -136,26 +131,18 @@ const NavbarContainerWrapper = styled.nav`
     display: none;
   }
   .profile {
-    display: none;
-    cursor: pointer;
-  }
-  .profile-wrapper {
-    width: 50px;
-    aspect-ratio: 1/1;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px;
-    background: rgb(241, 241, 241);
-    border-radius: 0.5rem;
-    margin-right: 10px;
-    img {
-      width: 100%;
+    cursor: pointer;
+    width: 45px;
+    aspect-ratio: 1/1;
+    border-radius: .2rem;
+    img{
+      width: 95%;
       border-radius: inherit;
     }
-  }
-  
+  }  
 
   @media screen and (max-width: 430px) {
     overflow-y: hidden;
@@ -169,14 +156,8 @@ const NavbarContainerWrapper = styled.nav`
        width: 40px;
       padding: 1px;
       border-radius: 50px;
-      transform: translate(3rem, -0.1rem);
+      transform: translate(5px, 2px);
       img{border-radius: inherit;}
-    }
-    .profile-wrapper {
-      width: 40px;
-      padding: 1px;
-      border-radius: 8px;
-      transform: translate(4rem, -.1rem);
     }
     .mobile {
       width: 100%;
@@ -184,7 +165,8 @@ const NavbarContainerWrapper = styled.nav`
       background: rgba(255, 255, 255, 0.932);
       position: fixed;
       backdrop-filter: blur(10px);
-      z-index: 100;
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 1000;
       top: 0;
       left: 0;
       bottom: 0;
@@ -238,6 +220,13 @@ const NavbarContainerWrapper = styled.nav`
     }
   }
 `;
+
+const NavDivJoinContainer = styled.div`
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: max-content;
+`
 const LogoWrapper = styled.div`
   width: 14%;
   height: 100%;

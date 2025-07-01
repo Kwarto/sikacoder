@@ -141,6 +141,9 @@ const SkillLevelContainerWrapper = styled.div`
      }
      .level-txt{
        margin-left: 4rem;
+       h3{
+        font-size: 1.2rem;
+       }
        h3,p{
         color: #fff;
        }
@@ -155,8 +158,12 @@ const SkillLevelContainerWrapper = styled.div`
      .intern-score, .course-score{
       h3{
         color: rgb(19, 243, 243);
+        font-size: 17px;
+        font-weight: 600;
       }
        h4{
+        font-size: 17px;
+        font-weight: 600;
         color: #fff;
        }
      }

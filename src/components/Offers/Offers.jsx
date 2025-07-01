@@ -51,7 +51,7 @@ const Offers = () => {
           <div className="ico-wrap">
           {offer.ico} 
           </div>
-          <h3>{offer.title}</h3>
+          <h4>{offer.title}</h4>
           <p>{offer.description}</p>
         </motion.div>
         ))}
@@ -119,7 +119,7 @@ border-radius: 10px;
     font-size: 1.5rem;
   }
   h3{
-    padding: 3px 0;
+    padding: 5px 0;
   }
   &:hover{
     box-shadow: 0 20px 10px rgba(0, 0, 0, 0.027);

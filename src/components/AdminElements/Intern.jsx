@@ -47,7 +47,7 @@ const Intern = ({interns}) => {
             </div>
           </div>
           <div className="intern-contact">
-            <li><MdEmail /> {intern.email}</li>
+            <li><MdEmail /> {intern.email.substring(0, 23)}..</li>
             <li><FaMapMarker /> {intern.country}</li>
             <li><FaPhone /> {intern.contactNumber}</li>
             {isVerified && <li className='status'><MdVerifiedUser />Verified</li>}
@@ -106,6 +106,8 @@ const InternsContainerWrapper = styled.article`
         background: transparent;
         box-shadow: none;
         color: rgba(2, 19, 20, 0.795);
+        font-size: 15px;
+        font-weight: 400;
       }
       .status{
         background: rgb(28, 226, 216);
@@ -152,6 +154,9 @@ const HeaderWrapper = styled.div`
       gap: .4rem;
       cursor: pointer;
       color: rgba(88, 88, 88, 0.904);
+     }
+     h3{
+      font-size: 1.5rem;
      }
    }
    .right{
@@ -222,19 +227,24 @@ const InternsListGridContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        flex-direction: row-reverse;
         gap: 1rem;
         padding: 10px 8px;
         background: rgba(2, 19, 20, 0.795);
         box-shadow:  0 0 10px rgba(0, 5, 5, 0.082);
         border-radius: 5px;
         margin: 2px 0;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 400;
         color: #fff;
       }
       .status{
         background: rgb(58, 207, 200);
         box-shadow: inset 0 0 10px rgba(103, 176, 236, 0.247);
         font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .re{
         background: rgb(253, 239, 44);
@@ -246,7 +256,7 @@ const InternsListGridContainer = styled.div`
     .intern-card{
       display: flex;
       align-items: center;
-      height: max-content;
+      height: 130vh;
       background: red;
     }
   }

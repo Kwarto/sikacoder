@@ -105,25 +105,25 @@ const Blog = () => {
             <CategoryCardWrapper>
               <img src={catImg2} alt="" />
               <div className="layer">
-                <h3>Art & Design</h3>
+                <h1>Art & Design</h1>
               </div>
             </CategoryCardWrapper>
             <CategoryCardWrapper>
               <img src={catImg4} alt="" />
               <div className="layer">
-                <h3>Development</h3>
+                <h1>Development</h1>
               </div>
             </CategoryCardWrapper>
             <CategoryCardWrapper>
               <img src={catImg3} alt="" />
               <div className="layer">
-                <h3>Engineering</h3>
+                <h1>Engineering</h1>
               </div>
             </CategoryCardWrapper>
             <CategoryCardWrapper>
               <img src={catImg1} alt="" />
               <div className="layer">
-                <h3>Artificial Intelligence</h3>
+                <h1>Artificial Intelligence</h1>
               </div>
             </CategoryCardWrapper>
           </CategoryListContainer>
@@ -223,7 +223,6 @@ const LeftContentWrapper = styled.article`
   .left-div {
     width: 100%;
     height: 100%;
-    background: goldenrod;
     border-radius: 10px;
     box-shadow: 0 1rem 40px rgba(1, 1, 10, 0.055);
     overflow-y: hidden;
@@ -313,7 +312,8 @@ const CategoryCardWrapper = styled.div`
     align-items: flex-start;
     justify-content: flex-end;
     flex-direction: column;
-    h3 {
+    h1 {
+      font-size: 1.3rem;
       color: rgb(255, 255, 255);
     }
   }

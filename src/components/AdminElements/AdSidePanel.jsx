@@ -129,9 +129,10 @@ const AdSidePanelContainerWrapper = styled.aside`
       background-color: transparent;
       border-radius: 0.5rem;
       cursor: pointer;
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 400;
       text-align: center;
+      text-transform: uppercase;
       width: 90%;
       height: 50px;
       padding: 0 10px;
@@ -158,8 +159,8 @@ const AdSidePanelContainerWrapper = styled.aside`
       background: rgb(9, 145, 150);
       border-radius: 0.5rem;
       cursor: pointer;
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 400;
       text-align: center;
       width: 90%;
       height: 50px;

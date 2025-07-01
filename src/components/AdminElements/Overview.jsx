@@ -95,7 +95,7 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
               <div className="head">
                 <h3>Top Courses</h3>
               </div>
-            {courses && courses?.map((course) => (
+             {courses && courses?.map((course) => (
               <div className="course-card" key={course.id}>
                 <div className="course-banner">
                   <img src={courseImg1} alt="course_id" />
@@ -125,7 +125,7 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
                   </div>
                   <div className="about">
                     <h4>{user.username}</h4>
-                    <p>Applied as <span>{user.domain}</span></p>  
+                    <p>Apply for: <span>{user.domain}</span></p>  
                     <small>May 12, 2025</small>  
                   </div>
                   <div className="contact">
@@ -191,11 +191,12 @@ const DashContainerWrapper = styled.section`
           h4 {
             margin: 0;
             font-weight: 500;
-            font-size: 1.5rem;
+            font-size: 20px;
           }
           p {
             color: rgb(66, 226, 231);
             font-weight: 400;
+            font-size: 1rem;
           }
         }
       }
@@ -206,6 +207,9 @@ const DashContainerWrapper = styled.section`
         margin: 10px 0;
         width: 100%;
         h3 {
+          font-size: 16px;
+          font-weight: 400;
+          
           color: #fff;
           .drop {
             color: rgb(116, 233, 116);
@@ -220,8 +224,8 @@ const DashContainerWrapper = styled.section`
           align-items: center;
           justify-content: center;
           span {
-            font-weight: 500;
-            font-size: 18px;
+            font-weight: 400;
+            font-size: 16px;
             color: #fff;
           }
         }
@@ -317,6 +321,7 @@ const DashContainerWrapper = styled.section`
             gap: .6rem;
             color: rgb(7, 107, 107);
           }
+          h3{font-size: 1.2rem;}
         }
         &:hover{
           background: #fff;
@@ -324,16 +329,18 @@ const DashContainerWrapper = styled.section`
         }
       }
     }
-    .left{
       .head{
         display: flex;
         align-items: center;
         justify-content: space-between;
         span{
-          font-size: 18px;
-          font-weight: 500;
+          font-size: 1rem;
+          font-weight: 600;
           text-decoration: underline;
           cursor: pointer;
+        }
+        h3{
+          font-size: 1.2rem;
         }
       }
       .new-intern-wrapper{
@@ -401,7 +408,7 @@ const DashContainerWrapper = styled.section`
           }
         }
       }
-    }
+    
   }
 `;
 
