@@ -29,3 +29,16 @@ export const processData = [
         // icon: <PiShootingStarThin />,
     }
 ]
+
+export const questionsObj = [
+  {
+    id: 1, 
+    question: "how can i register sikacoder account?",
+    answer: "Here is how you can setup verified sikacoder account, Click on the Get Started button on the navigation bar, Fill out the sign up form or continue with Google or Github. After a successful authentication navigate to the Internship route by clicking on COURSES from the navigation menu. Select a course and enroll. Application may take 24 - 48hours before you get verified"
+  },
+  {
+    id: 2, 
+    question: "How will I benefit from Sikacoder?",
+    answer: "Get hands-on tech training, real-world project experience, and a supportive learning environment. We bridge the gap between theory and practice, empowering young talents with industry-relevant skills through guided internships and mentorship. Whether you're starting out or up-skilling, Sikacoder sets you on the path to a successful tech career."
+  }
+]

@@ -8,8 +8,8 @@ const NewsLetter = () => {
     <NewsLetterContainerWrapper>
       <motion.div
         className="sub-wrap"
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x:1 }}
         transition={{ duration: 1 }}
       >
         <h2>Stay Updated With Latest Offers, Products & Events</h2>
@@ -34,7 +34,7 @@ const NewsLetterContainerWrapper = styled.section`
   align-items: center;
   justify-content: center;
   .sub-wrap {
-    width: 80%;
+    width: 98%;
     height: 95%;
     background: linear-gradient(135deg,rgba(6, 8, 8, 0.986), rgba(1, 63, 63, 0.966)),url(${newsBg});
     background-size: cover;

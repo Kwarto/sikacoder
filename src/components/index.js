@@ -20,7 +20,7 @@ export {default as SignInWith} from '../components/Login/SignInWith';
 export {default as Register} from '../components/Register/Register';
 export {default as Footer} from '../components/Footer/Footer';
 export {default as Loader} from '../components/Loader/Loader';
-export {default as Faqs }from "../components/Faqs/Faq"
+export {default as Faqs } from "../components/Faqs/Faqs"
 //User Overview Imports
 export {default as Over} from '../components/Overview/Overview';
 export {default as SideBar} from '../components/SideBar/SideBar';
