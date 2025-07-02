@@ -82,7 +82,7 @@ const Faqs = () => {
             <div className="sm-ico">
               <FaCheck />
             </div>
-            <p>How will I benefit from sikacoder?</p>
+            <p>How will I benefit from Sikacoder?</p>
           </motion.div>
           <motion.div
             className="quest"
@@ -102,10 +102,10 @@ const Faqs = () => {
 };
 
 const FrequentlyAskQuestionWrapper = styled.section`
-  width: 98%;
+  width: 100%;
   height: 100vh;
   margin: 5px auto;
-  padding: 30px 10px;
+  padding: 30px 5px;
   .head {
     h4 {
       color: red;
@@ -141,11 +141,15 @@ const FrequentlyAskQuestionWrapper = styled.section`
         input {
           width: 100%;
           height: 15%;
-          padding: 5px 0x;
+          padding: 5px 0;
           font-size: 1.135rem;
           display: flex;
           align-items: flex-start;
           justify-content: flex-start;
+          background: rgb(0,0,0);
+          border-radius: 10px;
+          color: #ccc;
+          padding: 12px;
         }
         .answer {
           width: 100%;
@@ -207,6 +211,22 @@ const FrequentlyAskQuestionWrapper = styled.section`
           border-radius: 50px;
           color: rgb(128, 218, 128);
           font-size: 12px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 430px) {
+    height: max-content;
+    .question-area{
+      grid-template-columns: 100%;
+      padding: 0;
+      .form-container{
+        form{
+          padding: 8px 10px;
+          button{
+            width: 55%;
+          }
         }
       }
     }
