@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Login, Register } from '../../components';
 import styled from 'styled-components';
 import authBgVid from '../../assets/images/ai-home.mp4';
-
+import logoImg from '../../assets/icons/favicon.png'
 const Auth = () => {
   const [login, setLogin] = useState(true);
   return (
@@ -11,7 +11,7 @@ const Auth = () => {
           <video src={authBgVid} autoPlay muted loop />
           <div className="notice">
             <div className="logo">
-
+              <img src={logoImg} alt="sc-logo" />
             </div>
             <div className="note">
               <h4>Ready to Learn</h4>
@@ -58,6 +58,7 @@ const LeftContainerWrapper = styled.article`
     box-shadow: inset 0 0 20px rgba(20, 14, 53, 0.815);
     border: 1px solid rgba(204, 204, 204, 0.164);
     border-radius: 1rem;
+    cursor: pointer;
     padding: 12px;
     position: absolute;
     top: 10rem;
@@ -72,6 +73,14 @@ const LeftContainerWrapper = styled.article`
       border-radius: 1rem;
       box-shadow: inset 0 0 20px rgba(20, 14, 53, 0.815);
       margin: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img{
+        width: 70%;
+        transform: translateX(-.5rem);
+      }
     }
     .note{
       h4{
