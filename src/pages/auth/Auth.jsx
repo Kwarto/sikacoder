@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
 import { Login, Register } from '../../components';
 import styled from 'styled-components';
-import authImg from '../../assets/images/footer-bg.png';
-import lfImg from '../../assets/images/avatar.png';
-import fvImg from '../../assets/icons/favicon.png';
+import authBgVid from '../../assets/images/ai-home.mp4';
 
 const Auth = () => {
   const [login, setLogin] = useState(true);
   return (
     <AuthContainerWrapper className='grid-col-2'>
         <LeftContainerWrapper>
-          <div className="content">
-            <div className="cap">
-              <img src={fvImg} alt="" />
-              <h4>Read to Learn!</h4>
-              <p>Log in to your account now and explore our wide range of courses. Find the one that fits your goals and start learning today!</p>
+          <video src={authBgVid} autoPlay muted loop />
+          <div className="notice">
+            <div className="logo">
+
             </div>
-            <div className="side-img">
-              <img src={lfImg} alt="" />
+            <div className="note">
+              <h4>Ready to Learn</h4>
+              <p>Login to your account now and explore our wide range of courses. Find the one that perfect-fits your goals and start learning today at your own pace!</p>
             </div>
           </div>
         </LeftContainerWrapper>
@@ -41,51 +39,49 @@ const AuthContainerWrapper = styled.section`
 const LeftContainerWrapper = styled.article`
   width: 100%;
   height: 100%;
-  background: url(${authImg});
-  background-position: center;
-  background-size: cover;
   overflow-y: hidden;
-  .content{
+  position: relative;
+  video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
-    position: relative;
-    overflow-y: hidden;
-    .cap{
-      width: 500px;
-      height: 200px;
-      background: rgba(5, 43, 58, 0.89);
-      box-shadow: inset 0 0 10px rgba(5, 43, 58, 0.76);
+    min-height: 655px;
+    object-fit: cover;
+  }
+  .notice{
+    width: 80%;
+    height: max-content;
+    background: rgba(20, 14, 53, 0.815);
+    box-shadow: inset 0 0 20px rgba(20, 14, 53, 0.815);
+    border: 1px solid rgba(204, 204, 204, 0.164);
+    border-radius: 1rem;
+    padding: 12px;
+    position: absolute;
+    top: 10rem;
+    left: 4rem;
+    z-index: 1000;
+
+    .logo{
+      width: 22%;
+      height: 95px;
+      background: rgba(12, 7, 27, 0.322);
+      border: 1px solid rgba(204, 204, 204, 0.055);
       border-radius: 1rem;
-      padding: 10px;
-      position: absolute;
-      top: 8rem;
-      left: 1rem;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      img{
-        width: 50px;
-      }
+      box-shadow: inset 0 0 20px rgba(20, 14, 53, 0.815);
+      margin: 10px 0;
+    }
+    .note{
       h4{
-        font-weight: 700;
         color: red;
+        font-weight: 600;
+        font-size: 20px;
       }
       p{
-        max-width: 400px;
-        color: #ccc;
-      }
-    }
-    .side-img{
-      width: 65%;
-      position: absolute;
-      bottom: -8rem;
-      right: 0;
-      z-index: 1000;
-      img{
-        width: 100%;
-        opacity: .6;
+        color: #fff;
+        font-size: 18px;
       }
     }
   }
