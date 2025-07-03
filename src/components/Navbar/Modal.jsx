@@ -26,7 +26,7 @@ const Modal = () => {
             <FaBookOpen className='linkIco' />
             <span>My Course</span>
         </div>
-        <div className="link-wrapper" onClick={signOut(auth)}>
+        <div className="link-wrapper" onClick={ () => signOut(auth)}>
             <MdLogout className='linkIco' />
             <span>Sign Out</span>
         </div>
@@ -48,7 +48,7 @@ const ModalContainerWrapper = styled.div`
   background: #fff;
   border-radius: .5rem;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 100;
   padding: 10px;
   overflow-y: hidden;
   .meta-info, .link-area{

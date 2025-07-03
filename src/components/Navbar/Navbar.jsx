@@ -110,8 +110,8 @@ const Navbar = () => {
       >
         <HiMiniBars3BottomRight />
       </div>
-      </NavDivJoinContainer>
       {showModal && <Modal />}
+      </NavDivJoinContainer>
     </NavbarContainerWrapper>
   );
 };
@@ -228,6 +228,9 @@ const NavDivJoinContainer = styled.div`
  align-items: center;
  justify-content: center;
  width: max-content;
+ position: absolute;
+ right: 2rem;
+ overflow-y: hidden;
 `
 const LogoWrapper = styled.div`
   width: 14%;

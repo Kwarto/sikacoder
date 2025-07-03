@@ -32,7 +32,7 @@ const AdSidePanel = ({activeIndex, setActiveIndex, setShowPost, setIsDrawer}) =>
       itemIcon: <FaNewspaper className="ico" />,
     },
   ];
-  
+
   return (
     <AdSidePanelContainerWrapper>
       <div className="welcome">
@@ -178,6 +178,12 @@ const AdSidePanelContainerWrapper = styled.aside`
         transform: translateY(0.2rem);
       }
     }
+  }
+
+  @media screen and (max-width: 430px) {
+    position: absolute;
+    left: -30rem;
+    width: 100%;
   }
 `;
 

@@ -47,9 +47,9 @@ const Intern = ({interns}) => {
             </div>
           </div>
           <div className="intern-contact">
-            <li><MdEmail /> {intern.email.substring(0, 23)}..</li>
-            <li><FaMapMarker /> {intern.country}</li>
-            <li><FaPhone /> {intern.contactNumber}</li>
+            <li><MdEmail /> <span>{intern.email.substring(0, 23)}..</span></li>
+            <li><FaMapMarker /> <span>{intern.country}</span></li>
+            <li><FaPhone /> <span>{intern.contactNumber}</span></li>
             {isVerified && <li className='status'><MdVerifiedUser />Verified</li>}
             {!isVerified && <li className='status re'><FaBarsProgress />Pending</li>}
           </div>
@@ -75,57 +75,76 @@ const InternsContainerWrapper = styled.article`
  overflow-y: scroll;
  padding: 75px 10px 0 10px;
 
-.list-content{
-  height: 90%;
-  overflow-y: scroll;
-  gap: 1rem;
-  width: 100%;
-  .intern-card{
-    display: flex;
-    margin: 10px 0;
-    .intern-info{
-     width: 30%;
-     justify-content: flex-start;
-     .profile{
-       width: 60px;
-       aspect-ratio: 1/1;
-     }
-     .meta{
-      h4{
-        margin: 0;
-      }
-     }
-    }
-    .intern-contact{
+ .list-content{
+    height: 90%;
+    overflow-y: scroll;
+    gap: 1rem;
+    width: 100%;
+    .intern-card{
       display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      li{
-        width: 50%;
-        justify-content: center;
-        background: transparent;
-        box-shadow: none;
-        color: rgba(2, 19, 20, 0.795);
-        font-size: 15px;
-        font-weight: 400;
+      margin: 10px 0;
+      .intern-info{
+      width: 30%;
+      justify-content: flex-start;
+      .profile{
+        width: 60px;
+        aspect-ratio: 1/1;
       }
-      .status{
-        background: rgb(28, 226, 216);
-        box-shadow: inset 0 0 10px rgba(10, 78, 82, 0.24);
-        color: #01334b;
-        border-radius: 8px;
-        width: 160px;
-        height: 40px;
-        font-weight: 600;
-        overflow-y: hidden;
+      .meta{
+        h4{
+          margin: 0;
+        }
       }
-      .re{
-        background: rgb(253, 239, 44);
-        color: #000207;
+      }
+      .intern-contact{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        li{
+          width: 50%;
+          justify-content: center;
+          background: transparent;
+          box-shadow: none;
+          color: rgba(2, 19, 20, 0.795);
+          font-size: 15px;
+          font-weight: 400;
+        }
+        .status{
+          background: rgb(28, 226, 216);
+          box-shadow: inset 0 0 10px rgba(10, 78, 82, 0.24);
+          color: #01334b;
+          border-radius: 8px;
+          width: 160px;
+          height: 40px;
+          font-weight: 600;
+          overflow-y: hidden;
+        }
+        .re{
+          background: rgb(253, 239, 44);
+          color: #000207;
+        }
       }
     }
   }
-}
+
+ @media screen and (max-width: 430px) {
+  .list-content{
+    width: 100;
+    .intern-card{
+       .intern-info{
+
+       }
+       .intern-contact{
+        width: 30%;
+         li{
+          span{
+            display: none;
+          }
+         }
+       }
+    }
+  }
+ }
 `
 const HeaderWrapper = styled.div`
  width: 100%;

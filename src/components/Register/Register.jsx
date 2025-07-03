@@ -61,6 +61,7 @@ const Register = ({ login, setLogin }) => {
             placeholder="RL Morgan"
             value={username}
             onChange={handleOnChange}
+            autoComplete="username"
           />
         </div>
         <div className="input-area">
@@ -72,6 +73,7 @@ const Register = ({ login, setLogin }) => {
             placeholder="rlmorgan@gmail.com"
             value={email}
             onChange={handleOnChange}
+            autoComplete="email"
           />
         </div>
         <div className="input-area">
@@ -83,6 +85,7 @@ const Register = ({ login, setLogin }) => {
             placeholder="Password"
             value={password}
             onChange={handleOnChange}
+            autoComplete="current-password"
           />
           <div
             className="eye"

@@ -10,10 +10,13 @@ const Admin = () => {
   const [isInterns, setIsInterns] = useState(false);
   const [showPost, setShowPost] = useState(false);
   const [isDrawer, setIsDrawer] = useState(false);
+  
+  //Fetch State
   const [courses, setCourses] = useState([]);
   const [users, setUsers] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [newIntern, setNewIntern] = useState([]);
+
   useEffect(() => {
     const fetchNewIntern = async () => {
       const dataRef = collection(db, "users");

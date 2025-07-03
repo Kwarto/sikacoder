@@ -11,8 +11,6 @@ import UserAccountMa from "./UserAccountMa";
 import Post from "./Post";
 
 const AdDash = ({isDrawer, courses, users, blogs, setIsInterns, setIsDrawer, activeIndex, showPost, setShowPost }) => {
-  
-  
   const renderComponent = () => {
     switch (activeIndex) {
       case 0:
@@ -50,6 +48,11 @@ const AdDashContainerWrapper = styled.section`
   top: 0;
   left: 15rem;
   overflow-y: scroll;
+
+  @media screen and (max-width: 430px) {
+    left: 0;
+    width: 100%;
+  }
 `;
 
 const AddPostModalButton = styled.article`

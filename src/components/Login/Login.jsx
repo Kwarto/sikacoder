@@ -45,6 +45,7 @@ const Login = ({ login, setLogin }) => {
             placeholder="Enter Email ID"
             value={email}
             onChange={handleOnChange}
+            autoComplete="email"
           />
         </div>
         <div className="input-area">
@@ -56,6 +57,7 @@ const Login = ({ login, setLogin }) => {
             placeholder="Password"
             value={password}
             onChange={handleOnChange}
+            autoComplete="current-password"
           />
           <div
             className="eye"

@@ -31,6 +31,11 @@ const AdNavContainer = styled.nav`
  left: 15rem;
  right: 0;
  z-index: 100;
+ @media screen and (max-width: 430px) {
+  left: 0;
+  width: 100%;
+  height: 80px;
+ }
 `;
 
 const LogoWrapper = styled.div`
@@ -43,6 +48,13 @@ const LogoWrapper = styled.div`
  padding: 0 8px;
  img{
     width: 110px;
+ }
+
+ @media screen and (max-width: 430px){
+   width: 30%;
+   img{
+    width: 230px;
+   }
  }
 `
 const ProfileWrapper = styled.div`
@@ -60,6 +72,11 @@ const ProfileWrapper = styled.div`
     font-size: 1.8rem;
     font-weight: 600;
   }
+
+  @media screen and (max-width: 430px) {
+    width: 40px;
+    margin-right: 15px;
+  }  
 `
 
 export default AdNav

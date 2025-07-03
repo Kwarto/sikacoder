@@ -410,6 +410,39 @@ const DashContainerWrapper = styled.section`
       }
     
   }
+
+  @media screen and (max-width: 430px) {
+    height: max-content;
+    padding: 80px 0;
+    .top{
+        display: inline-flex;
+        width: 1600px;
+        overflow-x: scroll;
+        height: 35%;
+        padding: 0 8px;
+        .top-menu-card{
+          width: 270px;
+        }
+    }
+
+    .stat-card-wrapper{
+        height: max-content;
+        grid-template-columns: 100%;
+        margin-top: 10px;
+        .stat-card{
+          .course-card{
+            flex-direction: column;
+            .course-banner{
+              width: 98%;
+              height: 180px;
+            }
+            .course-abt{
+              width: 100%;
+            }
+          }
+        }
+    }
+  }
 `;
 
 export default Overview
