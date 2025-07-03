@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getAuth} from "firebase/auth";
@@ -7,12 +6,13 @@ import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCR9ZNNAUsF9xO2JULSVOPr8xKgqfDJJ-A",
-  authDomain: "shub-98c02.firebaseapp.com",
-  projectId: "shub-98c02",
-  storageBucket: "shub-98c02.appspot.com",
-  messagingSenderId: "978431886627",
-  appId: "1:978431886627:web:b5e23458a7730dcc1cf896"
+  apiKey: `${import.meta.env.VITE_APP_API_KEY}`,
+  authDomain: `${import.meta.env.VITE_APP_AUTH_DOMAIN}`,
+  projectId: `${import.meta.env.VITE_APP_PROJECT_ID}`,
+  storageBucket: `${import.meta.env.VITE_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_APP_MESSAGING_SENDER_ID}`,
+  appId: `${import.meta.env.VITE_APP_appId}`
+
 }
 
 // Initialize Firebase

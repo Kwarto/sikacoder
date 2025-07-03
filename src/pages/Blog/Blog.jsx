@@ -14,6 +14,7 @@ import trendImg4 from "../../assets/images/thumb/course_thumb05.jpg";
 import { motion } from "framer-motion";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
+import { Faqs } from "../../components";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -148,6 +149,7 @@ const Blog = () => {
            </div>
           ))}
         </TrendingBloContainerWrapper>
+        <Faqs />
       </BlogPageContainerWrapper>
     </Main>
   );

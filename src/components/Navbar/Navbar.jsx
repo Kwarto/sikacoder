@@ -13,7 +13,7 @@ const Navbar = () => {
   const { user } = useUserAuth();
   const navigate = useNavigate();
   const [mobile, setMobile] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   return (
     <NavbarContainerWrapper>
       <LogoWrapper
