@@ -3,7 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-
+import {getMessaging, getToken} from "firebase/messaging"
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,7 +16,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const messaging = getMessaging(app)
 export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
+
+
+export const generateToken = async () => {
+  const permission = Notification.requestPermission();
+  console.log(permission)
+  if(permission === "granted"){
+    const token = await getToken(messaging, {
+      vapidKey: import.meta.env.VITE_APP_VAPIDKEY
+    })
+    console.log(token)
+  }
+}
