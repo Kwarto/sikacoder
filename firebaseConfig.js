@@ -25,11 +25,16 @@ export const db = getFirestore(app);
 
 export const generateToken = async () => {
   const permission = Notification.requestPermission();
-  console.log(permission)
-  if(permission === "granted"){
-    const token = await getToken(messaging, {
-      vapidKey: import.meta.env.VITE_APP_VAPIDKEY
-    })
-    console.log(token)
+  try {
+    if(permission === "granted"){
+      const token = await getToken(messaging, {
+        vapidKey: import.meta.env.VITE_APP_VAPIDKEY
+      })
+      console.log(token)
+    }else{
+      console.log("User deny push notification");
+    }
+  } catch (error) {
+    console.log(error.message)
   }
 }

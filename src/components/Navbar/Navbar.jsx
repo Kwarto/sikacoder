@@ -229,7 +229,7 @@ const NavDivJoinContainer = styled.div`
  justify-content: center;
  width: max-content;
  position: absolute;
- right: 2rem;
+ right: .2rem;
  overflow-y: hidden;
 `
 const LogoWrapper = styled.div`
