@@ -216,7 +216,7 @@ const DetailContainerWrapper = styled.section`
         ul {
           li {
             list-style: circle;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 1.6;
             padding: px 0;
           }
@@ -236,7 +236,7 @@ const DetailContainerWrapper = styled.section`
           justify-content: flex-start;
           gap: .3rem;
           span{
-            font-size: 1.2rem;
+            font-size: 1rem;
           }
           .ico {
             color: teal;
@@ -249,6 +249,7 @@ const DetailContainerWrapper = styled.section`
         justify-content: center;
         gap: 0.5rem;
         transform: translateY(1.4rem);
+        width: 25%;
       }
     }
     @media screen and (max-width: 430px) {

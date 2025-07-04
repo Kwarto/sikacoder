@@ -317,11 +317,12 @@ const EnrollContainerWrapper = styled.section`
           flex-direction: column;
           overflow-y: hidden;
           label {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             color: teal;
           }
           span {
+            font-size: 14px;
             padding: 6px 0;
             color: #111;
           }

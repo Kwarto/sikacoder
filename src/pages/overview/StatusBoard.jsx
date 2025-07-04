@@ -70,7 +70,7 @@ const StatusBoard = () => {
           </div>
           <div className="course-abt">
             <h3>{registeredCourse?.courseName}</h3>
-            <p>{registeredCourse?.description.substring(0, 240)}...</p>
+            <p>{registeredCourse?.description.substring(0, 150)}...</p>
           </div>
           <div className="status-wrap">
             <div className="sm-ico">
@@ -223,7 +223,7 @@ const RightContainerWrapper = styled.article`
         justify-content: center;
         gap: 0.2rem;
         width: max-content;
-        padding: 8px 13px;
+        padding: 8px 4px;
         span {
           font-weight: 400;
         }
@@ -238,7 +238,7 @@ const RightContainerWrapper = styled.article`
     }
     .status-wrap {
       width: 98%;
-      height: 140px;
+      height: 150px;
       border-radius: 0.6rem;
       box-shadow: inset 0 0 10px rgba(48, 217, 247, 0.226);
       padding: 12px;
