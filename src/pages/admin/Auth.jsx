@@ -18,7 +18,7 @@ const Auth = () => {
   const [adminData, setAdminDate] = useState({ adminSchema });
   const { username, email, password } = adminData;
   const [loading, setLoading] = useState(false);
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const handleChange = (e) => {
     setAdminDate({ ...adminData, [e.target.name]: e.target.value });
   };

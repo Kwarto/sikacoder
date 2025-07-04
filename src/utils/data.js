@@ -25,7 +25,7 @@ export const processData = [
     {
         id: 4,
         title: 'Start Intern',
-        desc: 'Transition from learning to doing. Join live internship teams, contribute to meaningful tech projects, and gain valuable industry experience that prepares you for a successful tech career.',
+        desc: 'Transition from learning to doing. Join live internship teams, contribute to meaningful tech projects, and gain valuable industry experience that prepares you for a successful career.',
         // icon: <PiShootingStarThin />,
     }
 ]

@@ -16,7 +16,7 @@ const SingleCourse = ({courses, course}) => {
      </div>
      </div>
      <div className="meta-info">
-        <h3>{course?.courseName.substring(0, 35)}..</h3>
+        <h3>{course?.courseName.substring(0, 40)}..</h3>
         <p>{course?.description.substring(0, 130)}..</p>
         <small>By <span>{course?.instructor}</span></small>
         <div className="btn" onClick={() => {setShowDetail(true)}}>
@@ -42,7 +42,7 @@ const SingleCourseContainerWrapper = styled.div`
  transition-delay: .8ms;
  .thumb-box{
     width: 100%;
-    height: 200px;
+    height: 160px;
     border-radius: .5rem;
     position: relative;
     overflow-y: hidden;

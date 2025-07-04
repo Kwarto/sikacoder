@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import logoImg from '../../assets/images/sc-logo.png';
-import { useUserAuth } from '../../context/UserAuthContext';
+import { useAdminAuth } from '../../context/AdminAuthContext';
 const AdNav = ({isDrawer, setIsDrawer}) => {
-  const {user} = useUserAuth()
+  const {admin} = useAdminAuth();
   return (
     <AdNavContainer>
       <LogoWrapper>
          <img src={logoImg} alt="sikacoder-logo" />
       </LogoWrapper>
       <ProfileWrapper onClick={() => {setIsDrawer(!isDrawer)}}>
-        <h4>{user?.displayName.substring(0,1)}J</h4>
+        <h4>{admin?.displayName.substring(0,1)}</h4>
       </ProfileWrapper>
     </AdNavContainer>
   )

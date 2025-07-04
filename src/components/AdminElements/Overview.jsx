@@ -16,15 +16,15 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
                   <FaUserGraduate />
                 </div>
                 <div className="info-wrap">
-                  <h4>Registered Interns</h4>
+                  <h2>Interns</h2>
                   <p>Total Interns</p>
                 </div>
               </div>
               <div className="mid">
-                <h3>
+                <h4>
                   <MdArrowDropUp className="drop" /> 
                   00{users?.length}+
-                </h3>
+                </h4>
                 <div className="date">
                   <span>May 20, 2025</span>
                 </div>
@@ -36,15 +36,15 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
                   <FaBookOpen />
                 </div>
                 <div className="info-wrap">
-                  <h4>Courses</h4>
+                  <h2>Courses</h2>
                   <p>Total Courses</p>
                 </div>
               </div>
               <div className="mid">
-                <h3>
+                <h4>
                   <MdArrowDropUp className="drop" /> 
                   00{courses?.length}+
-                </h3>
+                </h4>
                 <div className="date">
                   <span>May 20, 2025</span>
                 </div>
@@ -56,14 +56,14 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
                   <FaBullhorn />
                 </div>
                 <div className="info-wrap">
-                  <h4>Announcement</h4>
+                  <h2>Notices</h2>
                   <p>Total Messages</p>
                 </div>
               </div>
               <div className="mid">
-                <h3>
+                <h4>
                   <MdArrowDropUp className="drop" /> 500+
-                </h3>
+                </h4>
                 <div className="date">
                   <span>May 20, 2025</span>
                 </div>
@@ -75,15 +75,15 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
                   <FaUserGraduate />
                 </div>
                 <div className="info-wrap">
-                  <h4>Blogpost</h4>
+                  <h2>Blogpost</h2>
                   <p>Total Blogpost</p>
                 </div>
               </div>
               <div className="mid">
-                <h3>
+                <h4>
                   <MdArrowDropUp className="drop" /> 
                   00{blogs?.length}+
-                </h3>
+                </h4>
                 <div className="date">
                   <span>May 20, 2025</span>
                 </div>
@@ -101,7 +101,7 @@ const Overview = ({courses, users, blogs, setIsInterns}) => {
                   <img src={courseImg1} alt="course_id" />
                 </div>
                 <div className="course-abt">
-                  <h3>{course.courseName} </h3>
+                  <h3>{course.courseName.substring(0, 30)}.. </h3>
                   <p>{course.description.substring(0, 105)}..</p>
                 <div className="course-sub">
                   <FaUserGraduate />
@@ -206,10 +206,7 @@ const DashContainerWrapper = styled.section`
         align-items: center;
         margin: 10px 0;
         width: 100%;
-        h3 {
-          font-size: 16px;
-          font-weight: 400;
-          
+        h4 {
           color: #fff;
           .drop {
             color: rgb(116, 233, 116);

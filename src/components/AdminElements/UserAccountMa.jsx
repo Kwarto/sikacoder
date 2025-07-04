@@ -4,13 +4,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { MdEdit, MdShield } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa6";
-import { useUserAuth } from "../../context/UserAuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
 import { FaPowerOff } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useAdminAuth } from "../../context/AdminAuthContext";
 const UserAccountMa = () => {
- const {user} = useUserAuth();
+ const {user} = useAdminAuth()
  const navigate = useNavigate();
   return (
     <UserAccountManageContainer>

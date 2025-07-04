@@ -140,7 +140,7 @@ const Blog = () => {
             <div className="sm">
               <strong>{blog.category}</strong>
             </div>
-              <h3>{blog.title.substring(0, 38)}</h3>
+              <h3>{blog.title.substring(0, 24)}..</h3>
               <p>
                 {blog.desc.substring(0, 184)}..
               </p>
@@ -335,7 +335,7 @@ const TrendingBloContainerWrapper = styled.article`
   padding: 10px 3px;
   .trending-post-wrap {
     width: 100%;
-    height: 90%;
+    height: 100%;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 12, 34, 0.13);
     border-radius: 1rem;
@@ -368,7 +368,7 @@ const TrendingBloContainerWrapper = styled.article`
         }
       }
       h3 {
-        font-size: 1.3rem;
+        /* font-size: 1.3rem; */
         text-transform: uppercase;
       }
     }

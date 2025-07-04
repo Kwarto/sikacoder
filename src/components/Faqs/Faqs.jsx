@@ -107,11 +107,18 @@ const FrequentlyAskQuestionWrapper = styled.section`
   margin: 5px auto;
   padding: 30px 5px;
   .head {
+    padding: 12px;
+
+    h1{
+      font-size: 2rem;
+    }
+
     h4 {
       color: red;
     }
     h2 {
       font-weight: 400;
+      font-size: 18px;
     }
   }
   .question-area {

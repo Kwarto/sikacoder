@@ -47,7 +47,7 @@ const Intern = ({interns}) => {
             </div>
           </div>
           <div className="intern-contact">
-            <li><MdEmail /> <span>{intern.email.substring(0, 23)}..</span></li>
+            <li><MdEmail /> <span>{intern.email}..</span></li>
             <li><FaMapMarker /> <span>{intern.country}</span></li>
             <li><FaPhone /> <span>{intern.contactNumber}</span></li>
             {isVerified && <li className='status'><MdVerifiedUser />Verified</li>}
@@ -264,6 +264,7 @@ const InternsListGridContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        
       }
       .re{
         background: rgb(253, 239, 44);

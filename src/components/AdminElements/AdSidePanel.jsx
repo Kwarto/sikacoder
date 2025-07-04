@@ -8,8 +8,9 @@ import {
   FaNewspaper,
   FaUserGraduate,
 } from "react-icons/fa6";
+import { useAdminAuth } from "../../context/AdminAuthContext";
 const AdSidePanel = ({activeIndex, setActiveIndex, setShowPost, setIsDrawer}) => {
-  
+  const {admin} = useAdminAuth();
   const menuItems = [
     {
       itemName: "Dashboard",
@@ -39,9 +40,9 @@ const AdSidePanel = ({activeIndex, setActiveIndex, setShowPost, setIsDrawer}) =>
         <div className="profile">
           <img src={profileImg} alt="profile" />
         </div>
-        <h4>Kwarteng Joseph</h4>
+        <h4>{admin?.displayName}</h4>
         <div className="role">
-          <span>Blogger</span>
+          <h5>Sudo</h5>
         </div>
       </div>
       <div className="menu-container">

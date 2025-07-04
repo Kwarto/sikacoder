@@ -18,7 +18,7 @@ const offerData = [
     ico: <FaGears />,
     id: 2,
     title: "Software Engineering",
-    description: "ive into software architecture, APIs, and database management. Gain proficiency in languages like Python and Java, and develop scalable, maintainable applications with real-world engineering practices."
+    description: "Dive into software architecture, APIs, and database management. Gain proficiency in languages like Python and Java, and develop scalable, maintainable applications with real-world engineering practices."
   },
   {
     ico: <FaTeamspeak />,

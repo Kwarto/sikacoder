@@ -227,7 +227,7 @@ const ListContainerWrapper = styled.section`
     }
     .meta {
       h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 600;
         span {
           color: red;
@@ -239,6 +239,8 @@ const ListContainerWrapper = styled.section`
         justify-content: flex-start;
         gap: 0.4rem;
         color: rgb(74, 208, 241);
+        font-size: 16px;
+        font-family: "Space Grotesk", sans-serif;
         padding: 5px 0;
       }
     }

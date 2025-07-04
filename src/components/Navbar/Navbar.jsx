@@ -253,7 +253,8 @@ const MenuListContainerWrapper = styled.ul`
   gap: 1rem;
   .nav_link {
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 700;
+    font-family: "Space Grotesk", sans-serif;
     text-transform: uppercase;
     color: rgb(1, 17, 17);
     padding: 0 25px;
