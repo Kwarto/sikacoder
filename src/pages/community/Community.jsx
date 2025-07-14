@@ -167,7 +167,6 @@ const HeaderContentWrapper = styled.div`
   }
   .btn {
     align-self: flex-start;
-    width: 40%;
     span {
       display: flex;
       align-items: center;

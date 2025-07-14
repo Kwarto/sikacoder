@@ -10,7 +10,7 @@ import { FaPowerOff } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 const UserAccountMa = () => {
- const {user} = useAdminAuth()
+ const {admin} = useAdminAuth()
  const navigate = useNavigate();
   return (
     <UserAccountManageContainer>
@@ -25,13 +25,12 @@ const UserAccountMa = () => {
             <FaPowerOff />
           </div>
           <div className="profile">
-            <img src={user?.photoURL} alt={user?.displayName} /> 
             <div className="usr">
-             {user?.displayName.substring(0,1)}
+            <h3>{admin?.displayName.substring(0,1)}</h3>
             </div>
           </div>
           <div className="usr-name">
-            <h4>{user?.displayName}</h4>
+            <h4>{admin?.displayName.substring(0,1)}</h4>
             <span>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </span>

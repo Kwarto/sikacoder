@@ -233,14 +233,14 @@ const NavDivJoinContainer = styled.div`
  overflow-y: hidden;
 `
 const LogoWrapper = styled.div`
-  width: 14%;
+  width: 20%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
   img {
-    width: 120px;
+    width: 150px;
   }
   @media screen and (max-width: 430px) {
     width: 40%;

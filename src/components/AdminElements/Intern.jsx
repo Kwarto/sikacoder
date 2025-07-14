@@ -233,9 +233,11 @@ const InternsListGridContainer = styled.div`
       .meta{
         h4{
           color: rgba(2, 19, 20, 0.795);
+          font-size: 1rem;
         }
         span{
           color: rgb(8, 184, 184);
+          font-size: 15px;
         }
       }
     }

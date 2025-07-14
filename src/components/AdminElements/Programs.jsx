@@ -39,7 +39,7 @@ const Programs = ({courses}) => {
                <FaCode />
             </div>
             <div className="level-txt">
-              <h3>Intermediate Courses</h3>
+              <h3>Intermediate </h3>
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Programs = ({courses}) => {
             <img src={bannerImg} alt="" />
           </div>
           <div className="meta-info">
-            <h4>{course.courseName.substring(0, 34)}</h4>
+            <h4>{course.courseName.substring(0, 26)}</h4>
             <span>{course.description.substring(0, 100)}.</span>
             <li><FaUserGraduate />250+</li>
           </div>
@@ -140,9 +140,9 @@ const SkillLevelContainerWrapper = styled.div`
       font-weight: 700;
      }
      .level-txt{
-       margin-left: 4rem;
+       margin-left: 2rem;
        h3{
-        font-size: 1.2rem;
+        font-size: 1rem;
        }
        h3,p{
         color: #fff;
@@ -164,7 +164,7 @@ const SkillLevelContainerWrapper = styled.div`
        h4{
         font-size: 17px;
         font-weight: 600;
-        color: #fff;
+        color: #fff;/
        }
      }
    }
@@ -225,11 +225,11 @@ const AllCoursesContainerWrapper = styled.div`
      height: 40%;
      overflow: hidden;
      h4{
-      font-size: 16px;
+      font-size: 15px;
       color: rgba(2, 19, 20, 0.795);
      }
      span{
-      font-size: 18px;
+      font-size: 14px;
      }
      li{
       display: flex;

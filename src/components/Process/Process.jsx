@@ -31,7 +31,7 @@ const ProcessContainerWrapper = styled.section`
  .card{
     transition: box-shadow 0.3s ease-in-out;
     height: max-content;
-
+         width: 100%;
     span{
         width: 100%;
         display: flex;

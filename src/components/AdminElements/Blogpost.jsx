@@ -19,8 +19,8 @@ const Blogpost = ({blogs}) => {
            <li>{blog.category}</li>
            <li></li>
           </div>
-            <h4>{blog.title.substring(0,35)}</h4>
-           <p>{blog.desc.substring(0,130)}...</p>
+            <h4>{blog.title.substring(0,30)}</h4>
+           <p>{blog.desc.substring(0,120)}...</p>
            <div className="views">
              <FaEye className='ico'/>
              <p>123</p>

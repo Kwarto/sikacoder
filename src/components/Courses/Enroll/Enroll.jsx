@@ -345,6 +345,18 @@ const EnrollContainerWrapper = styled.section`
       }
     }
   }
+
+  @media (max-width: 430px) {
+    height: max-content;
+    .enroll-form-container{
+      grid-template-columns: 100%;
+      height: max-content;
+      .enroll-info, .enroll-form{
+        height: max-content;
+        padding: 5px;
+      }
+    }
+  }
 `;
 
 export default Enroll;

@@ -46,7 +46,7 @@ button {
   }
 
 .btn {
-  width: 130px;
+  width: max-content;
   height: 50px;
   background: rgb(17, 179, 179);
   border-radius: 12px;
@@ -60,6 +60,7 @@ button {
   font-weight: 600;
   margin-right: 15px;
   transition: all 0.3s ease-in-out;
+  padding: 0 20px;
 }
 .btn:hover {
   background: linear-gradient(
@@ -125,7 +126,7 @@ p {
 }
 
 .card {
-  width: 100%;
+  width: max-content;
   background: #fff;
   border: 1px solid #ccc;
   box-shadow: inset 0 1rem 40px rgba(0, 0, 0, 0.116);
@@ -135,7 +136,7 @@ p {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .edit {
