@@ -15,9 +15,11 @@ import { motion } from "framer-motion";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import { Faqs } from "../../components";
+import BlogDetail from "./BlogDetail";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [showDetail, setShowDetail] = useState(false);
    useEffect(() => {;
       const unsub = onSnapshot(
         collection(db, 'blogs'),
@@ -67,6 +69,7 @@ const Blog = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
+              onClick={() => {setShowDetail(true);}}
             >
               <img src={posterImg2} alt="" />
               <div className="layer">
@@ -151,6 +154,7 @@ const Blog = () => {
         </TrendingBloContainerWrapper>
         <Faqs />
       </BlogPageContainerWrapper>
+         {showDetail && <BlogDetail />}
     </Main>
   );
 };
@@ -160,6 +164,7 @@ const BlogPageContainerWrapper = styled.section`
   min-height: max-content;
   background: #fff;
   padding: 8px 20px;
+  position: relative;
   @media screen and (max-width: 430px) {
     padding: 8px 10px;
   }

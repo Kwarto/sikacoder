@@ -10,3 +10,4 @@ export {default as Dashboard} from '../pages/overview/Overview';
 export {default as StatusBoard} from '../pages/overview/StatusBoard';
 export {default as Admin} from '../pages/admin/Admin';
 export {default as LoginAdmin} from '../pages/admin/Auth';
+export {default as BlogDetail} from '../pages/Blog/BlogDetail';
